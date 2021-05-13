@@ -27,6 +27,11 @@ public class BrokerBean extends AbstractAgentBean {
 	 * your active orders, etc.
 	 */
 
+	/*
+	TODO
+		Data structure for storing my workers
+		For each worker, is worker busy?
+	 */
 
 
 	@Override
@@ -63,6 +68,15 @@ public class BrokerBean extends AbstractAgentBean {
 		 */
 		log.info("running...");
 
+
+
+		/* TODO:
+			1) Process take order from server
+			2) If new order from server, choose not busy worker, assign order
+				Send AssignOrder to chosen worker
+				2.1) Worker confirm?
+					If not, assign to other worker.
+		 */
 
 		/* example for finding the server agent */
 		IAgentDescription serverAgent = thisAgent.searchAgent(new AgentDescription(null, "ServerAgent", null, null, null, null));
