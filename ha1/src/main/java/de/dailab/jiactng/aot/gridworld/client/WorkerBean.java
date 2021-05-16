@@ -5,12 +5,12 @@ import de.dailab.jiactng.aot.gridworld.messages.WorkerConfirm;
 
 import de.dailab.jiactng.agentcore.AbstractAgentBean;
 import de.dailab.jiactng.agentcore.comm.message.JiacMessage;
-import de.dailab.jiactng.agentcore.knowledge.IFact;
-import de.dailab.jiactng.aot.gridworld.messages.WorkerMessage;
 import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
 import de.dailab.jiactng.aot.gridworld.model.Worker;
-import de.dailab.jiactng.aot.gridworld.messages.ActivateAgent;
+import de.dailab.jiactng.aot.gridworld.messages.ActivateWorker;
+
+import java.util.List;
 
 
 public class WorkerBean extends AbstractAgentBean {
@@ -73,7 +73,8 @@ public class WorkerBean extends AbstractAgentBean {
 	private boolean atTarget;	// worker is at order target
 	private Worker me;		// class with info about myself, contains Position attribute
 	private Order currentOrder;	// == null if not contracted
-	// private grid map
+	private Position gridSize;
+	public List<Position> obstacles;
 
 	@Override
 	public void doStart() throws Exception {
@@ -84,22 +85,18 @@ public class WorkerBean extends AbstractAgentBean {
 
 	@Override
 	public void execute() {
-
-		log.info("in execute() cycle!");
-
 		/* Check inbox */
 		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
 			Object payload = message.getPayload();
 
-			if (payload instanceof ActivateAgent) {
-				ActivateAgent activateAgentMsg = (ActivateAgent) payload;
-				// activate(): you're playing!
-
+			if (payload instanceof ActivateWorker) {
+				ActivateWorker activateWorkerMsg = (ActivateWorker) payload;
+				this.activate(activateWorkerMsg);
+				log.info("activated: ready to accept orders!");
 			}
 			else if (payload instanceof AssignOrder) {
 				AssignOrder assignOrderMsg = (AssignOrder) payload;
 				// do something
-
 			}
 			else if (payload instanceof WorkerConfirm) {
 				WorkerConfirm workerConfirmMsg = (WorkerConfirm) payload;
@@ -109,11 +106,13 @@ public class WorkerBean extends AbstractAgentBean {
 	}
 
 	/* Helper methods */
-	private void activate(Worker worker){
+	private void activate(ActivateWorker msg){
 		this.contracted = false;
 		this.atTarget = false;
 		this.previousMoveValid = true;
-		this.me = worker;
+		this.me = msg.activatedWorker;
+		this.gridSize = msg.gridSize;
+		this.obstacles = msg.obstacles;
 	}
 }
 

@@ -158,11 +158,12 @@ public class ServerBean extends AbstractMethodExposingBean {
 			// case 1: Start Game Message
 			if (payload instanceof StartGameMessage) {
 				StartGameMessage startGame = (StartGameMessage) payload;
-
 				// initialize game
 //				GridworldGame game = Util.createRandomGame(gridSize, numTurns, numOrders, numWorkers, startGame.brokerId);
 				GridworldGame game = startGame.gridFile == null
-						? Util.loadRandomGameFromFile(startGame.brokerId)
+						// ? Util.loadRandomGameFromFile(startGame.brokerId)
+						// createRandomGame for testing
+						? Util.createRandomGame(10, 100, 5, 2, startGame.brokerId)
 						: Util.loadGameFromFile(startGame.gridFile, startGame.brokerId);
 				
 				// start with turn = -1 so that after increment in execute the first turn is 0 

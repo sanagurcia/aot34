@@ -9,6 +9,7 @@ import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.AgentDescription;
 import de.dailab.jiactng.agentcore.ontology.IAgentDescription;
 import de.dailab.jiactng.aot.gridworld.messages.*;
+import de.dailab.jiactng.aot.gridworld.model.Position;
 
 
 import java.io.Serializable;
@@ -27,48 +28,39 @@ public class BrokerBean extends AbstractAgentBean {
 	 * your active orders, etc.
 	 */
 
-	/*
-	TODO
-		Data structure for storing my workers
-		For each worker, is worker busy?
-	 */
+	/* List containing all worker agents, including those not activated */
+	private List<IAgentDescription> allMyWorkers;
+	/* List containing activated worker agents */
+	private List<IAgentDescription> myActiveWorkers;
+	/* List containing currently contracted worker agents */
+	private List<IAgentDescription> myContractedWorkers;
 
+	/* Server (referee) address */
+	private ICommunicationAddress serverAddress;
+
+	/* Current game related attributes */
+	private Integer currentGameId;
+	private Position gridSize;
+	private List<Position> obstacles;
 
 	@Override
 	public void doStart() throws Exception {
-		/*
-		 * this will be called once when the agent starts and can be used for initialization work
-		 * note that when this method is executed, (a) it is not guaranteed that all the other
-		 * agents are already started and/or their actions are known, and (b) the agent's execution
-		 * has not yet started, so do not wait for any actions to be completed in this method (you
-		 * can invoke actions, though, if they are already known to the agent)
-		 *
-		 * if you want to use a SpaceObserver to listen to messages, this is might be a good place
-		 * to add it, but you could also check messages in execute() and only temporarily attach
-		 * a SpaceObserver for specific purposes
-		 */
-		log.info("starting...");
+		super.doStart();
+		log.info("starting broker agent");
 	}
-
-
 
 	@Override
 	public void execute() {
-		/*
-		 * this is executed periodically by the agent; use the executeInterval in the XML file
-		 * to configure how often exactly
-		 *
-		 * this is probably where the bulk of your logic will go; if you are not using a listener
-		 * to receive messages (see WorkerBean.java), you can use memory.readAll or memory.removeAll to get messages
-		 * from the memory, where they are stored when received; make sure to remove messages from
-		 * memory to not create a memory leak
-		 *
-		 * you may find the methods thisAgent::getAgentNode and thisAgent::searchAllAgents useful
-		 * for finding your fellow Worker agents. Examples are included in here
-		 */
 		log.info("running...");
 
+		// update all my workers
+		this.allMyWorkers = getMyWorkerAgents(10);
+		// update serverAddress
+		this.serverAddress = getServerAddress();
 
+		if (this.currentGameId == null){
+			this.startNewGame();
+		}
 
 		/* TODO:
 			1) Process take order from server
@@ -78,31 +70,36 @@ public class BrokerBean extends AbstractAgentBean {
 					If not, assign to other worker.
 		 */
 
-		/* example for finding the server agent */
-		IAgentDescription serverAgent = thisAgent.searchAgent(new AgentDescription(null, "ServerAgent", null, null, null, null));
-		if (serverAgent != null) {
-			ICommunicationAddress server = serverAgent.getMessageBoxAddress();
-		} else {
-			System.out.println("SERVER NOT FOUND!");
-		}
-
-		/* example of handling incoming messages without listener */
+		/* Handle incoming messages without listener */
 		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
 			Object payload = message.getPayload();
 
 			if (payload instanceof StartGameResponse) {
-				/* do something */
+				StartGameResponse startGameResponseMsg = (StartGameResponse) payload;
+				System.out.println("received start game response");
 			}
 		}
 	}
 
+	private void startNewGame() {
+		StartGameMessage startGameMsg = new StartGameMessage();
+		startGameMsg.brokerId = thisAgent.getAgentId();
+//		startGameMsg.gridFile = "grids/04_01.grid";
+		startGameMsg.gridFile = null;
+		this.sendMessage(this.serverAddress, startGameMsg);
+	}
 
-
-
-	/*
-	 * You can implement some functions and helper methods here.
-	 */
-
+	/* Use example function to get server address, return null if not found */
+	private ICommunicationAddress getServerAddress() {
+		ICommunicationAddress server = null;
+		IAgentDescription serverAgent = thisAgent.searchAgent(new AgentDescription(null, "ServerAgent", null, null, null, null));
+		if (serverAgent != null) {
+			server = serverAgent.getMessageBoxAddress();
+		} else {
+			System.out.println("SERVER NOT FOUND!");
+		}
+		return server;
+	}
 
 	/** example function for using getAgentNode() and retrieving a list of all worker agents */
 	private List<IAgentDescription> getMyWorkerAgents(int maxNum) {
