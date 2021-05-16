@@ -49,11 +49,10 @@ public class WorkerBean extends AbstractAgentBean {
 				}
 				else:
 					log("previous move invalid")
-					give up & notify broker
 				}
 
 			else:
-				log('idle, waiting for assignment...')
+				chill and be quiet.
 	 */
 
 	private boolean active;		// worker only active if involved in game

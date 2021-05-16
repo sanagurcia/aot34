@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class BrokerBean extends AbstractAgentBean {
 
-	/* TODO: associate worker agents with model/Worker.java class */
+	/* TODO: associate IAgentDescription workers with model/Worker.java class */
 	/* List containing all worker agents, including those not activated */
 	private List<IAgentDescription> allMyWorkers;
 	/* List containing activated worker agents */
@@ -44,7 +44,7 @@ public class BrokerBean extends AbstractAgentBean {
 	private List<Position> obstacles;
 
 	/* TODO: use Maps for getting elements by id, instead of lists!
-	*  TODO: associate order with contracted/reserved worker */
+	*  TODO: associate taken/contracted-order with reserved/contracted-worker */
 	/* Orders I've taken, but not confirmed from initiator */
 	private List<Order> myTakenOrders;
 	/* Orders confirmed by initiator and contracted out to worker */
