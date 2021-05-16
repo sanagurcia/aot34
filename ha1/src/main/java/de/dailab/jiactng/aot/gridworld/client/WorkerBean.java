@@ -32,7 +32,59 @@ public class WorkerBean extends AbstractAgentBean {
 	 * of course defeat the purpose of this exercise and may not be possible in "real life"
 	 */
 
+	/*
+	TODO:
+		state info:
+			contracted: boolean
+			gameState:
+				previousMoveValid: boolean
+				atTarget: boolean
+				currentMove: Position
 
+		init()
+			setup state info
+			?notify broker you're up and running
+
+		exec()
+			checkNewAssignments:
+				if NOT contracted:
+					acceptAssignment(
+						contracted = true
+					)
+				else:
+					rejectAssignment()
+
+			if contracted:
+				updateGameState(){
+					if WorkerConfirm(SUCCESS):
+						if atTarget:
+							log("Order successfully completed")
+							contracted = false
+							break
+						else:
+							previousMoveValid = true
+					else:
+						previousMoveValid = false
+				}
+				if previousMoveValid: doMove(){
+					moveTowardsTarget(
+						updatePosition()
+						updateAtTarget()
+					)
+					if atTarget:
+						notifyReferee(ORDER)
+					else:
+						notifyReferee(MOVE)
+				}
+				else:
+					log("previous move invalid")
+					give up & notify broker
+				}
+
+
+			else:
+				log('idle, waiting for assignment...')
+	 */
 
 
 	@Override
@@ -50,9 +102,9 @@ public class WorkerBean extends AbstractAgentBean {
 		 *
 		 * As an example it is added here at the beginning.
 		 */
-		memory.attach(new MessageObserver(), new JiacMessage());
+		// memory.attach(new MessageObserver(), new JiacMessage());
 
-		log.info("starting...");
+		log.info("starting worker...");
 	}
 
 	@Override
