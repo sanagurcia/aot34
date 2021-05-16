@@ -17,7 +17,9 @@
 				<ref bean="ServerAgent" />
 				
 				<!-- for testing only -->
-<!-- 				<ref bean="ClientAgent" /> -->
+<!--				<ref bean="BrokerAgent" />-->
+ 				<bean parent="WorkerAgent" />
+ 				<bean parent="WorkerAgent" />
 			</list>
 		</property>
 	</bean>
@@ -45,10 +47,10 @@
 	
 	<!-- FOR TESTING, ALL ON ONE NODE -->
 
-	<bean name="ClientAgent" parent="SimpleAgent" scope="prototype">
+	<bean name="WorkerAgent" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
 			<list>
-				<bean name="ClientBean" class="de.dailab.jiactng.aot.gridworld.client.ClientBean" scope="prototype">
+				<bean name="WorkerBean" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					<property name="executionInterval" value="1000" />
 

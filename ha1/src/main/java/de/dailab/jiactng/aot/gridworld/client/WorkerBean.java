@@ -1,13 +1,16 @@
 package de.dailab.jiactng.aot.gridworld.client;
 
+import de.dailab.jiactng.aot.gridworld.messages.AssignOrder;
 import de.dailab.jiactng.aot.gridworld.messages.WorkerConfirm;
-import org.sercho.masp.space.event.SpaceEvent;
-import org.sercho.masp.space.event.SpaceObserver;
-import org.sercho.masp.space.event.WriteCallEvent;
 
 import de.dailab.jiactng.agentcore.AbstractAgentBean;
 import de.dailab.jiactng.agentcore.comm.message.JiacMessage;
 import de.dailab.jiactng.agentcore.knowledge.IFact;
+import de.dailab.jiactng.aot.gridworld.messages.WorkerMessage;
+import de.dailab.jiactng.aot.gridworld.model.Order;
+import de.dailab.jiactng.aot.gridworld.model.Position;
+import de.dailab.jiactng.aot.gridworld.model.Worker;
+import de.dailab.jiactng.aot.gridworld.messages.ActivateAgent;
 
 
 public class WorkerBean extends AbstractAgentBean {
@@ -60,26 +63,58 @@ public class WorkerBean extends AbstractAgentBean {
 					give up & notify broker
 				}
 
-
 			else:
 				log('idle, waiting for assignment...')
 	 */
 
+	private boolean active;		// worker only active if involved in game
+	private boolean contracted;		// worker has been assigned an order and currently carrying out
+	private boolean previousMoveValid;	// referee (server) approved last move
+	private boolean atTarget;	// worker is at order target
+	private Worker me;		// class with info about myself, contains Position attribute
+	private Order currentOrder;	// == null if not contracted
+	// private grid map
 
 	@Override
 	public void doStart() throws Exception {
-
-
-		log.info("Starting worker...");
+		super.doStart();
+		this.active = false;
+		log.info("Starting worker agent with id: " + thisAgent.getAgentId() + ", on parent node: " + thisAgent.getAgentNode().getUUID());
 	}
 
 	@Override
 	public void execute() {
 
+		log.info("in execute() cycle!");
+
+		/* Check inbox */
+		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
+			Object payload = message.getPayload();
+
+			if (payload instanceof ActivateAgent) {
+				ActivateAgent activateAgentMsg = (ActivateAgent) payload;
+				// activate(): you're playing!
+
+			}
+			else if (payload instanceof AssignOrder) {
+				AssignOrder assignOrderMsg = (AssignOrder) payload;
+				// do something
+
+			}
+			else if (payload instanceof WorkerConfirm) {
+				WorkerConfirm workerConfirmMsg = (WorkerConfirm) payload;
+				// do something
+			}
+		}
 	}
 
 	/* Helper methods */
-
+	private void activate(Worker worker){
+		this.contracted = false;
+		this.atTarget = false;
+		this.previousMoveValid = true;
+		this.me = worker;
+	}
 }
 
 
@@ -108,8 +143,6 @@ class WorkerBean
  *
  *
  * You can use a SpaceObserver to listen to messages, but you can also check messages in execute()
- * and only temporarily attach a SpaceObserver for specific purposes
- *
- * As an example it is added here at the beginning.
+ * and only temporarily attach a SpaceObserver for specific purposes.
 
  */
