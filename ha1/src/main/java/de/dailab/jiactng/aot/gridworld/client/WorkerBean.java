@@ -80,7 +80,7 @@ public class WorkerBean extends AbstractAgentBean {
 	public void doStart() throws Exception {
 		super.doStart();
 		this.active = false;
-		log.info("Starting worker agent with id: " + thisAgent.getAgentId() + ", on parent node: " + thisAgent.getAgentNode().getUUID());
+		log.info("Starting worker agent with id: " + thisAgent.getAgentId());
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class WorkerBean extends AbstractAgentBean {
 			if (payload instanceof ActivateWorker) {
 				ActivateWorker activateWorkerMsg = (ActivateWorker) payload;
 				this.activate(activateWorkerMsg);
-				log.info("activated: ready to accept orders!");
+				System.out.println("Worker Agent " + thisAgent.getAgentId() + " activated: ready to accept orders!");
 			}
 			else if (payload instanceof AssignOrder) {
 				AssignOrder assignOrderMsg = (AssignOrder) payload;
@@ -107,9 +107,8 @@ public class WorkerBean extends AbstractAgentBean {
 
 	/* Helper methods */
 	private void activate(ActivateWorker msg){
+		this.active = true;
 		this.contracted = false;
-		this.atTarget = false;
-		this.previousMoveValid = true;
 		this.me = msg.activatedWorker;
 		this.gridSize = msg.gridSize;
 		this.obstacles = msg.obstacles;

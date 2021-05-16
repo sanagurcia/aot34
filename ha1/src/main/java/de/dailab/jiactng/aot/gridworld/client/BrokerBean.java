@@ -39,13 +39,16 @@ public class BrokerBean extends AbstractAgentBean {
 	private ICommunicationAddress serverAddress;
 
 	/* Current game related attributes */
-	private Integer currentGameId;
+	private Integer gameId;
 	private Position gridSize;
 	private List<Position> obstacles;
 
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
+		this.allMyWorkers = new ArrayList<>();
+		this.myActiveWorkers = new ArrayList<>();
+		this.myContractedWorkers = new ArrayList<>();
 		log.info("starting broker agent");
 	}
 
@@ -54,13 +57,9 @@ public class BrokerBean extends AbstractAgentBean {
 		log.info("running...");
 
 		// update all my workers
-		this.allMyWorkers = getMyWorkerAgents(10);
+		this.allMyWorkers = this.getMyWorkerAgents(10);
 		// update serverAddress
-		this.serverAddress = getServerAddress();
-
-		if (this.currentGameId == null){
-			this.startNewGame();
-		}
+		this.serverAddress = this.getServerAddress();
 
 		/* TODO:
 			1) Process take order from server
@@ -75,17 +74,50 @@ public class BrokerBean extends AbstractAgentBean {
 			Object payload = message.getPayload();
 
 			if (payload instanceof StartGameResponse) {
-				StartGameResponse startGameResponseMsg = (StartGameResponse) payload;
-				System.out.println("received start game response");
+				StartGameResponse response = (StartGameResponse) payload;
+				this.handleStartGameResponse(response);
 			}
+		}
+
+		if (this.gameId == null){
+			this.startNewGame();
+		}
+
+		/* Log state of worker agents */
+		System.out.println("Total worker agents: " + this.allMyWorkers.size());
+		System.out.println("Active worker agents: " + this.myActiveWorkers.size());
+	}
+
+	private void handleStartGameResponse(StartGameResponse response) {
+		/* Set up local variables for game */
+		this.gameId = response.gameId;
+		this.gridSize = response.size;
+		this.obstacles = response.obstacles;
+
+		/* For each initialWorker activate worker from allMyWorkers */
+		for (int i=0; i<response.initialWorkers.size(); i++){
+			/* Create ActivateWorker message */
+			ActivateWorker activateWorkerMsg = new ActivateWorker();
+			activateWorkerMsg.gameId = this.gameId;
+			activateWorkerMsg.gridSize = this.gridSize;
+			activateWorkerMsg.obstacles = this.obstacles;
+			activateWorkerMsg.activatedWorker = response.initialWorkers.get(i);
+
+			/* TODO: make sure allMyAgents.size >= initialWorkers.size */
+			/* Get WorkerAgent[i] address and send ActivateWorker msg */
+			ICommunicationAddress workerAddress = this.allMyWorkers.get(i).getMessageBoxAddress();
+			this.sendMessage(workerAddress, activateWorkerMsg);
+
+			/* Add worker to myActiveWorkers List */
+			this.myActiveWorkers.add(this.allMyWorkers.get(i));
 		}
 	}
 
 	private void startNewGame() {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
-//		startGameMsg.gridFile = "grids/04_01.grid";
-		startGameMsg.gridFile = null;
+//		startGameMsg.gridFile = "grids/04_01.grid";		// TODO: use working grid file
+		startGameMsg.gridFile = null;	// temporary solution
 		this.sendMessage(this.serverAddress, startGameMsg);
 	}
 
