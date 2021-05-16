@@ -9,6 +9,7 @@ import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.AgentDescription;
 import de.dailab.jiactng.agentcore.ontology.IAgentDescription;
 import de.dailab.jiactng.aot.gridworld.messages.*;
+import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
 
 
@@ -22,17 +23,16 @@ import java.util.stream.Collectors;
 
 public class BrokerBean extends AbstractAgentBean {
 
-	/*
-	 * it's probably a good idea to keep track of a few variables here, like
-	 * the communication address of the server and your workers, the current game ID,
-	 * your active orders, etc.
-	 */
-
+	/* TODO: associate worker agents with model/Worker.java class */
 	/* List containing all worker agents, including those not activated */
 	private List<IAgentDescription> allMyWorkers;
 	/* List containing activated worker agents */
 	private List<IAgentDescription> myActiveWorkers;
-	/* List containing currently contracted worker agents */
+	/* List for available worker agents: agents that are active, but not reserved or contracted */
+	private List<IAgentDescription> myAvailableWorkers;
+	/* List containing worker agents reserved for future assignment */
+	private List<IAgentDescription> myReservedWorkers;
+	/* List for currently contracted worker agents: agents busy with orders */
 	private List<IAgentDescription> myContractedWorkers;
 
 	/* Server (referee) address */
@@ -43,11 +43,22 @@ public class BrokerBean extends AbstractAgentBean {
 	private Position gridSize;
 	private List<Position> obstacles;
 
+	/* TODO: use Maps for getting elements by id, instead of lists!
+	*  TODO: associate order with contracted/reserved worker */
+	/* Orders I've taken, but not confirmed from initiator */
+	private List<Order> myTakenOrders;
+	/* Orders confirmed by initiator and contracted out to worker */
+	private List<Order> myContractedOrders;
+
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
+		this.myTakenOrders = new ArrayList<>();
+		this.myContractedOrders = new ArrayList<>();
 		this.allMyWorkers = new ArrayList<>();
 		this.myActiveWorkers = new ArrayList<>();
+		this.myAvailableWorkers = new ArrayList<>();
+		this.myReservedWorkers = new ArrayList<>();
 		this.myContractedWorkers = new ArrayList<>();
 		log.info("starting broker agent");
 	}
@@ -60,14 +71,6 @@ public class BrokerBean extends AbstractAgentBean {
 		this.allMyWorkers = this.getMyWorkerAgents(10);
 		// update serverAddress
 		this.serverAddress = this.getServerAddress();
-
-		/* TODO:
-			1) Process take order from server
-			2) If new order from server, choose not busy worker, assign order
-				Send AssignOrder to chosen worker
-				2.1) Worker confirm?
-					If not, assign to other worker.
-		 */
 
 		/* Handle incoming messages without listener */
 		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
@@ -97,24 +100,68 @@ public class BrokerBean extends AbstractAgentBean {
 		/* Log state of worker agents */
 		System.out.println("Total worker agents: " + this.allMyWorkers.size());
 		System.out.println("Active worker agents: " + this.myActiveWorkers.size());
+		System.out.println("Available worker agents: " + this.myAvailableWorkers.size());
+		System.out.println("Contracted worker agents: " + this.myContractedWorkers.size());
 	}
 
 	private void handleOrderMessage(OrderMessage msg){
-		// TODO
-		/* take order? */
+
+		System.out.println("================BROKER: HANDLING NEW ORDER MESSAGE ====================");
+
+		/* Check if available worker exists */
+		if (this.myAvailableWorkers.size() > 0){
+
+			/* construct TakeOrderMessage and send to server */
+			TakeOrderMessage takeOrderMsg = new TakeOrderMessage();
+			takeOrderMsg.orderId = msg.order.id;
+			takeOrderMsg.brokerId = thisAgent.getAgentId();
+			takeOrderMsg.gameId = this.gameId;
+			this.sendMessage(this.serverAddress, takeOrderMsg);
+
+			/* Add order to myTakenOrders. Can be retrieved later based on id */
+			this.myTakenOrders.add(msg.order);
+
+			/* Choose and reserve worker agent for assignment */
+			IAgentDescription chosenWorker = this.choseAvailableWorker(msg.order);
+			this.myAvailableWorkers.remove(chosenWorker);
+			this.myReservedWorkers.add(chosenWorker);
+		}
 	}
 
 	private void handleTakeOrderConfirm(TakeOrderConfirm msg){
-		// TODO
-		/* Two cases: SUCCESS, FAIL */
-		// if success, choose not contracted worker and assign order
-			// later: handle AssignOrderConfirm
+
+		/* Assign order to first available reserved-worker.
+		 * 	Can be improved by associating reserved-workers with particular orders beforehand */
+		IAgentDescription assignedWorker = this.myReservedWorkers.get(0);
+		this.myReservedWorkers.remove(assignedWorker);
+
+		if (msg.state == Result.SUCCESS){
+
+			/* Construct AssignOrder message */
+			AssignOrder assignOrderMsg = new AssignOrder();
+			/* Find order in myTakenOrders by id */
+			Order theOrder = this.myTakenOrders.stream().filter(o -> o.id.equals(msg.orderId)).findFirst().orElse(null);
+			assignOrderMsg.order = theOrder;
+
+			/* Send AssignOrder to assignedWorker */
+			this.sendMessage(assignedWorker.getMessageBoxAddress(), assignOrderMsg);
+
+			System.out.println("The order POSITION: " + theOrder.position);
+
+			/* Add order to contracted orders */
+			this.myContractedOrders.add(theOrder);
+
+			/* Immediately adding assignedWorker to contractedWorkers, without confirmation from him */
+			/* TODO: deal here and elsewhere with AssignOrderConfirm */
+			this.myContractedWorkers.add(assignedWorker);
+		}
 	}
 
 	private void handleOrderCompleted(OrderCompleted msg) {
-		// TODO
 		/* Two cases: SUCCESS, FAIL */
-		// Update myOrders, myContractedWorkers
+		Order theOrder = this.myTakenOrders.stream().filter(o -> o.id.equals(msg.orderId)).findFirst().orElse(null);
+		this.myContractedOrders.remove(theOrder);
+		// TODO: locate contracted-worker based on order-id and make worker available again.
 	}
 
 	private void handleEndGameMessage(EndGameMessage msg){
@@ -142,8 +189,9 @@ public class BrokerBean extends AbstractAgentBean {
 			ICommunicationAddress workerAddress = this.allMyWorkers.get(i).getMessageBoxAddress();
 			this.sendMessage(workerAddress, activateWorkerMsg);
 
-			/* Add worker to myActiveWorkers List */
+			/* Add new worker to myActiveWorkers and myAvailableWorkers List */
 			this.myActiveWorkers.add(this.allMyWorkers.get(i));
+			this.myAvailableWorkers.add(this.allMyWorkers.get(i));
 		}
 	}
 
@@ -153,6 +201,11 @@ public class BrokerBean extends AbstractAgentBean {
 //		startGameMsg.gridFile = "grids/04_01.grid";		// TODO: use working grid file
 		startGameMsg.gridFile = null;	// temporary solution
 		this.sendMessage(this.serverAddress, startGameMsg);
+	}
+
+	private IAgentDescription choseAvailableWorker(Order order){
+		/* Choose first agent available: Can be improved! */
+		return this.myAvailableWorkers.get(0);
 	}
 
 	/* Use example function to get server address, return null if not found */
@@ -183,5 +236,4 @@ public class BrokerBean extends AbstractAgentBean {
 		invoke(sendAction, new Serializable[] {message, receiver});
 		System.out.println("BROKER SENDING " + payload);
 	}
-
 }
