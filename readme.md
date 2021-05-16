@@ -8,5 +8,6 @@ Content of this repo is currently (09.05.21) a copy of the skeleton assignment.
 Server throws error: "Unable to send multicast message on interface", unless modified. 
 Avoid problem by setting AotNode's parent="NodeWithDirectory" in settings.xml.
 
-Client can't find server. Try running client on same node as server.
-Change StartClient.java config to server.xml.
+Client can't find server. Try running client on same node as server:
+    See added beans in server.xml, for running broker and worker(s) on same node as server.
+    Only need to execute StartServer.
