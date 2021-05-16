@@ -16,17 +16,6 @@ import java.util.List;
 public class WorkerBean extends AbstractAgentBean {
 
 	/* TODO:
-		state info:
-			contracted: boolean
-			gameState:
-				previousMoveValid: boolean
-				atTarget: boolean
-				currentMove: Position
-
-		init()
-			setup state info
-			?notify broker you're up and running
-
 		exec()
 			checkNewAssignments:
 				if NOT contracted:

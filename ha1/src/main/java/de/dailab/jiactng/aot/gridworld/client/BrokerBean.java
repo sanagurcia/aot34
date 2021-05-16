@@ -74,8 +74,19 @@ public class BrokerBean extends AbstractAgentBean {
 			Object payload = message.getPayload();
 
 			if (payload instanceof StartGameResponse) {
-				StartGameResponse response = (StartGameResponse) payload;
-				this.handleStartGameResponse(response);
+				this.handleStartGameResponse((StartGameResponse) payload);
+			}
+			else if (payload instanceof OrderMessage){
+				this.handleOrderMessage((OrderMessage) payload);
+			}
+			else if (payload instanceof TakeOrderConfirm){
+				this.handleTakeOrderConfirm((TakeOrderConfirm) payload);
+			}
+			else if (payload instanceof OrderCompleted){
+				this.handleOrderCompleted((OrderCompleted) payload);
+			}
+			else if (payload instanceof EndGameMessage){
+				this.handleEndGameMessage((EndGameMessage) payload);
 			}
 		}
 
@@ -87,6 +98,29 @@ public class BrokerBean extends AbstractAgentBean {
 		System.out.println("Total worker agents: " + this.allMyWorkers.size());
 		System.out.println("Active worker agents: " + this.myActiveWorkers.size());
 	}
+
+	private void handleOrderMessage(OrderMessage msg){
+		// TODO
+		/* take order? */
+	}
+
+	private void handleTakeOrderConfirm(TakeOrderConfirm msg){
+		// TODO
+		/* Two cases: SUCCESS, FAIL */
+		// if success, choose not contracted worker and assign order
+			// later: handle AssignOrderConfirm
+	}
+
+	private void handleOrderCompleted(OrderCompleted msg) {
+		// TODO
+		/* Two cases: SUCCESS, FAIL */
+		// Update myOrders, myContractedWorkers
+	}
+
+	private void handleEndGameMessage(EndGameMessage msg){
+		System.out.println("End game. Broker " + msg.brokerId + " reward: " + msg.totalReward);
+	}
+
 
 	private void handleStartGameResponse(StartGameResponse response) {
 		/* Set up local variables for game */
