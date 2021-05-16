@@ -6,5 +6,7 @@ public class StartServer {
 
 	public static void main(String[] args) {
 		SimpleAgentNode.startAgentNode("config/server.xml", null);
+
+		System.out.println("Starting server...");
 	}
 }
