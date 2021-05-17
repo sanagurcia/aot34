@@ -85,6 +85,9 @@ public class BrokerBean extends AbstractAgentBean {
 			else if (payload instanceof TakeOrderConfirm){
 				this.handleTakeOrderConfirm((TakeOrderConfirm) payload);
 			}
+			else if (payload instanceof AssignOrderConfirm){
+				this.handleAssignOrderConfirm((AssignOrderConfirm) payload);
+			}
 			else if (payload instanceof OrderCompleted){
 				this.handleOrderCompleted((OrderCompleted) payload);
 			}
@@ -157,6 +160,10 @@ public class BrokerBean extends AbstractAgentBean {
 		}
 	}
 
+	private void handleAssignOrderConfirm(AssignOrderConfirm msg){
+		/* TODO: add worker to myContractedWorkers */
+	}
+
 	private void handleOrderCompleted(OrderCompleted msg) {
 		/* Two cases: SUCCESS, FAIL */
 		Order theOrder = this.myTakenOrders.stream().filter(o -> o.id.equals(msg.orderId)).findFirst().orElse(null);
@@ -207,6 +214,9 @@ public class BrokerBean extends AbstractAgentBean {
 		/* Choose first agent available: Can be improved! */
 		return this.myAvailableWorkers.get(0);
 	}
+
+
+	/* INFRASTRUCTURE FUNCTIONS */
 
 	/* Use example function to get server address, return null if not found */
 	private ICommunicationAddress getServerAddress() {

@@ -1,22 +1,29 @@
 package de.dailab.jiactng.aot.gridworld.client;
 
-import de.dailab.jiactng.aot.gridworld.messages.AssignOrder;
-import de.dailab.jiactng.aot.gridworld.messages.WorkerConfirm;
+import de.dailab.jiactng.agentcore.action.Action;
+import de.dailab.jiactng.agentcore.comm.ICommunicationAddress;
+import de.dailab.jiactng.agentcore.comm.ICommunicationBean;
+import de.dailab.jiactng.agentcore.knowledge.IFact;
+import de.dailab.jiactng.agentcore.ontology.AgentDescription;
+import de.dailab.jiactng.agentcore.ontology.IAgentDescription;
+import de.dailab.jiactng.aot.gridworld.messages.*;
 
 import de.dailab.jiactng.agentcore.AbstractAgentBean;
 import de.dailab.jiactng.agentcore.comm.message.JiacMessage;
 import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
 import de.dailab.jiactng.aot.gridworld.model.Worker;
-import de.dailab.jiactng.aot.gridworld.messages.ActivateWorker;
 import de.dailab.jiactng.aot.gridworld.model.WorkerAction;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 
 public class WorkerBean extends AbstractAgentBean {
+	/* TODO:
+	*  Worker can only send ORDER action to Server, if worker has previously sent move to get to target!
+	* */
 
 	/* Worker Structure:
 		exec()
@@ -56,6 +63,8 @@ public class WorkerBean extends AbstractAgentBean {
 	private boolean previousMoveValid;	// referee (server) approved last move
 	private boolean atTarget;	// worker is at order target
 	private Worker me;		// class with info about myself, contains Position attribute
+	private String myId;	// Classes inheriting from Element--e.g., Worker, Order-- have String IDs
+	private Integer gameId;
 	private Order currentOrder;	// == null if not contracted
 	private Position myPosition;	// my current position on grid
 	private Position gridSize;
@@ -78,12 +87,13 @@ public class WorkerBean extends AbstractAgentBean {
 				this.activate((ActivateWorker) payload);
 				System.out.println("Worker Agent " + thisAgent.getAgentId() + " activated: ready to accept orders!");
 			}
-			else if (payload instanceof AssignOrder) {
-				this.handleAssignOrder((AssignOrder) payload);
-			}
-			else if (payload instanceof WorkerConfirm) {
-				WorkerConfirm workerConfirmMsg = (WorkerConfirm) payload;
-				// do something
+			else if (this.active){
+				if (payload instanceof AssignOrder ) {
+					this.handleAssignOrder((AssignOrder) payload);
+				}
+				else if (payload instanceof WorkerConfirm) {
+					this.handleWorkerConfirm((WorkerConfirm) payload);
+				}
 			}
 		}
 
@@ -102,7 +112,18 @@ public class WorkerBean extends AbstractAgentBean {
 
 	}
 
+	/* Send executed move (N/S/E/W or Order) to Server */
 	private void sendMoveToRef(WorkerAction myMove) {
+		/* Construct Worker Message */
+		WorkerMessage workerMsg = new WorkerMessage();
+		workerMsg.workerId = this.myId;
+		workerMsg.action = myMove;
+		workerMsg.gameId = this.gameId;
+
+		/* Get server address and send message */
+		ICommunicationAddress serverAddress = this.getServerAddress();
+		this.sendMessage(serverAddress, workerMsg);
+
 		System.out.println("----------------------WORKER EXECUTING NEXT MOVE: " + myMove + " ---------------------------");
 	}
 
@@ -121,7 +142,7 @@ public class WorkerBean extends AbstractAgentBean {
 	}
 
 	/* Encapsulate next move calculation logic here
-	* Returns NORTH/SOUTH/EAST/WEST
+	*  Returns NORTH/SOUTH/EAST/WEST
 	* */
 	private WorkerAction calculateNextMove() {
 
@@ -159,20 +180,41 @@ public class WorkerBean extends AbstractAgentBean {
 			this.contracted = true;
 			this.currentOrder = msg.order;
 			this.initAcceptedOrder();
-			/* TODO: send assign order confirm*/
+			this.sendAssignOrderConfirm(Result.SUCCESS, msg.order.id);
 		}
 		else {
-			/* TODO: reject assignment */
+			this.sendAssignOrderConfirm(Result.FAIL, msg.order.id);
 		}
 	}
 
-	/* Default previous move to true, check if already at target */
+	private void sendAssignOrderConfirm(Result state, String orderId) {
+		AssignOrderConfirm msg = new AssignOrderConfirm();
+		msg.orderId = orderId;
+		msg.workerId = this.myId;
+		msg.state = state;
+		ICommunicationAddress brokerAddress = this.getBrokerAddress();
+		this.sendMessage(brokerAddress, msg);
+	}
+
+	private void handleWorkerConfirm(WorkerConfirm msg){
+		/* Validate previous move */
+		this.previousMoveValid = msg.state.equals(Result.SUCCESS);
+	}
+
 	private void initAcceptedOrder(){
+		/* Default previous move to true, check if already at target */
 		this.previousMoveValid = true;
 		this.atTarget = this.myPosition == this.currentOrder.position;
 	}
 
-	/* Helper methods */
+	/* There are more Worker Agents available than actually used in the game.
+	* When the server starts a new game, he chooses a number n of "initial workers",
+	* and sends this info to the Broker. The Broker must then "activate" n of his Worker Agents,
+	* so that they can become active in the game.
+	* These are the Worker Agents that are now ready to play and take new orders.
+	*
+	* This function does initial game and worker setup
+	* */
 	private void activate(ActivateWorker msg){
 		this.active = true;
 		this.contracted = false;
@@ -180,6 +222,39 @@ public class WorkerBean extends AbstractAgentBean {
 		this.myPosition = this.me.position;
 		this.gridSize = msg.gridSize;
 		this.obstacles = msg.obstacles;
+		this.myId = this.me.id;
+		this.gameId = msg.gameId;
+	}
+
+
+	/* Infrastructure Functions */
+	private ICommunicationAddress getServerAddress() {
+		ICommunicationAddress server = null;
+		IAgentDescription serverAgent = thisAgent.searchAgent(new AgentDescription(null, "ServerAgent", null, null, null, null));
+		if (serverAgent != null) {
+			server = serverAgent.getMessageBoxAddress();
+		} else {
+			System.out.println("SERVER NOT FOUND!");
+		}
+		return server;
+	}
+
+	private ICommunicationAddress getBrokerAddress() {
+		ICommunicationAddress broker = null;
+		IAgentDescription brokerAgent = thisAgent.searchAgent(new AgentDescription(null, "BrokerAgent", null, null, null, null));
+		if (brokerAgent != null) {
+			broker = brokerAgent.getMessageBoxAddress();
+		} else {
+			System.out.println("BROKER NOT FOUND!");
+		}
+		return broker;
+	}
+
+	private void sendMessage(ICommunicationAddress receiver, IFact payload) {
+		Action sendAction = retrieveAction(ICommunicationBean.ACTION_SEND);
+		JiacMessage message = new JiacMessage(payload);
+		invoke(sendAction, new Serializable[] {message, receiver});
+		System.out.println("WORKER SENDING " + payload);
 	}
 }
 
