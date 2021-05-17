@@ -9,47 +9,43 @@ import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
 import de.dailab.jiactng.aot.gridworld.model.Worker;
 import de.dailab.jiactng.aot.gridworld.messages.ActivateWorker;
+import de.dailab.jiactng.aot.gridworld.model.WorkerAction;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 
 public class WorkerBean extends AbstractAgentBean {
 
-	/* TODO:
+	/* Worker Structure:
 		exec()
-			checkNewAssignments:
+			if AssignOrder message:
 				if NOT contracted:
-					acceptAssignment(
+					acceptAssignment() {
 						contracted = true
-					)
+						send AssignOrderConfirm to Broker
+					}
 				else:
 					rejectAssignment()
 
+			if WorkerConfirm message:
+				update previousMoveValid
+
 			if contracted:
-				updateGameState(){
-					if WorkerConfirm(SUCCESS):
+				if previousMoveValid:
+					if NOT atTarget:
+						doMove(){
+							calculateNewMove()
+							updatePosition()
+							updateAtTarget()
+						}
 						if atTarget:
-							log("Order successfully completed")
-							contracted = false
-							break
+							notifyReferee(ORDER)
 						else:
-							previousMoveValid = true
-					else:
-						previousMoveValid = false
-				}
-				if previousMoveValid: doMove(){
-					moveTowardsTarget(
-						updatePosition()
-						updateAtTarget()
-					)
-					if atTarget:
-						notifyReferee(ORDER)
-					else:
-						notifyReferee(MOVE)
-				}
+							notifyReferee(MOVE)
 				else:
 					log("previous move invalid")
-				}
 
 			else:
 				chill and be quiet.
@@ -61,6 +57,7 @@ public class WorkerBean extends AbstractAgentBean {
 	private boolean atTarget;	// worker is at order target
 	private Worker me;		// class with info about myself, contains Position attribute
 	private Order currentOrder;	// == null if not contracted
+	private Position myPosition;	// my current position on grid
 	private Position gridSize;
 	public List<Position> obstacles;
 
@@ -78,19 +75,101 @@ public class WorkerBean extends AbstractAgentBean {
 			Object payload = message.getPayload();
 
 			if (payload instanceof ActivateWorker) {
-				ActivateWorker activateWorkerMsg = (ActivateWorker) payload;
-				this.activate(activateWorkerMsg);
+				this.activate((ActivateWorker) payload);
 				System.out.println("Worker Agent " + thisAgent.getAgentId() + " activated: ready to accept orders!");
 			}
 			else if (payload instanceof AssignOrder) {
-				AssignOrder assignOrderMsg = (AssignOrder) payload;
-				// do something
+				this.handleAssignOrder((AssignOrder) payload);
 			}
 			else if (payload instanceof WorkerConfirm) {
 				WorkerConfirm workerConfirmMsg = (WorkerConfirm) payload;
 				// do something
 			}
 		}
+
+		/* If currently contracted with task, do move */
+		if (contracted){
+			/* Make sure last move was valid and not already at target */
+			if (previousMoveValid){
+				if (!atTarget) {
+					WorkerAction myMove = this.doMove();
+					this.sendMoveToRef(myMove);
+				}
+				else { System.out.println("Already at target."); }
+			}
+			else { System.out.println("Previous move not approved."); }
+		}
+
+	}
+
+	private void sendMoveToRef(WorkerAction myMove) {
+		System.out.println("----------------------WORKER EXECUTING NEXT MOVE: " + myMove + " ---------------------------");
+	}
+
+	/* Do move towards order
+	*  Side-effects: update myPosition, atTarget
+	*  Returns executed move/order */
+	private WorkerAction doMove() {
+		WorkerAction nextMove = this.calculateNextMove();
+		/* Execute move and update myPosition */
+		assert this.myPosition != null;
+		this.myPosition = this.myPosition.applyMove(null, nextMove).orElse(null);
+		/* update atTarget */
+		this.atTarget = this.myPosition == this.currentOrder.position;
+		/* if atTarget return Order, else nextMove */
+		return atTarget ? WorkerAction.ORDER : nextMove;
+	}
+
+	/* Encapsulate next move calculation logic here
+	* Returns NORTH/SOUTH/EAST/WEST
+	* */
+	private WorkerAction calculateNextMove() {
+
+		/* For now, generate random move and check that it's valid */
+		WorkerAction nextMove = WorkerAction.NORTH;
+		boolean validMove = false;
+
+		Random rand = new Random();
+
+		/* Generate new random move while invalid */
+		while (!validMove) {
+			int i = rand.nextInt(4);
+			switch (i) {
+				case 0:
+					nextMove = WorkerAction.SOUTH;
+					break;
+				case 1:
+					nextMove = WorkerAction.WEST;
+					break;
+				case 2:
+					nextMove = WorkerAction.EAST;
+					break;
+				default:
+					break;
+			}
+			/* check if random move valid*/
+			validMove = this.myPosition.applyMove(this.gridSize, nextMove).isPresent();
+		}
+		return nextMove;
+	}
+
+	private void handleAssignOrder(AssignOrder msg) {
+		/* If not currently contracted, accept assignment */
+		if (!contracted){
+			this.contracted = true;
+			this.currentOrder = msg.order;
+			this.initAcceptedOrder();
+			/* TODO: send assign order confirm*/
+		}
+		else {
+			/* TODO: reject assignment */
+		}
+	}
+
+	/* Default previous move to true, check if already at target */
+	private void initAcceptedOrder(){
+		this.previousMoveValid = true;
+		this.atTarget = this.myPosition == this.currentOrder.position;
 	}
 
 	/* Helper methods */
@@ -98,6 +177,7 @@ public class WorkerBean extends AbstractAgentBean {
 		this.active = true;
 		this.contracted = false;
 		this.me = msg.activatedWorker;
+		this.myPosition = this.me.position;
 		this.gridSize = msg.gridSize;
 		this.obstacles = msg.obstacles;
 	}
