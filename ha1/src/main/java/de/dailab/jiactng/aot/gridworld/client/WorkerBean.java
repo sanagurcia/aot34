@@ -21,9 +21,6 @@ import java.util.Random;
 
 
 public class WorkerBean extends AbstractAgentBean {
-	/* TODO:
-	*  Worker can only send ORDER action to Server, if worker has previously sent move to get to target!
-	* */
 
 	/* Worker Structure:
 		exec()
@@ -119,7 +116,6 @@ public class WorkerBean extends AbstractAgentBean {
 			}
 			else { System.out.println("Previous move not approved."); }
 		}
-
 	}
 
 	private void handleOrderCompleted(OrderCompleted msg) {
@@ -270,33 +266,3 @@ public class WorkerBean extends AbstractAgentBean {
 		System.out.println("WORKER SENDING " + payload);
 	}
 }
-
-
-
-/* NOTES from skeleton:
-
-class WorkerBean
- * this bean represents one of your Worker agents (i.e. each Worker Agent you initialize with this bean
- * will have a separate copy); it's structure will be similar to your Broker agent's
- *
- *
- * note that the number of workers may vary from grid to grid, but the number of worker
- * agents will always be the same (specified in the client.xml); you will have to have your Broker somehow tell
- * the worker agents which of them are currently needed and who may idle
- *
- * you could, theoretically, also control all your Workers from a single worker agent (and
- * bean), or even implement both the Broker and the Worker in the same bean, but that would
- * of course defeat the purpose of this exercise and may not be possible in "real life"
-
- void doStart()
- * this will be called once when the agent starts and can be used for initialization work
- * note that when this method is executed, (a) it is not guaranteed that all the other
- * agents are already started and/or their actions are known, and (b) the agent's execution
- * has not yet started, so do not wait for any actions to be completed in this method (you
- * can invoke actions, though, if they are already known to the agent)
- *
- *
- * You can use a SpaceObserver to listen to messages, but you can also check messages in execute()
- * and only temporarily attach a SpaceObserver for specific purposes.
-
- */

@@ -227,7 +227,6 @@ public class BrokerBean extends AbstractAgentBean {
 			activateWorkerMsg.obstacles = this.obstacles;
 			activateWorkerMsg.activatedWorker = response.initialWorkers.get(i);
 
-			/* TODO: make sure allMyAgents.size >= initialWorkers.size */
 			/* Get WorkerAgent[i] address and send ActivateWorker msg */
 			ICommunicationAddress workerAddress = this.allMyWorkers.get(i).getMessageBoxAddress();
 			this.sendMessage(workerAddress, activateWorkerMsg);
