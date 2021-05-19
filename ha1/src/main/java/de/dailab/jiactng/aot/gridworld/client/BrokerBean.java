@@ -25,9 +25,6 @@ import java.util.stream.Collectors;
 *  4) Refactor accordingly.
 * */
 
-/* IMPROVEMENT: smart broker
-*   chooseAvailableWorker() can be smarter!
-* */
 
 public class BrokerBean extends AbstractAgentBean {
 
