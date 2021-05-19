@@ -94,6 +94,9 @@ public class WorkerBean extends AbstractAgentBean {
 				else if (payload instanceof WorkerConfirm) {
 					this.handleWorkerConfirm((WorkerConfirm) payload);
 				}
+				else if (payload instanceof OrderCompleted) {
+					this.handleOrderCompleted((OrderCompleted) payload);
+				}
 			}
 		}
 
@@ -104,12 +107,23 @@ public class WorkerBean extends AbstractAgentBean {
 				if (!atTarget) {
 					WorkerAction myMove = this.doMove();
 					this.sendMoveToRef(myMove);
+					System.out.println("----------------------WORKER EXECUTING NEXT MOVE: " + myMove + " ---------------------------");
+					System.out.println("----------------------MY POSITION: " + this.myPosition + "; ORDER POSITION: " + this.currentOrder.position + "------------");
+					System.out.println("----------------------AT TARGET: " + this.atTarget + "-------------------------------------");
 				}
-				else { System.out.println("Already at target."); }
+				else {
+					/* If at already at target, send ORDER to ref */
+					this.sendMoveToRef((WorkerAction) WorkerAction.ORDER);
+					System.out.println("----------------------WORKER AT TARGET!!!-----------------------");
+				}
 			}
 			else { System.out.println("Previous move not approved."); }
 		}
 
+	}
+
+	private void handleOrderCompleted(OrderCompleted msg) {
+		this.contracted = false;
 	}
 
 	/* Send executed move (N/S/E/W or Order) to Server */
@@ -123,8 +137,6 @@ public class WorkerBean extends AbstractAgentBean {
 		/* Get server address and send message */
 		ICommunicationAddress serverAddress = this.getServerAddress();
 		this.sendMessage(serverAddress, workerMsg);
-
-		System.out.println("----------------------WORKER EXECUTING NEXT MOVE: " + myMove + " ---------------------------");
 	}
 
 	/* Do move towards order
@@ -136,9 +148,10 @@ public class WorkerBean extends AbstractAgentBean {
 		assert this.myPosition != null;
 		this.myPosition = this.myPosition.applyMove(null, nextMove).orElse(null);
 		/* update atTarget */
-		this.atTarget = this.myPosition == this.currentOrder.position;
+		this.atTarget = this.myPosition.equals(this.currentOrder.position);
 		/* if atTarget return Order, else nextMove */
-		return atTarget ? WorkerAction.ORDER : nextMove;
+		// return atTarget ? WorkerAction.ORDER : nextMove;
+		return nextMove;
 	}
 
 	/* Encapsulate next move calculation logic here

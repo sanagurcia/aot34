@@ -163,7 +163,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 				GridworldGame game = startGame.gridFile == null
 						// ? Util.loadRandomGameFromFile(startGame.brokerId)
 						// createRandomGame for testing
-						? Util.createRandomGame(5, 100, 5, 2, startGame.brokerId)
+						? Util.createRandomGame(3, 50, 5, 1, startGame.brokerId)
 						: Util.loadGameFromFile(startGame.gridFile, startGame.brokerId);
 				
 				// start with turn = -1 so that after increment in execute the first turn is 0 

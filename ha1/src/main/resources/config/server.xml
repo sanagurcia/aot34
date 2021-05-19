@@ -16,11 +16,13 @@
 			<list>
 				<ref bean="ServerAgent" />
 				
-				<!-- for testing only -->
+				<!-- for testing only single-node-config-->
 				<ref bean="BrokerAgent" />
  				<bean parent="WorkerAgent" />
  				<bean parent="WorkerAgent" />
  				<bean parent="WorkerAgent" />
+ 				<bean parent="WorkerAgent" />
+				<!-- testing end   -->
 			</list>
 		</property>
 	</bean>
@@ -46,7 +48,7 @@
 	</bean>
 	
 	
-	<!-- FOR TESTING, ALL ON ONE NODE -->
+	<!-- FOR TESTING, SINGLE NODE -->
 
 	<bean name="WorkerAgent" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
@@ -58,6 +60,17 @@
 			</list>
 		</property>
 	</bean>
+
+	<!--<bean name="WorkerAgent_2" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<bean name="WorkerBean" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_variation" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>-->
 
 	<bean name="BrokerAgent" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
