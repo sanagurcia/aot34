@@ -146,7 +146,6 @@ public class WorkerBean extends AbstractAgentBean {
 		/* update atTarget */
 		this.atTarget = this.myPosition.equals(this.currentOrder.position);
 		/* if atTarget return Order, else nextMove */
-		// return atTarget ? WorkerAction.ORDER : nextMove;
 		return nextMove;
 	}
 

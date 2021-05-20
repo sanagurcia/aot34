@@ -14,14 +14,17 @@
 		<property name="agents">
 			<list>
 				<!-- change which broker and worker agents will be used -->
+				<!-- remember: only one broker for now, multiple workers though.-->
 				<ref bean="BrokerAgent" />
+<!--			<ref bean="BrokerAgent_variation" />-->
 				
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
-				<bean parent="WorkerAgent" />
-				<bean parent="WorkerAgent" />
-<!--				<bean parent="WorkerAgent_variation" />-->
+<!--			<bean parent="WorkerAgent_variation" />-->
+<!--			<bean parent="WorkerAgent_overestimateDistance" />-->
+<!--			<bean parent="WorkerAgent_otherVariation" />-->
+
 			</list>
 		</property>
 	</bean>
@@ -48,11 +51,52 @@
 		</property>
 	</bean>
 
-	<!-- use this method to include your variations of workers and brokers -->
+	<!--	BROKER VARIATION    -->
+	<bean name="BrokerAgent_variation" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
+				<bean name="BrokerBean_variation" class="de.dailab.jiactng.aot.gridworld.client.BrokerBean_variation" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- WORKER VARIATIONS -->
+	<!-- FIRST VARIATION -->
 	<bean name="WorkerAgent_variation" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
 			<list>
+				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
 				<bean name="WorkerBean_variation" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_variation" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- SECOND VARIATION -->
+	<bean name="WorkerAgent_overestimateDistance" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
+				<bean name="WorkerBean_overestimateDistance" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_overestimateDistance" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- THIRD VARIATION -->
+	<bean name="WorkerAgent_otherVariation" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
+				<bean name="WorkerBean_otherVariation" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_otherVariation" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					<property name="executionInterval" value="1000" />
 				</bean>

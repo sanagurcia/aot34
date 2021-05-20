@@ -58,47 +58,47 @@ public class ServerBean extends AbstractMethodExposingBean {
 
 	/** number of turns after creation before Orders can not longer be accepted */
 	private int takeOrderTimeout = 3;
-	
+
 	/** penalty for worker steps; can be zero for no penalty, or fractional */
 	private double stepPenalty = 1.0;
-	
+
 	/** number of orders for newly created games */
 //	private int numOrders = 10;
-	
+
 	/** number of workers per broker */
 //	private int numWorkers = 5;
 
 	/** size of the grid (both width and height) */
 //	private int gridSize = 10;
-	
+
 	/** number of turns per game */
 //	private int numTurns = 100;
-	
+
 	/** whether to reveal the obstacles in the start game message */
 	private Boolean revealObstacles = false;
 
 
 	// STATE
-	
+
 	/** mapping game IDs of currently active games to the actual games */
 	private Map<Integer, GridworldGame> activeGames = new ThrowMap<>();
 
 	/** different loggers for individual games */
 	private Map<Integer, StringBuffer> loggers = new ThrowMap<>();
-	
-	
+
+
 	/*
 	 * ACTIONS
 	 */
 
 	public static final String ACTION_GET_GAME = "Gridworld.ServerBean.GetGame";
-	
+
 	public static final String ACTION_GET_LOG = "Gridworld.ServerBean.GetLog";
-	
+
 	/**
 	 * Used by observer to get the full state of a specific game, including e.g. upcoming
 	 * orders, worker positions, etc.
-	 * 
+	 *
 	 * Note: Do not try to invoke this action, it will be protected in the final evaluation.
 	 * TODO add something like secretToken again to prevent student groups from spying
 	 */
@@ -106,7 +106,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 	public GridworldGame getGame(Integer gameId) {
 		return activeGames.get(gameId);
 	}
-	
+
 	@Expose(name=ACTION_GET_LOG, scope=ActionScope.GLOBAL)
 	public String getLog(Integer gameId) {
 		if (activeGames.containsKey(gameId) && loggers.containsKey(gameId)) {
@@ -127,12 +127,12 @@ public class ServerBean extends AbstractMethodExposingBean {
 			}
 		}
 	}
-	
+
 
 	/*
 	 * LIFECYCLE
 	 */
-	
+
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
@@ -148,33 +148,32 @@ public class ServerBean extends AbstractMethodExposingBean {
 		try {
 			Object payload = message.getPayload();
 			ICommunicationAddress sender = message.getSender();
-			
+
 			System.out.println("SERVER RECEIVED " + payload);
 
 			if (payload instanceof GameMessage) {
 				logGamMsg(((GameMessage)payload).gameId, "Received " + payload);
 			}
-			
+
 			// case 1: Start Game Message
 			if (payload instanceof StartGameMessage) {
 				StartGameMessage startGame = (StartGameMessage) payload;
+
 				// initialize game
 //				GridworldGame game = Util.createRandomGame(gridSize, numTurns, numOrders, numWorkers, startGame.brokerId);
 				GridworldGame game = startGame.gridFile == null
-						// ? Util.loadRandomGameFromFile(startGame.brokerId)
-						// createRandomGame for testing
-						? Util.createRandomGame(3, 50, 5, 2, startGame.brokerId)
+						? Util.loadRandomGameFromFile(startGame.brokerId)
 						: Util.loadGameFromFile(startGame.gridFile, startGame.brokerId);
-				
-				// start with turn = -1 so that after increment in execute the first turn is 0 
+
+				// start with turn = -1 so that after increment in execute the first turn is 0
 				game.turn = -1;
-						
+
 				activeGames.put(game.gameId, game);
 				loggers.put(game.gameId, new StringBuffer());
-				
+
 				Broker broker = game.brokers.get(startGame.brokerId);
 				broker.address = message.getSender();
-				
+
 				// send response
 				StartGameResponse response = new StartGameResponse();
 				response.gameId = game.gameId;
@@ -183,12 +182,12 @@ public class ServerBean extends AbstractMethodExposingBean {
 				response.obstacles = revealObstacles ? List.copyOf(game.obstacles) : null;
 				sendMessage(sender, response);
 			}
-			
+
 			// case 2: TakeOrderMessage
 			else
 			if (payload instanceof TakeOrderMessage) {
 				TakeOrderMessage takeOrder = (TakeOrderMessage) payload;
-				
+
 				GridworldGame game = activeGames.get(takeOrder.gameId);
 				Order order = game.orders.get(takeOrder.orderId);
 
@@ -202,7 +201,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 					confirm.brokerId = takeOrder.brokerId;
 					confirm.state = Result.SUCCESS;
 					sendMessage(sender, confirm);
-					
+
 				} else {
 					// too late...
 					TakeOrderConfirm confirm = new TakeOrderConfirm();
@@ -213,12 +212,12 @@ public class ServerBean extends AbstractMethodExposingBean {
 					sendMessage(sender, confirm);
 				}
 			}
-			
+
 			// case 3: WorkerMessage
 			else
 			if (payload instanceof WorkerMessage) {
 				WorkerMessage workerMsg = (WorkerMessage) payload;
-				
+
 				// get game
 				GridworldGame game = activeGames.get(workerMsg.gameId);
 
@@ -227,7 +226,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 						.filter(b -> b.workers.stream()
 								.anyMatch(w -> w.id.equals(workerMsg.workerId)))
 						.findFirst().get();
-				
+
 				// get the actual worker from the broker
 				Worker worker = broker.workers.stream()
 						.filter(w -> w.id.equals(workerMsg.workerId))
@@ -244,7 +243,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 					return;
 				}
 				worker.lastTurn = game.turn;
-				
+
 				// if action is "order", check if order in list of taken orders
 				if (workerMsg.action == WorkerAction.ORDER) {
 					// get order on that position, if any
@@ -258,7 +257,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 						broker.takenOrders.remove(order.id);
 						broker.completedOrders.add(order.id);
 						order.completed = game.turn;
-						
+
 						// send "success" to worker ...
 						WorkerConfirm confirm = new WorkerConfirm();
 						confirm.gameId = game.gameId;
@@ -274,8 +273,8 @@ public class ServerBean extends AbstractMethodExposingBean {
 						complete.state = Result.SUCCESS;
 						complete.reward = order.getReward(game.turn);
 						sendMessage(broker.address, complete);
-						
-					// no matching order -> send "fail" to worker
+
+						// no matching order -> send "fail" to worker
 					} else {
 						WorkerConfirm confirm = new WorkerConfirm();
 						confirm.gameId = game.gameId;
@@ -289,7 +288,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 					// update worker's position, step, fuel; send "okay" or "fail" accordingly
 
 					Optional<Position> newPos = worker.position.applyMove(game.size, workerMsg.action);
-					if (worker.fuel > 0 && newPos.isPresent() && 
+					if (worker.fuel > 0 && newPos.isPresent() &&
 							! game.obstacles.contains(newPos.get())) {
 						worker.position = newPos.get();
 						worker.fuel--;
@@ -312,14 +311,14 @@ public class ServerBean extends AbstractMethodExposingBean {
 					}
 				}
 			}
-			
+
 			// other kind of game message: not understood
 			else {
 				throw new RuntimeException("Unexpected message / Not understood");
 			}
 		} catch (Exception e) {
 			log.error("Failure when handling message " + message, e);
-			
+
 			// send back some generic "not understood" or "illegal value" error message
 			ErrorMessage error = new ErrorMessage();
 			error.error = e.getMessage();
@@ -327,7 +326,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 			sendMessage(message.getSender(), error);
 		}
 	}
-	
+
 
 	/**
 	 * Called in regular intervals controlled by `executionInterval` in server.xml
@@ -338,13 +337,13 @@ public class ServerBean extends AbstractMethodExposingBean {
 		// update game state and send messages resulting from new game state
 		List<GridworldGame> finishedGames = new ArrayList<>();
 		for (GridworldGame game : activeGames.values()) {
-			
+
 			// increment game turn
 			game.turn++;
-			
+
 			// show game state
 			System.out.println("\n" + game.toString() + "\n");
-			
+
 			// check game-over, send messages accordingly
 			if (game.turn > game.maxTurns) {
 
@@ -355,12 +354,12 @@ public class ServerBean extends AbstractMethodExposingBean {
 								b -> Stream.concat(b.completedOrders.stream(), b.failedOrders.stream())
 										.map(game.orders::get).mapToInt(o -> o.getReward(game.turn)).sum()
 										- b.workers.stream().mapToInt(w -> w.steps).sum() * stepPenalty
-										));
-				
+						));
+
 				// find best broker
 				Optional<String> winnerId = scores.keySet().stream()
 						.max(Comparator.comparing(scores::get));
-				
+
 				// send EndGameMessage to all brokers
 				for (Broker broker : game.brokers.values()) {
 					EndGameMessage message = new EndGameMessage();
@@ -370,12 +369,12 @@ public class ServerBean extends AbstractMethodExposingBean {
 					message.totalReward = scores.get(broker.id);
 					sendMessage(broker.address, message);
 				}
-				
+
 				// add game to finished, to be removed from active games afterwards
 				finishedGames.add(game);
-				
+
 				logGameResults(game);
-				
+
 			} else {
 				// check for new orders
 				List<Order> readyOrders = game.orders.values().stream()
@@ -391,7 +390,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 						sendMessage(broker.address, message);
 					}
 				}
-				
+
 				// check order deadlines, send "failed" messages to subscribed brokers
 				for (Broker broker : game.brokers.values()) {
 
@@ -404,7 +403,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 					for (Order order : doneOrders) {
 						broker.takenOrders.remove(order.id);
 						broker.failedOrders.add(order.id);
-						
+
 						// send order-failed message to broker
 						OrderCompleted complete = new OrderCompleted();
 						complete.gameId = game.gameId;
@@ -426,7 +425,7 @@ public class ServerBean extends AbstractMethodExposingBean {
 	/*
 	 * HELPER METHODS
 	 */
-	
+
 	private void sendMessage(ICommunicationAddress receiver, IFact payload) {
 		Action sendAction = retrieveAction(ICommunicationBean.ACTION_SEND);
 		JiacMessage message = new JiacMessage(payload);
@@ -436,13 +435,13 @@ public class ServerBean extends AbstractMethodExposingBean {
 			logGamMsg(((GameMessage)payload).gameId, "Sending " + payload);
 		}
 	}
-	
+
 	/*
 	 * LOGGING STUFF
 	 * each game should be logged to a separate log file
 	 * in particular also games running in parallel...
 	 */
-	
+
 	private void logGamMsg(int gameid, String message) {
 		if (loggers.containsKey(gameid)) {
 			loggers.get(gameid).append(getDatetime() + ": " + message + "\n");
@@ -459,12 +458,12 @@ public class ServerBean extends AbstractMethodExposingBean {
 			log.error("Failed to log game results to file", e);
 		}
 	}
-	
+
 	private String getDatetime() {
 		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMdd-HHmmss"));
 	}
 
-	
+
 	/*
 	 * MESSAGE OBSERVER
 	 */
@@ -490,38 +489,38 @@ public class ServerBean extends AbstractMethodExposingBean {
 			}
 		}
 	}
-	
-	
+
+
 	/*
 	 * SETTERS FOR SPRING PROPERTIES
 	 */
-	
+
 	public void setTakeOrderTimeout(Integer takeOrderTimeout) {
 		this.takeOrderTimeout = takeOrderTimeout;
 	}
-	
+
 	public void setStepPenalty(double stepPenalty) {
 		this.stepPenalty = stepPenalty;
 	}
-	
+
 	/*
 	public void setNumOrders(Integer numOrders) {
 		this.numOrders = numOrders;
 	}
-	
+
 	public void setNumWorkers(Integer numWorkers) {
 		this.numWorkers = numWorkers;
 	}
-	
+
 	public void setGridSize(Integer gridSize) {
 		this.gridSize = gridSize;
 	}
-	
+
 	public void setNumTurns(Integer numTurns) {
 		this.numTurns = numTurns;
 	}
 	*/
-	
+
 	public void setRevealObstacles(Boolean revealObstacles) {
 		this.revealObstacles = revealObstacles;
 	}

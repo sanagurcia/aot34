@@ -76,7 +76,9 @@ public class BrokerBean extends AbstractAgentBean {
 		// update all my workers
 		this.allMyWorkers = this.getMyWorkerAgents(10);
 		// update serverAddress
-		this.serverAddress = this.getServerAddress();
+		if (this.serverAddress == null){
+			this.serverAddress = this.getServerAddress();
+		}
 
 		/* Handle incoming messages without listener */
 		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
@@ -219,7 +221,15 @@ public class BrokerBean extends AbstractAgentBean {
 		this.obstacles = response.obstacles;
 
 		/* For each initialWorker activate worker from allMyWorkers */
+		/* Check that enough agent threads for initial workers */
+		int inactiveWorkers = this.allMyWorkers.size();
 		for (int i=0; i<response.initialWorkers.size(); i++){
+			if (inactiveWorkers == 0){
+				System.out.println("==============BROKER: WARNING! NOT ENOUGH WORKER THREADS TO HANDLE SO MANY INITIAL WORKERS==========");
+				System.out.println("=========================CHECK CLIENT.XML AND OTHER SETTINGS FILES==================================");
+				break;
+			}
+
 			/* Create ActivateWorker message */
 			ActivateWorker activateWorkerMsg = new ActivateWorker();
 			activateWorkerMsg.gameId = this.gameId;
@@ -234,15 +244,23 @@ public class BrokerBean extends AbstractAgentBean {
 			/* Add new worker to myActiveWorkers and myAvailableWorkers List */
 			this.myActiveWorkers.add(this.allMyWorkers.get(i));
 			this.myAvailableWorkers.add(this.allMyWorkers.get(i));
+
+			/* Decrement number of inactive worker threads*/
+			inactiveWorkers = inactiveWorkers - 1;
 		}
 	}
+
 
 	private void startNewGame() {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
-//		startGameMsg.gridFile = "grids/04_01.grid";		// TODO: use working grid file
-		startGameMsg.gridFile = null;	// temporary solution
-		this.sendMessage(this.serverAddress, startGameMsg);
+		startGameMsg.gridFile = "/grids/22_1.grid";
+		if (this.serverAddress != null){
+			this.sendMessage(this.serverAddress, startGameMsg);
+		}
+		else {
+			System.out.println("BROKER: WAITING FOR SERVER ADDRESS TO START NEW GAME!");
+		}
 	}
 
 	private IAgentDescription chooseAvailableWorker(Order order){

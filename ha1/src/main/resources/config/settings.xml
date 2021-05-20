@@ -7,7 +7,7 @@
     <import resource="classpath:de/dailab/jiactng/agentcore/conf/AgentNode.xml"/>
 
 	<!-- for testing, use NodeWithJMX, for final competition, use AotGatewayNode -->
-    <!-- for single node setup: NodeWithDirectory -->
+    <!-- since NodeWithJMX not working: use NodeWithDirectory -->
     <bean name="AotNode" parent="NodeWithDirectory" abstract="true" />
 
     <!-- this is used for connecting with the aot/tu server -->
