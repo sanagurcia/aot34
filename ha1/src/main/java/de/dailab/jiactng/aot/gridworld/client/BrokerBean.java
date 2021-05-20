@@ -219,7 +219,11 @@ public class BrokerBean extends AbstractAgentBean {
 		this.obstacles = response.obstacles;
 
 		/* For each initialWorker activate worker from allMyWorkers */
+		/* Check that enough agent threads for initial workers */
+		int inactiveWorkers = this.allMyWorkers.size();
 		for (int i=0; i<response.initialWorkers.size(); i++){
+			if (inactiveWorkers == 0){ break; }
+
 			/* Create ActivateWorker message */
 			ActivateWorker activateWorkerMsg = new ActivateWorker();
 			activateWorkerMsg.gameId = this.gameId;
@@ -234,14 +238,17 @@ public class BrokerBean extends AbstractAgentBean {
 			/* Add new worker to myActiveWorkers and myAvailableWorkers List */
 			this.myActiveWorkers.add(this.allMyWorkers.get(i));
 			this.myAvailableWorkers.add(this.allMyWorkers.get(i));
+
+			/* Decrement number of inactive worker threads*/
+			inactiveWorkers = inactiveWorkers - 1;
 		}
 	}
+
 
 	private void startNewGame() {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
-//		startGameMsg.gridFile = "grids/04_01.grid";		// TODO: use working grid file
-		startGameMsg.gridFile = null;	// temporary solution
+		startGameMsg.gridFile = "/grids/22_1.grid";
 		this.sendMessage(this.serverAddress, startGameMsg);
 	}
 
