@@ -222,7 +222,11 @@ public class BrokerBean extends AbstractAgentBean {
 		/* Check that enough agent threads for initial workers */
 		int inactiveWorkers = this.allMyWorkers.size();
 		for (int i=0; i<response.initialWorkers.size(); i++){
-			if (inactiveWorkers == 0){ break; }
+			if (inactiveWorkers == 0){
+				System.out.println("==============BROKER: WARNING! NOT ENOUGH WORKER THREADS TO HANDLE SO MANY INITIAL WORKERS==========");
+				System.out.println("=========================CHECK CLIENT.XML AND OTHER SETTINGS FILES==================================");
+				break;
+			}
 
 			/* Create ActivateWorker message */
 			ActivateWorker activateWorkerMsg = new ActivateWorker();

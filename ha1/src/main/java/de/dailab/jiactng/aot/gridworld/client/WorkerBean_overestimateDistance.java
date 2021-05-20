@@ -154,8 +154,8 @@ public class WorkerBean_overestimateDistance extends AbstractAgentBean {
      *  Returns NORTH/SOUTH/EAST/WEST
      * */
     private WorkerAction calculateNextMove() {
-
-   
+        return WorkerAction.NORTH;
+    }
 
     private void handleAssignOrder(AssignOrder msg) {
         /* If not currently contracted, accept assignment */
