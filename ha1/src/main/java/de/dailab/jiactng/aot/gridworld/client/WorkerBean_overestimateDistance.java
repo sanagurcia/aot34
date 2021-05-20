@@ -154,7 +154,36 @@ public class WorkerBean_overestimateDistance extends AbstractAgentBean {
      *  Returns NORTH/SOUTH/EAST/WEST
      * */
     private WorkerAction calculateNextMove() {
-        return WorkerAction.NORTH;
+
+        int targetX = currentOrder.position.x;
+        int targetY = currentOrder.position.y;
+        int ownX = this.myPosition.x;
+        int ownY = this.myPosition.y;
+
+        if(ownX == targetX){
+            if(ownY > targetY){
+                return WorkerAction.NORTH;
+            }
+            else {
+                return WorkerAction.SOUTH;
+            }
+        }
+
+        else if(ownX > targetX){
+            return WorkerAction.WEST;
+        }
+
+        return WorkerAction.EAST;
+    }
+
+    private boolean isGreaterThan(int x, int y){
+        if(x > y) return true;
+        return false;
+    }
+
+    private boolean isTheSame(int x, int y){
+        if(x == y) return true;
+        return false;
     }
 
     private void handleAssignOrder(AssignOrder msg) {
