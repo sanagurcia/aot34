@@ -76,7 +76,9 @@ public class BrokerBean extends AbstractAgentBean {
 		// update all my workers
 		this.allMyWorkers = this.getMyWorkerAgents(10);
 		// update serverAddress
-		this.serverAddress = this.getServerAddress();
+		if (this.serverAddress == null){
+			this.serverAddress = this.getServerAddress();
+		}
 
 		/* Handle incoming messages without listener */
 		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
@@ -253,7 +255,12 @@ public class BrokerBean extends AbstractAgentBean {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
 		startGameMsg.gridFile = "/grids/22_1.grid";
-		this.sendMessage(this.serverAddress, startGameMsg);
+		if (this.serverAddress != null){
+			this.sendMessage(this.serverAddress, startGameMsg);
+		}
+		else {
+			System.out.println("BROKER: WAITING FOR SERVER ADDRESS TO START NEW GAME!");
+		}
 	}
 
 	private IAgentDescription chooseAvailableWorker(Order order){
