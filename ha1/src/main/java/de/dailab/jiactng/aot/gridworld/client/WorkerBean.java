@@ -17,7 +17,6 @@ import de.dailab.jiactng.aot.gridworld.model.WorkerAction;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Random;
 
 
 public class WorkerBean extends AbstractAgentBean {
@@ -154,32 +153,25 @@ public class WorkerBean extends AbstractAgentBean {
 	* */
 	private WorkerAction calculateNextMove() {
 
-		/* For now, generate random move and check that it's valid */
-		WorkerAction nextMove = WorkerAction.NORTH;
-		boolean validMove = false;
+		int targetX = currentOrder.position.x;
+		int targetY = currentOrder.position.y;
+		int ownX = this.myPosition.x;
+		int ownY = this.myPosition.y;
 
-		Random rand = new Random();
-
-		/* Generate new random move while invalid */
-		while (!validMove) {
-			int i = rand.nextInt(4);
-			switch (i) {
-				case 0:
-					nextMove = WorkerAction.SOUTH;
-					break;
-				case 1:
-					nextMove = WorkerAction.WEST;
-					break;
-				case 2:
-					nextMove = WorkerAction.EAST;
-					break;
-				default:
-					break;
+		if(ownX == targetX){
+			if(ownY > targetY){
+				return WorkerAction.NORTH;
 			}
-			/* check if random move valid*/
-			validMove = this.myPosition.applyMove(this.gridSize, nextMove).isPresent();
+			else {
+				return WorkerAction.SOUTH;
+			}
 		}
-		return nextMove;
+
+		else if(ownX > targetX){
+			return WorkerAction.WEST;
+		}
+
+		return WorkerAction.EAST;
 	}
 
 	private void handleAssignOrder(AssignOrder msg) {

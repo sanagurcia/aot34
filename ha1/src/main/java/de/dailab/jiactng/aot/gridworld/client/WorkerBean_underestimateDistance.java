@@ -17,10 +17,9 @@ import de.dailab.jiactng.aot.gridworld.model.WorkerAction;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Random;
 
 
-public class WorkerBean_overestimateDistance extends AbstractAgentBean {
+public class WorkerBean_underestimateDistance extends AbstractAgentBean {
 
 	/* Worker Structure:
 		exec()
@@ -146,7 +145,6 @@ public class WorkerBean_overestimateDistance extends AbstractAgentBean {
         /* update atTarget */
         this.atTarget = this.myPosition.equals(this.currentOrder.position);
         /* if atTarget return Order, else nextMove */
-        // return atTarget ? WorkerAction.ORDER : nextMove;
         return nextMove;
     }
 

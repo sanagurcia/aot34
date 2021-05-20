@@ -144,6 +144,9 @@ public class BrokerBean extends AbstractAgentBean {
 
 		/* Assign order to first available reserved-worker.
 		 * 	Can be improved by associating reserved-workers with particular orders beforehand */
+
+
+
 		IAgentDescription assignedWorker = this.myReservedWorkers.get(0);
 
 		if (msg.state == Result.SUCCESS){

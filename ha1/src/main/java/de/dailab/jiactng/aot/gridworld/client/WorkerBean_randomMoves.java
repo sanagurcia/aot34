@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class WorkerBean_overestimateDistance extends AbstractAgentBean {
+public class WorkerBean_randomMoves extends AbstractAgentBean {
 
 	/* Worker Structure:
 		exec()
@@ -146,7 +146,6 @@ public class WorkerBean_overestimateDistance extends AbstractAgentBean {
         /* update atTarget */
         this.atTarget = this.myPosition.equals(this.currentOrder.position);
         /* if atTarget return Order, else nextMove */
-        // return atTarget ? WorkerAction.ORDER : nextMove;
         return nextMove;
     }
 
@@ -155,25 +154,32 @@ public class WorkerBean_overestimateDistance extends AbstractAgentBean {
      * */
     private WorkerAction calculateNextMove() {
 
-        int targetX = currentOrder.position.x;
-        int targetY = currentOrder.position.y;
-        int ownX = this.myPosition.x;
-        int ownY = this.myPosition.y;
+        /* For now, generate random move and check that it's valid */
+        WorkerAction nextMove = WorkerAction.NORTH;
+        boolean validMove = false;
 
-        if(ownX == targetX){
-            if(ownY > targetY){
-                return WorkerAction.NORTH;
+        Random rand = new Random();
+
+        /* Generate new random move while invalid */
+        while (!validMove) {
+            int i = rand.nextInt(4);
+            switch (i) {
+                case 0:
+                    nextMove = WorkerAction.SOUTH;
+                    break;
+                case 1:
+                    nextMove = WorkerAction.WEST;
+                    break;
+                case 2:
+                    nextMove = WorkerAction.EAST;
+                    break;
+                default:
+                    break;
             }
-            else {
-                return WorkerAction.SOUTH;
-            }
+            /* check if random move valid*/
+            validMove = this.myPosition.applyMove(this.gridSize, nextMove).isPresent();
         }
-
-        else if(ownX > targetX){
-            return WorkerAction.WEST;
-        }
-
-        return WorkerAction.EAST;
+        return nextMove;
     }
 
     private void handleAssignOrder(AssignOrder msg) {

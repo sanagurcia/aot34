@@ -21,9 +21,10 @@
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
-<!--			<bean parent="WorkerAgent_variation" />-->
-<!--			<bean parent="WorkerAgent_overestimateDistance" />-->
-<!--			<bean parent="WorkerAgent_otherVariation" />-->
+
+				<bean parent="WorkerAgent_randomMoves" />
+  				<bean parent="WorkerAgent_overestimateDistance" />
+				<bean parent="WorkerAgent_underestimateDistance" />
 
 			</list>
 		</property>
@@ -66,11 +67,11 @@
 
 	<!-- WORKER VARIATIONS -->
 	<!-- FIRST VARIATION -->
-	<bean name="WorkerAgent_variation" parent="SimpleAgent" scope="prototype">
+	<bean name="WorkerAgent_randomMoves" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
 			<list>
 				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
-				<bean name="WorkerBean_variation" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_variation" scope="prototype">
+				<bean name="WorkerBean_randomMoves" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_randomMoves" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					<property name="executionInterval" value="1000" />
 				</bean>
@@ -92,11 +93,11 @@
 	</bean>
 
 	<!-- THIRD VARIATION -->
-	<bean name="WorkerAgent_otherVariation" parent="SimpleAgent" scope="prototype">
+	<bean name="WorkerAgent_underestimateDistance" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
 			<list>
 				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
-				<bean name="WorkerBean_otherVariation" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_otherVariation" scope="prototype">
+				<bean name="WorkerBean_underestimateDistance" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_underestimateDistance" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					<property name="executionInterval" value="1000" />
 				</bean>
