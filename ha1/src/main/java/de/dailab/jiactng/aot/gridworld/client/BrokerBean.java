@@ -144,29 +144,50 @@ public class BrokerBean extends AbstractAgentBean {
 
 		/* Assign order to first available reserved-worker.
 		 * 	Can be improved by associating reserved-workers with particular orders beforehand */
-
-
+		if(this.myReservedWorkers.isEmpty()) return;
 
 		IAgentDescription assignedWorker = this.myReservedWorkers.get(0);
+		this.myReservedWorkers.remove(0);
 
 		if (msg.state == Result.SUCCESS){
 
 			/* Construct AssignOrder message */
 			AssignOrder assignOrderMsg = new AssignOrder();
+
 			/* Find order in myTakenOrders by id */
-			Order theOrder = this.myTakenOrders.stream().filter(o -> o.id.equals(msg.orderId)).findFirst().orElse(null);
-			assignOrderMsg.order = theOrder;
+
+
+			/* Look for order in contracted orders list */
+			for(int i = 0; i < this.myTakenOrders.size(); i++){
+				System.out.println("taken orders id = " + this.myTakenOrders.get(i).id);
+				System.out.println("msg id = " + msg.orderId);
+				if(this.myTakenOrders.get(i).id.equals(msg.orderId)){
+					assignOrderMsg.order = this.myTakenOrders.get(i);
+				}
+			}
+
+			// assignOrderMsg.order = this.myTakenOrders.stream().filter(o -> o.id.equals(msg.orderId)).findFirst().orElse(null);
 
 			/* Send AssignOrder to assignedWorker */
 			this.sendMessage(assignedWorker.getMessageBoxAddress(), assignOrderMsg);
 
 			/* Add order to contracted orders */
-			this.myContractedOrders.add(theOrder);
+			this.myContractedOrders.add(assignOrderMsg.order);
+			this.myTakenOrders.remove(assignOrderMsg.order);
+			this.myContractedWorkers.add(assignedWorker);
 		}
 
 		/* If order confirm fail, free up one reserved worker */
 		else {
-			this.myReservedWorkers.remove(assignedWorker);
+			this.myAvailableWorkers.add(assignedWorker);
+			// this.myReservedWorkers.remove(assignedWorker);
+			Order deleteOrder = null;
+			for(int i = 0; i < this.myTakenOrders.size(); i++){
+				if(this.myTakenOrders.get(i).id.equals(msg.orderId)){
+					deleteOrder = this.myTakenOrders.get(i);
+				}
+			}
+			this.myTakenOrders.remove(deleteOrder);
 		}
 	}
 
@@ -174,30 +195,66 @@ public class BrokerBean extends AbstractAgentBean {
 	/* Move confirming worker from reserved to contracted list */
 	private void handleAssignOrderConfirm(AssignOrderConfirm msg, ICommunicationAddress sender){
 
+		IAgentDescription assignedWorker = null;
+
 		/* Look for AssignedWorker in reserved workers list */
-		IAgentDescription assignedWorker = this.myReservedWorkers.stream()
-				.filter(agent -> agent.getMessageBoxAddress().equals(sender)).findFirst().orElse(null);
-
-		Order theOrder = this.myTakenOrders.stream().filter(o -> o.id.equals(msg.orderId)).findFirst().orElse(null);
-
-		if (assignedWorker != null){
-			/* Remove AssignedWorker from reserved list */
-			this.myReservedWorkers.remove(assignedWorker);
-
-			/* If assignment confirmed, and order still valid, add worker to contracted list*/
-			if (msg.state.equals(Result.SUCCESS) && this.myContractedOrders.contains(theOrder)){
-
-				this.myContractedWorkers.add(assignedWorker);
-
-				/* Associate worker (AgentDescription) with OrderID */
-				this.workerOrderMap.put(msg.orderId, assignedWorker);
+		for(int i = 0; i < this.myContractedWorkers.size(); i++){
+			System.out.println("myReserved.Name = " + this.myContractedWorkers.get(i).getMessageBoxAddress());
+			System.out.println("msg.workerId = " + sender);
+			if(this.myContractedWorkers.get(i).getMessageBoxAddress().equals(sender)){
+				assignedWorker = this.myContractedWorkers.get(i);
 			}
+		}
+
+		Order theOrder = null;
+
+		/* Look for order in contracted orders list */
+		for(int i = 0; i < this.myContractedOrders.size(); i++){
+			if(this.myContractedOrders.get(i).id.equals(msg.orderId)){
+				theOrder = this.myContractedOrders.get(i);
+			}
+		}
+
+		if (msg.state == Result.FAIL) {
+			this.myAvailableWorkers.add(assignedWorker);
+			this.myContractedWorkers.remove(assignedWorker);
+			this.myContractedOrders.remove(theOrder);
+		}
+
+		else if (msg.state == Result.SUCCESS){
+			//this.myContractedWorkers.add(assignedWorker);
+			//this.myReservedWorkers.remove(assignedWorker);
+
+			/* Associate worker (AgentDescription) with OrderID */
+			this.workerOrderMap.put(msg.orderId, assignedWorker);
 		}
 	}
 
+
+
+
+
+
+
+
+
+
+
+
 	/* Msg from Server to Broker, stating if order succeeded or failed */
 	private void handleOrderCompleted(OrderCompleted msg) {
-		Order theOrder = this.myContractedOrders.stream().filter(o -> o.id.equals(msg.orderId)).findFirst().orElse(null);
+
+		Order theOrder = null;
+
+		/* Look for order in contracted orders list */
+		for(int i = 0; i < this.myContractedOrders.size(); i++){
+			if(this.myContractedOrders.get(i).id.equals(msg.orderId)){
+				theOrder = this.myContractedOrders.get(i);
+			}
+		}
+
+		//Order theOrder = this.myContractedOrders.stream().filter(o -> o.id.equals(msg.orderId)).findFirst().orElse(null);
+
 		this.myContractedOrders.remove(theOrder);
 
 		/* Find contracted worker: make him available again */
@@ -215,6 +272,7 @@ public class BrokerBean extends AbstractAgentBean {
 
 	private void handleEndGameMessage(EndGameMessage msg){
 		System.out.println("End game. Broker " + msg.brokerId + " reward: " + msg.totalReward);
+
 	}
 
 	private void handleStartGameResponse(StartGameResponse response) {
@@ -254,6 +312,15 @@ public class BrokerBean extends AbstractAgentBean {
 	}
 
 
+
+
+
+
+
+
+
+
+
 	private void startNewGame() {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
@@ -270,7 +337,6 @@ public class BrokerBean extends AbstractAgentBean {
 		/* Choose first agent available: Can be improved! */
 		return this.myAvailableWorkers.get(0);
 	}
-
 
 	/* INFRASTRUCTURE FUNCTIONS */
 

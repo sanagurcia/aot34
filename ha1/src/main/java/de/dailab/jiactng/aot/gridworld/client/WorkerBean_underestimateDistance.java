@@ -204,7 +204,7 @@ public class WorkerBean_underestimateDistance extends AbstractAgentBean {
     private void initAcceptedOrder(){
         /* Default previous move to true, check if already at target */
         this.previousMoveValid = true;
-        this.atTarget = this.myPosition == this.currentOrder.position;
+        this.atTarget = (this.myPosition == this.currentOrder.position);
     }
 
     /* There are more Worker Agents available than actually used in the game.
