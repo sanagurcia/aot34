@@ -17,7 +17,6 @@ import de.dailab.jiactng.aot.gridworld.model.WorkerAction;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Random;
 
 
 public class WorkerBean_overestimateDistance extends AbstractAgentBean {
@@ -90,6 +89,9 @@ public class WorkerBean_overestimateDistance extends AbstractAgentBean {
                 }
                 else if (payload instanceof WorkerConfirm) {
                     this.handleWorkerConfirm((WorkerConfirm) payload);
+                }
+                else if (payload instanceof CheckDistance){
+                    this.handleCheckDistance((CheckDistance) payload);
                 }
                 else if (payload instanceof OrderCompleted) {
                     this.handleOrderCompleted((OrderCompleted) payload);
@@ -203,10 +205,17 @@ public class WorkerBean_overestimateDistance extends AbstractAgentBean {
         this.previousMoveValid = msg.state.equals(Result.SUCCESS);
     }
 
+    public void handleCheckDistance(CheckDistance cd){
+        if(this.myPosition.distance(cd.order.position) + 10 >= cd.order.deadline - 1) return;
+        CheckDistance msg = new CheckDistance(cd.order, this.me, this.myId);
+        ICommunicationAddress brokerAddress = this.getBrokerAddress();
+        this.sendMessage(brokerAddress, msg);
+    }
+
     private void initAcceptedOrder(){
         /* Default previous move to true, check if already at target */
         this.previousMoveValid = true;
-        this.atTarget = this.myPosition == this.currentOrder.position;
+        this.atTarget = (this.myPosition == this.currentOrder.position);
     }
 
     /* There are more Worker Agents available than actually used in the game.

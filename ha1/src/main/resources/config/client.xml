@@ -16,8 +16,8 @@
 				<!-- change which broker and worker agents will be used -->
 				<!-- remember: only one broker for now, multiple workers though.-->
 				<ref bean="BrokerAgent" />
-<!--			<ref bean="BrokerAgent_variation" />-->
-				
+<!--			<ref bean="BrokerAgent_pickFirst" />-->
+
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
@@ -40,7 +40,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean name="WorkerAgent" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
 			<list>
@@ -53,11 +53,11 @@
 	</bean>
 
 	<!--	BROKER VARIATION    -->
-	<bean name="BrokerAgent_variation" parent="SimpleAgent" scope="prototype">
+	<bean name="BrokerAgent_pickFirst" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
 			<list>
 				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
-				<bean name="BrokerBean_variation" class="de.dailab.jiactng.aot.gridworld.client.BrokerBean_variation" scope="prototype">
+				<bean name="BrokerBean_pickFirst" class="de.dailab.jiactng.aot.gridworld.client.BrokerBean_pickFirst" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					<property name="executionInterval" value="1000" />
 				</bean>

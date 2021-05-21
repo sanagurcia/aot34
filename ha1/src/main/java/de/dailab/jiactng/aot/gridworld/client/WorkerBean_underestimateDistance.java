@@ -90,6 +90,9 @@ public class WorkerBean_underestimateDistance extends AbstractAgentBean {
                 else if (payload instanceof WorkerConfirm) {
                     this.handleWorkerConfirm((WorkerConfirm) payload);
                 }
+                else if (payload instanceof CheckDistance){
+                    this.handleCheckDistance((CheckDistance) payload);
+                }
                 else if (payload instanceof OrderCompleted) {
                     this.handleOrderCompleted((OrderCompleted) payload);
                 }
@@ -145,6 +148,7 @@ public class WorkerBean_underestimateDistance extends AbstractAgentBean {
         /* update atTarget */
         this.atTarget = this.myPosition.equals(this.currentOrder.position);
         /* if atTarget return Order, else nextMove */
+        // return atTarget ? WorkerAction.ORDER : nextMove;
         return nextMove;
     }
 
@@ -192,6 +196,13 @@ public class WorkerBean_underestimateDistance extends AbstractAgentBean {
         msg.orderId = orderId;
         msg.workerId = this.myId;
         msg.state = state;
+        ICommunicationAddress brokerAddress = this.getBrokerAddress();
+        this.sendMessage(brokerAddress, msg);
+    }
+
+    public void handleCheckDistance(CheckDistance cd){
+        // if(this.myPosition.distance(cd.order.position) >= cd.order.deadline - 1) return;
+        CheckDistance msg = new CheckDistance(cd.order, this.me, this.myId);
         ICommunicationAddress brokerAddress = this.getBrokerAddress();
         this.sendMessage(brokerAddress, msg);
     }
