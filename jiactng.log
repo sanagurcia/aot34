@@ -22,3 +22,72 @@ java.nio.file.NoSuchFileException: logs\game_210521-041021_189065954.txt
 2021-05-21 04:11:01,672 WARN [n-c5351f81aece.IDirectory] - Forget nodes due to missing alive message:
 
 2021-05-21 04:11:01,673 WARN [n-c5351f81aece.IDirectory] - 	df@n-c535e00afbfe
+2021-05-21 04:25:28,900 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 12718 mb of usable space - resetting to maximum available disk space: 12718 mb
+2021-05-21 04:25:39,795 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 12718 mb of usable space - resetting to maximum available disk space: 12718 mb
+2021-05-21 04:25:40,198 INFO [n-c61043ab7852.a-c610384d25a4.BrokerBean] - starting broker agent
+2021-05-21 04:25:40,210 INFO [n-c61043ab7852.a-c610349ed52c.WorkerBean] - Starting worker agent with id: a-c610349ed52c
+2021-05-21 04:25:40,212 INFO [n-c61043ab7852.a-c60ffd2b8fa9.WorkerBean] - Starting worker agent with id: a-c60ffd2b8fa9
+2021-05-21 04:25:40,214 INFO [n-c61043ab7852.a-c6105b8aff04.WorkerBean] - Starting worker agent with id: a-c6105b8aff04
+2021-05-21 04:25:40,216 INFO [n-c61043ab7852.a-c6106dfb2144.WorkerBean_randomMoves] - Starting worker agent with id: a-c6106dfb2144
+2021-05-21 04:25:40,218 INFO [n-c61043ab7852.a-c6104583b00b.WorkerBean_overestimateDistance] - Starting worker agent with id: a-c6104583b00b
+2021-05-21 04:25:40,221 INFO [n-c61043ab7852.a-c61010271317.WorkerBean_underestimateDistance] - Starting worker agent with id: a-c61010271317
+2021-05-21 04:25:40,225 WARN [n-c61043ab7852.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-05-21 04:25:41,230 WARN [n-c61043ab7852.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-05-21 04:25:42,240 WARN [n-c61043ab7852.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-05-21 04:25:43,239 WARN [n-c61043ab7852.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-05-21 04:25:51,389 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.40:61963 failed: java.net.SocketException: Connection reset
+2021-05-21 04:25:51,391 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-c60dc6cb3d3eStandardJMSBroker#4 and tcp:///192.168.178.40:61960@61962 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-05-21 04:25:58,566 INFO [n-c60dc6cb3d3e.a-c60dc4a0e369.ServerMetaBean] - Logging game C:\Users\sinam\IdeaProjects\aot34\logs\game_210521-042558_890155768.txt
+2021-05-21 04:25:58,570 ERROR [n-c60dc6cb3d3e.a-c60dc4a0e369.ServerMetaBean] - Failed to log game results to file
+java.nio.file.NoSuchFileException: logs\game_210521-042558_890155768.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:478)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:224)
+	at java.base/java.nio.file.Files.write(Files.java:3556)
+	at java.base/java.nio.file.Files.write(Files.java:3607)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.logGameResults(ServerBean.java:456)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.execute(ServerBean.java:376)
+	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-05-21 04:26:32,249 WARN [n-c60dc6cb3d3e.IDirectory] - Forget nodes due to missing alive message:
+
+2021-05-21 04:26:32,250 WARN [n-c60dc6cb3d3e.IDirectory] - 	df@n-c61043ab7852
