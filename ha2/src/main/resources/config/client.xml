@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/AgentNode.xml" />
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+
+	<import resource="classpath:config/settings.xml" />
+
+	<bean name="ClientNode" parent="AotNode" scope="singleton">
+		<property name="logLevel" value="WARN" />
+		<property name="agents">
+			<list>
+				<!-- change which broker and worker agents will be used -->
+				<!-- remember: only one broker for now, multiple workers though.-->
+				<ref bean="BrokerAgent" />
+<!--			<ref bean="BrokerAgent_pickFirst" />-->
+
+				<bean parent="WorkerAgent" />
+				<bean parent="WorkerAgent" />
+				<bean parent="WorkerAgent" />
+
+				<bean parent="WorkerAgent_randomMoves" />
+  				<bean parent="WorkerAgent_overestimateDistance" />
+				<bean parent="WorkerAgent_underestimateDistance" />
+
+			</list>
+		</property>
+	</bean>
+
+	<bean name="BrokerAgent" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<bean name="BrokerBean" class="de.dailab.jiactng.aot.gridworld.client.BrokerBean" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="WorkerAgent" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<bean name="WorkerBean" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!--	BROKER VARIATION    -->
+	<bean name="BrokerAgent_pickFirst" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
+				<bean name="BrokerBean_pickFirst" class="de.dailab.jiactng.aot.gridworld.client.BrokerBean_pickFirst" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- WORKER VARIATIONS -->
+	<!-- FIRST VARIATION -->
+	<bean name="WorkerAgent_randomMoves" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
+				<bean name="WorkerBean_randomMoves" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_randomMoves" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- SECOND VARIATION -->
+	<bean name="WorkerAgent_overestimateDistance" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
+				<bean name="WorkerBean_overestimateDistance" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_overestimateDistance" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- THIRD VARIATION -->
+	<bean name="WorkerAgent_underestimateDistance" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<!--	MAKE SURE TO USE CORRECT CLASS NAME!			-->
+				<bean name="WorkerBean_underestimateDistance" class="de.dailab.jiactng.aot.gridworld.client.WorkerBean_underestimateDistance" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="1000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>
