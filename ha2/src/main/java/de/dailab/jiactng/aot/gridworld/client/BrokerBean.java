@@ -96,7 +96,7 @@ public class BrokerBean extends AbstractAgentBean {
 			else if (payload instanceof TakeOrderConfirm){
 				this.handleTakeOrderConfirm((TakeOrderConfirm) payload);
 			}
-			else if (payload instanceof CheckDistance){
+			else if (payload instanceof CheckDistanceResponse){
 				this.handleCheckDistanceConfirm((CheckDistance) payload, message.getSender());
 			}
 			else if (payload instanceof AssignOrderConfirm){
@@ -126,9 +126,12 @@ public class BrokerBean extends AbstractAgentBean {
 
 		System.out.println("================BROKER: HANDLING NEW ORDER MESSAGE ====================");
 
-		CheckDistance cd = new CheckDistance(msg.order, null, "");
 
-		this.myReservedOrders.add(cd.order);
+		//VORSCHLAG: in ReservedOrders nur die IDs speichern? ansonsten gibt es einen Fehler bezüglich des Speicherns
+		CheckDistance cd = new CheckDistance(msg.order.id, msg.order.position,msg.order.deadline);
+
+		if(this.myAvailableWorkers.isEmpty() || this.myAvailableWorkers.size() == 0) return;
+		this.myReservedOrders.add(msg.order);
 
 		/* for each available worker: ask for distance */
 		for (int i = 0; i < this.myAvailableWorkers.size(); i++){
@@ -138,22 +141,25 @@ public class BrokerBean extends AbstractAgentBean {
 
 	/* Worker only answers if he can reach target in time, then assign this worker */
 	public void handleCheckDistanceConfirm(CheckDistance cd, ICommunicationAddress sender){
+//TODO Vergleich, ob die Order in myTakenOrders und Contracted ist. nicht machbar, weil wir nur die OrderID zurückbekommen. Also muss man die Listen durchsuchen
+		// <3
 
 		if(this.myTakenOrders.indexOf(cd.order) != -1) return;
 		if(this.myContractedOrders.indexOf(cd.order) != -1) return;
+		if(this.myAvailableWorkers.isEmpty() || this.myAvailableWorkers.size() == 0) return;
 
 		/* construct TakeOrderMessage and send to server */
 		TakeOrderMessage takeOrderMsg = new TakeOrderMessage();
-		takeOrderMsg.orderId = cd.order.id;
+		takeOrderMsg.orderId = cd.orderId;
 		takeOrderMsg.brokerId = thisAgent.getAgentId();
 		takeOrderMsg.gameId = this.gameId;
 
 		int j = 0;
 		int sizeList = this.myReservedOrders.size();
 		while(sizeList > 0) {
-
-			if (this.myReservedOrders.get(j).id.equals(cd.order.id)) {
-				this.myTakenOrders.add(cd.order);
+			Order tempOrder = this.myReservedOrders.get(j);
+			if (tempOrder.id.equals(cd.orderId)) {
+				this.myTakenOrders.add(tempOrder);
 				this.myReservedOrders.remove(j);
 				sizeList--;
 				this.sendMessage(this.serverAddress, takeOrderMsg);
@@ -171,7 +177,7 @@ public class BrokerBean extends AbstractAgentBean {
 				/* reserve worker agent for assignment */
 				this.myAvailableWorkers.remove(currAgent);
 				this.myReservedWorkers.add(currAgent);
-				this.tempWorkerOrderMap.put(cd.order.id, currAgent);
+				this.tempWorkerOrderMap.put(cd.orderId, currAgent);
 				break;
 			}
 			sizeListe--;

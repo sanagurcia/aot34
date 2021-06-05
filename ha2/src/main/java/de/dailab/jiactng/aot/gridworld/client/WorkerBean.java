@@ -190,11 +190,53 @@ public class WorkerBean extends AbstractAgentBean {
 		}
 	}
 
+
+	//NEUER CODE XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+	private int calculateDistance (Position firstPosition, Position secondPosition) {
+		int distance = 5;
+		return distance;
+	}
+
+
 	public void handleCheckDistance(CheckDistance cd){
-		if(this.myPosition.distance(cd.order.position) >= cd.order.deadline - 1) return;
-		CheckDistance msg = new CheckDistance(cd.order, this.me, this.myId);
-		ICommunicationAddress brokerAddress = this.getBrokerAddress();
-		this.sendMessage(brokerAddress, msg);
+
+		// FALLS ORDER EXISTIERT!!!
+
+		int distanceNewtoOldTarget = calculateDistance(cd.position,this.currentOrder.position);
+		int distanceOldtoNewTarget = calculateDistance(this.currentOrder.position,cd.position);
+		int distanceCurrentPositiontoOldTarget = calculateDistance(this.myPosition,this.currentOrder.position);
+		int distanceCurrentPositiontoNewTarget = calculateDistance(this.myPosition,cd.position);
+
+
+		if(this.myPosition.distance(cd.position) >= cd.deadline - 1) return;
+		// here handleBeaten
+		if (this.contracted == false) {
+			int currentDistance = distanceCurrentPositiontoNewTarget+3;
+			CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, currentDistance,Result.SUCCESS);
+			ICommunicationAddress brokerAddress = this.getBrokerAddress();
+			this.sendMessage(brokerAddress, msg);
+		} else if (this.contracted) {
+			if (cd.deadline > this.currentOrder.deadline){
+				int possibleNewDistance = distanceOldtoNewTarget + distanceCurrentPositiontoOldTarget;
+				if(possibleNewDistance < cd.deadline){
+					CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, possibleNewDistance,Result.SUCCESS);
+					ICommunicationAddress brokerAddress = this.getBrokerAddress();
+					this.sendMessage(brokerAddress, msg);
+				}
+			}
+		}
+		else if ((distanceCurrentPositiontoNewTarget+ distanceNewtoOldTarget) <= distanceCurrentPositiontoOldTarget){
+			int possibleNewDistance = distanceCurrentPositiontoNewTarget+ distanceNewtoOldTarget;
+			CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, possibleNewDistance,Result.SUCCESS);
+			ICommunicationAddress brokerAddress = this.getBrokerAddress();
+			this.sendMessage(brokerAddress, msg);
+		}else {
+			CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, -1 ,Result.FAIL);
+			ICommunicationAddress brokerAddress = this.getBrokerAddress();
+			this.sendMessage(brokerAddress, msg);
+		}
 	}
 
 	private void sendAssignOrderConfirm(Result state, String orderId) {

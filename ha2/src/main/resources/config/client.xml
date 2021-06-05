@@ -22,9 +22,9 @@
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
 
-				<bean parent="WorkerAgent_randomMoves" />
+		<!--		<bean parent="WorkerAgent_randomMoves" />
   				<bean parent="WorkerAgent_overestimateDistance" />
-				<bean parent="WorkerAgent_underestimateDistance" />
+				<bean parent="WorkerAgent_underestimateDistance" />-->
 
 			</list>
 		</property>
