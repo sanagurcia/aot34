@@ -204,10 +204,25 @@ public class WorkerBean extends AbstractAgentBean {
 
 		// FALLS ORDER EXISTIERT!!!
 
-		int distanceNewtoOldTarget = calculateDistance(cd.position,this.currentOrder.position);
-		int distanceOldtoNewTarget = calculateDistance(this.currentOrder.position,cd.position);
-		int distanceCurrentPositiontoOldTarget = calculateDistance(this.myPosition,this.currentOrder.position);
-		int distanceCurrentPositiontoNewTarget = calculateDistance(this.myPosition,cd.position);
+		if(this.currentOrder == null ) {
+			if (this.contracted == false) {
+				int currentDistance = calculateDistance(this.myPosition, cd.position) + 3;
+				CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, currentDistance, Result.SUCCESS);
+				ICommunicationAddress brokerAddress = this.getBrokerAddress();
+				this.sendMessage(brokerAddress, msg);
+			}
+			else {
+				CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, -1 ,Result.FAIL);
+				ICommunicationAddress brokerAddress = this.getBrokerAddress();
+				this.sendMessage(brokerAddress, msg);
+			}
+			return;
+		}
+
+		int distanceNewtoOldTarget = calculateDistance(cd.position, this.currentOrder.position);
+		int distanceOldtoNewTarget = calculateDistance(this.currentOrder.position, cd.position);
+		int distanceCurrentPositiontoOldTarget = calculateDistance(this.myPosition, this.currentOrder.position);
+		int distanceCurrentPositiontoNewTarget = calculateDistance(this.myPosition, cd.position);
 
 
 		if(this.myPosition.distance(cd.position) >= cd.deadline - 1) return;
@@ -217,6 +232,7 @@ public class WorkerBean extends AbstractAgentBean {
 			CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, currentDistance,Result.SUCCESS);
 			ICommunicationAddress brokerAddress = this.getBrokerAddress();
 			this.sendMessage(brokerAddress, msg);
+			return;
 		} else if (this.contracted) {
 			if (cd.deadline > this.currentOrder.deadline){
 				int possibleNewDistance = distanceOldtoNewTarget + distanceCurrentPositiontoOldTarget;
