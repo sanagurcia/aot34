@@ -16,14 +16,6 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/*
-* TODO: smart data structures
-*  1) Tuple list that pairs taken/contracted order with reserved/contracted worker,
-*  2) Associate IAgentDescription with model/Worker.java class,
-*  3) Map structures for myOrders & myWorkers, with IDs as keys,
-*  4) Refactor accordingly.
-* */
-
 
 public class BrokerBean extends AbstractAgentBean {
 
@@ -287,7 +279,6 @@ public class BrokerBean extends AbstractAgentBean {
 
 	private void handleEndGameMessage(EndGameMessage msg){
 		System.out.println("End game. Broker " + msg.brokerId + " reward: " + msg.totalReward);
-
 	}
 
 	private void handleStartGameResponse(StartGameResponse response) {
@@ -329,7 +320,7 @@ public class BrokerBean extends AbstractAgentBean {
 	private void startNewGame() {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
-		startGameMsg.gridFile = "/grids/22_1.grid";
+		startGameMsg.gridFile = "/grids/aot34_1.grid";
 		if (this.serverAddress != null){
 			this.sendMessage(this.serverAddress, startGameMsg);
 		}

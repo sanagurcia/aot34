@@ -14,45 +14,16 @@ import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
 import de.dailab.jiactng.aot.gridworld.model.Worker;
 import de.dailab.jiactng.aot.gridworld.model.WorkerAction;
+import de.dailab.jiactng.aot.gridworld.server.ServerBean;
+import org.sercho.masp.space.event.SpaceEvent;
+import org.sercho.masp.space.event.SpaceObserver;
+import org.sercho.masp.space.event.WriteCallEvent;
 
 import java.io.Serializable;
 import java.util.List;
 
 
 public class WorkerBean extends AbstractAgentBean {
-
-	/* Worker Structure:
-		exec()
-			if AssignOrder message:
-				if NOT contracted:
-					acceptAssignment() {
-						contracted = true
-						send AssignOrderConfirm to Broker
-					}
-				else:
-					rejectAssignment()
-
-			if WorkerConfirm message:
-				update previousMoveValid
-
-			if contracted:
-				if previousMoveValid:
-					if NOT atTarget:
-						doMove(){
-							calculateNewMove()
-							updatePosition()
-							updateAtTarget()
-						}
-						if atTarget:
-							notifyReferee(ORDER)
-						else:
-							notifyReferee(MOVE)
-				else:
-					log("previous move invalid")
-
-			else:
-				chill and be quiet.
-	 */
 
 	private boolean active;		// worker only active if involved in game
 	private boolean contracted;		// worker has been assigned an order and currently carrying out
@@ -70,34 +41,12 @@ public class WorkerBean extends AbstractAgentBean {
 	public void doStart() throws Exception {
 		super.doStart();
 		this.active = false;
+		memory.attach(new WorkerBean.MessageObserver(), new JiacMessage());
 		log.info("Starting worker agent with id: " + thisAgent.getAgentId());
 	}
 
 	@Override
 	public void execute() {
-		/* Check inbox */
-		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
-			Object payload = message.getPayload();
-
-			if (payload instanceof ActivateWorker) {
-				this.activate((ActivateWorker) payload);
-				System.out.println("Worker Agent " + thisAgent.getAgentId() + " activated: ready to accept orders!");
-			}
-			else if (this.active){
-				if (payload instanceof AssignOrder ) {
-					this.handleAssignOrder((AssignOrder) payload);
-				}
-				else if (payload instanceof WorkerConfirm) {
-					this.handleWorkerConfirm((WorkerConfirm) payload);
-				}
-				else if (payload instanceof CheckDistance){
-					this.handleCheckDistance((CheckDistance) payload);
-				}
-				else if (payload instanceof OrderCompleted) {
-					this.handleOrderCompleted((OrderCompleted) payload);
-				}
-			}
-		}
 
 		/* If currently contracted with task, do move */
 		if (contracted){
@@ -112,16 +61,12 @@ public class WorkerBean extends AbstractAgentBean {
 				}
 				else {
 					/* If at already at target, send ORDER to ref */
-					this.sendMoveToRef((WorkerAction) WorkerAction.ORDER);
+					this.sendMoveToRef(WorkerAction.ORDER);
 					System.out.println("----------------------WORKER AT TARGET!!!-----------------------");
 				}
 			}
 			else { System.out.println("Previous move not approved."); }
 		}
-	}
-
-	private void handleOrderCompleted(OrderCompleted msg) {
-		this.contracted = false;
 	}
 
 	/* Send executed move (N/S/E/W or Order) to Server */
@@ -177,26 +122,6 @@ public class WorkerBean extends AbstractAgentBean {
 		return WorkerAction.EAST;
 	}
 
-	private void handleAssignOrder(AssignOrder msg) {
-		/* If not currently contracted, accept assignment */
-		if (!contracted){
-			this.contracted = true;
-			this.currentOrder = msg.order;
-			this.initAcceptedOrder();
-			this.sendAssignOrderConfirm(Result.SUCCESS, msg.order.id);
-		}
-		else {
-			this.sendAssignOrderConfirm(Result.FAIL, msg.order.id);
-		}
-	}
-
-	public void handleCheckDistance(CheckDistance cd){
-		if(this.myPosition.distance(cd.order.position) >= cd.order.deadline - 1) return;
-		CheckDistance msg = new CheckDistance(cd.order, this.me, this.myId);
-		ICommunicationAddress brokerAddress = this.getBrokerAddress();
-		this.sendMessage(brokerAddress, msg);
-	}
-
 	private void sendAssignOrderConfirm(Result state, String orderId) {
 		AssignOrderConfirm msg = new AssignOrderConfirm();
 		msg.orderId = orderId;
@@ -204,11 +129,6 @@ public class WorkerBean extends AbstractAgentBean {
 		msg.state = state;
 		ICommunicationAddress brokerAddress = this.getBrokerAddress();
 		this.sendMessage(brokerAddress, msg);
-	}
-
-	private void handleWorkerConfirm(WorkerConfirm msg){
-		/* Validate previous move */
-		this.previousMoveValid = msg.state.equals(Result.SUCCESS);
 	}
 
 	private void initAcceptedOrder(){
@@ -237,7 +157,80 @@ public class WorkerBean extends AbstractAgentBean {
 	}
 
 
+	/* Message Handlers */
+	private void handleAssignOrder(AssignOrder msg) {
+		/* If not currently contracted, accept assignment */
+		if (!contracted){
+			this.contracted = true;
+			this.currentOrder = msg.order;
+			this.initAcceptedOrder();
+			this.sendAssignOrderConfirm(Result.SUCCESS, msg.order.id);
+		}
+		else {
+			this.sendAssignOrderConfirm(Result.FAIL, msg.order.id);
+		}
+	}
+
+	public void handleCheckDistance(CheckDistance cd){
+		if(this.myPosition.distance(cd.order.position) >= cd.order.deadline - 1) return;
+		CheckDistance msg = new CheckDistance(cd.order, this.me, this.myId);
+		ICommunicationAddress brokerAddress = this.getBrokerAddress();
+		this.sendMessage(brokerAddress, msg);
+	}
+
+	private void handleWorkerConfirm(WorkerConfirm msg){
+		/* Validate previous move */
+		this.previousMoveValid = msg.state.equals(Result.SUCCESS);
+	}
+
+	private void handleOrderCompleted(OrderCompleted msg) {
+		this.contracted = false;
+	}
+
+	private void handleMessage(JiacMessage msg){
+		Object payload = msg.getPayload();
+
+		if (payload instanceof ActivateWorker) {
+			this.activate((ActivateWorker) payload);
+			System.out.println("Worker Agent " + thisAgent.getAgentId() + " activated: ready to accept orders!");
+		}
+		else if (this.active){
+			if (payload instanceof AssignOrder ) {
+				this.handleAssignOrder((AssignOrder) payload);
+			}
+			else if (payload instanceof WorkerConfirm) {
+				this.handleWorkerConfirm((WorkerConfirm) payload);
+			}
+			else if (payload instanceof CheckDistance){
+				this.handleCheckDistance((CheckDistance) payload);
+			}
+			else if (payload instanceof OrderCompleted) {
+				this.handleOrderCompleted((OrderCompleted) payload);
+			}
+		}
+	}
+
 	/* Infrastructure Functions */
+	/* Message Observer allows event based async reacting to incoming messages */
+	private class MessageObserver implements SpaceObserver<IFact> {
+		/* new id */
+
+		@SuppressWarnings("rawtypes")
+		@Override
+		public void notify(SpaceEvent<? extends IFact> event) {
+			if (event instanceof WriteCallEvent) {
+				WriteCallEvent writeEvent = (WriteCallEvent) event;
+				if (writeEvent.getObject() instanceof JiacMessage) {
+					JiacMessage message = (JiacMessage) writeEvent.getObject();
+					if (message.getPayload() instanceof GridMessage) {
+						handleMessage(message);
+						memory.remove(message);
+					}
+				}
+			}
+		}
+	}
+
 	private ICommunicationAddress getServerAddress() {
 		ICommunicationAddress server = null;
 		IAgentDescription serverAgent = thisAgent.searchAgent(new AgentDescription(null, "ServerAgent", null, null, null, null));
