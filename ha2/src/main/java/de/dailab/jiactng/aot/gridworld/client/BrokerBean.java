@@ -9,8 +9,14 @@ import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.AgentDescription;
 import de.dailab.jiactng.agentcore.ontology.IAgentDescription;
 import de.dailab.jiactng.aot.gridworld.messages.*;
+import de.dailab.jiactng.aot.gridworld.model.Broker;
 import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
+import org.sercho.masp.space.event.SpaceEvent;
+import org.sercho.masp.space.event.SpaceObserver;
+import org.sercho.masp.space.event.WriteCallEvent;
+
+import java.time.LocalDateTime;
 
 import java.io.Serializable;
 import java.util.*;
@@ -53,6 +59,8 @@ public class BrokerBean extends AbstractAgentBean {
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
+		memory.attach(new BrokerBean.MessageObserver(), new JiacMessage());
+
 		this.myTakenOrders = new ArrayList<>();
 		this.myReservedOrders = new ArrayList<>();
 		this.myContractedOrders = new ArrayList<>();
@@ -70,36 +78,10 @@ public class BrokerBean extends AbstractAgentBean {
 	public void execute() {
 		// update all my workers
 		this.allMyWorkers = this.getMyWorkerAgents(10);
+
 		// update serverAddress
 		if (this.serverAddress == null){
 			this.serverAddress = this.getServerAddress();
-		}
-
-		/* Handle incoming messages without listener */
-		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
-			Object payload = message.getPayload();
-
-			if (payload instanceof StartGameResponse) {
-				this.handleStartGameResponse((StartGameResponse) payload);
-			}
-			else if (payload instanceof OrderMessage){
-				this.handleOrderMessage((OrderMessage) payload);
-			}
-			else if (payload instanceof TakeOrderConfirm){
-				this.handleTakeOrderConfirm((TakeOrderConfirm) payload);
-			}
-			else if (payload instanceof CheckDistance){
-				this.handleCheckDistanceConfirm((CheckDistance) payload, message.getSender());
-			}
-			else if (payload instanceof AssignOrderConfirm){
-				this.handleAssignOrderConfirm((AssignOrderConfirm) payload, message.getSender());
-			}
-			else if (payload instanceof OrderCompleted){
-				this.handleOrderCompleted((OrderCompleted) payload);
-			}
-			else if (payload instanceof EndGameMessage){
-				this.handleEndGameMessage((EndGameMessage) payload);
-			}
 		}
 
 		if (this.gameId == null){
@@ -107,10 +89,10 @@ public class BrokerBean extends AbstractAgentBean {
 		}
 
 		/* Log state of worker agents */
-		System.out.println("BROKER--Total worker agents: " + this.allMyWorkers.size());
-		System.out.println("BROKER--Active worker agents: " + this.myActiveWorkers.size());
-		System.out.println("BROKER--Available worker agents: " + this.myAvailableWorkers.size());
-		System.out.println("BROKER--Contracted worker agents: " + this.myContractedWorkers.size());
+//		System.out.println("BROKER--Total worker agents: " + this.allMyWorkers.size());
+//		System.out.println("BROKER--Active worker agents: " + this.myActiveWorkers.size());
+//		System.out.println("BROKER--Available worker agents: " + this.myAvailableWorkers.size());
+//		System.out.println("BROKER--Contracted worker agents: " + this.myContractedWorkers.size());
 	}
 
 	/* server sends broker orders: broker asks for distance from all available worker */
@@ -334,7 +316,52 @@ public class BrokerBean extends AbstractAgentBean {
 		return this.myAvailableWorkers.get(0);
 	}
 
+	private void handleMessage(JiacMessage message) {
+		Object payload = message.getPayload();
+
+		if (payload instanceof StartGameResponse) {
+			this.handleStartGameResponse((StartGameResponse) payload);
+		}
+		else if (payload instanceof OrderMessage){
+			this.handleOrderMessage((OrderMessage) payload);
+		}
+		else if (payload instanceof TakeOrderConfirm){
+			this.handleTakeOrderConfirm((TakeOrderConfirm) payload);
+		}
+		else if (payload instanceof CheckDistance){
+			this.handleCheckDistanceConfirm((CheckDistance) payload, message.getSender());
+		}
+		else if (payload instanceof AssignOrderConfirm){
+			this.handleAssignOrderConfirm((AssignOrderConfirm) payload, message.getSender());
+		}
+		else if (payload instanceof OrderCompleted){
+			this.handleOrderCompleted((OrderCompleted) payload);
+		}
+		else if (payload instanceof EndGameMessage){
+			this.handleEndGameMessage((EndGameMessage) payload);
+		}
+	}
+
 	/* INFRASTRUCTURE FUNCTIONS */
+	/* Message Observer Class */
+	private class MessageObserver implements SpaceObserver<IFact> {
+		/* new id */
+
+		@SuppressWarnings("rawtypes")
+		@Override
+		public void notify(SpaceEvent<? extends IFact> event) {
+			if (event instanceof WriteCallEvent) {
+				WriteCallEvent writeEvent = (WriteCallEvent) event;
+				if (writeEvent.getObject() instanceof JiacMessage) {
+					JiacMessage message = (JiacMessage) writeEvent.getObject();
+					if (message.getPayload() instanceof GridMessage) {
+						handleMessage(message);
+						memory.remove(message);
+					}
+				}
+			}
+		}
+	}
 
 	/* Use example function to get server address, return null if not found */
 	private ICommunicationAddress getServerAddress() {
@@ -362,6 +389,7 @@ public class BrokerBean extends AbstractAgentBean {
 		Action sendAction = retrieveAction(ICommunicationBean.ACTION_SEND);
 		JiacMessage message = new JiacMessage(payload);
 		invoke(sendAction, new Serializable[] {message, receiver});
-		System.out.println("BROKER SENDING " + payload);
+		// Sending current time to assert that message handling occurs outside of execute() cycle.
+		System.out.println("BROKER SENDING @ " + LocalDateTime.now() + "\n\tPayload: " + payload);
 	}
 }
