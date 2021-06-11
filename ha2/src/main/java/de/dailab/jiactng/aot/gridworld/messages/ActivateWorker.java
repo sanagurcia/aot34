@@ -21,4 +21,6 @@ public class ActivateWorker extends GameMessage {
 
     /** one worker from list of workers playing in game (as provided by server) */
     public Worker activatedWorker;
+
+    public int myTurn;
 }

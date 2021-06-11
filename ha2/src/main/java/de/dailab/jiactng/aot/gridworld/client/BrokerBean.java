@@ -231,7 +231,9 @@ public class BrokerBean extends AbstractAgentBean {
 			/* Look for order in taken orders list */
 			for(int i = 0; i < this.myTakenOrders.size(); i++){
 				if(this.myTakenOrders.get(i).equals(msg.orderId)){
-					assignOrderMsg.order = findOrder(this.myTakenOrders.get(i));
+					assignOrderMsg.orderId = this.myTakenOrders.get(i);
+					assignOrderMsg.targetPosition = findOrder(this.myTakenOrders.get(i)).position;
+					assignOrderMsg.deadline = findOrder(this.myTakenOrders.get(i)).deadline;
 				}
 			}
 
@@ -239,18 +241,18 @@ public class BrokerBean extends AbstractAgentBean {
 			this.sendMessage(assignedWorker.getMessageBoxAddress(), assignOrderMsg);
 
 			/* Add order to contracted orders and worker to contracted workers */
-			this.myContractedOrders.add(assignOrderMsg.order.id);
-			this.myTakenOrders.remove(assignOrderMsg.order);
+			this.myContractedOrders.add(assignOrderMsg.orderId);
+			this.myTakenOrders.remove(assignOrderMsg.orderId);
 			this.myContractedWorkers.add(assignedWorker);
 		}
 
 		/* If order confirm fail, free up one reserved worker */
 		else {
 			this.myAvailableWorkers.add(assignedWorker);
-			Order deleteOrder = null;
+			String deleteOrder = "";
 			for(int i = 0; i < this.myTakenOrders.size(); i++){
 				if(this.myTakenOrders.get(i).equals(msg.orderId)){
-					deleteOrder = findOrder(this.myTakenOrders.get(i));
+					deleteOrder = this.myTakenOrders.get(i);
 				}
 			}
 			this.myTakenOrders.remove(deleteOrder);
@@ -352,6 +354,7 @@ public class BrokerBean extends AbstractAgentBean {
 			activateWorkerMsg.gameId = this.gameId;
 			activateWorkerMsg.gridSize = this.gridSize;
 			activateWorkerMsg.obstacles = this.obstacles;
+			activateWorkerMsg.myTurn = this.myTurn;
 			activateWorkerMsg.activatedWorker = response.initialWorkers.get(i);
 
 			/* Get WorkerAgent[i] address and send ActivateWorker msg */
@@ -377,11 +380,6 @@ public class BrokerBean extends AbstractAgentBean {
 		else {
 			System.out.println("BROKER: WAITING FOR SERVER ADDRESS TO START NEW GAME!");
 		}
-	}
-
-	private IAgentDescription chooseAvailableWorker(Order order){
-		/* Choose first agent available: Can be improved! */
-		return this.myAvailableWorkers.get(0);
 	}
 
 	/* INFRASTRUCTURE FUNCTIONS */

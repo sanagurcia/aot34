@@ -691,3 +691,446 @@ java.nio.file.NoSuchFileException: logs\game_210608-230455_1443739815.txt
 2021-06-08 23:05:40,921 WARN [n-59cf81ba8401e.IDirectory] - Forget nodes due to missing alive message:
 
 2021-06-08 23:05:40,922 WARN [n-59cf81ba8401e.IDirectory] - 	df@n-59d3dc1e7ecb2
+2021-06-12 01:33:22,373 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7116 mb of usable space - resetting to maximum available disk space: 7116 mb
+2021-06-12 01:33:37,609 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7116 mb of usable space - resetting to maximum available disk space: 7116 mb
+2021-06-12 01:33:37,976 INFO [n-6911f9345cb82.a-6911f870762d9.BrokerBean] - starting broker agent
+2021-06-12 01:33:37,986 INFO [n-6911f9345cb82.a-6911fd6b9be85.WorkerBean] - Starting worker agent with id: a-6911fd6b9be85
+2021-06-12 01:33:37,990 INFO [n-6911f9345cb82.a-6911fa8bb4fbf.WorkerBean] - Starting worker agent with id: a-6911fa8bb4fbf
+2021-06-12 01:33:37,991 INFO [n-6911f9345cb82.a-6911fbd8cb653.WorkerBean] - Starting worker agent with id: a-6911fbd8cb653
+2021-06-12 01:33:38,002 WARN [n-6911f9345cb82.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:33:38,997 WARN [n-6911f9345cb82.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:33:40,000 WARN [n-6911f9345cb82.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:33:41,008 WARN [n-6911f9345cb82.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:33:47,148 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:57494 failed: java.net.SocketException: Connection reset
+2021-06-12 01:33:47,150 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-6911bc0be2106StandardJMSBroker#4 and tcp:///192.168.178.21:57491@57493 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-12 01:33:52,259 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7116 mb of usable space - resetting to maximum available disk space: 7116 mb
+2021-06-12 01:33:52,607 INFO [n-69122f84e5ae6.a-69122eeb239dd.BrokerBean] - starting broker agent
+2021-06-12 01:33:52,623 INFO [n-69122f84e5ae6.a-691233e5d6809.WorkerBean] - Starting worker agent with id: a-691233e5d6809
+2021-06-12 01:33:52,629 INFO [n-69122f84e5ae6.a-691230dd9e88b.WorkerBean] - Starting worker agent with id: a-691230dd9e88b
+2021-06-12 01:33:52,631 INFO [n-69122f84e5ae6.a-6912322ad3573.WorkerBean] - Starting worker agent with id: a-6912322ad3573
+2021-06-12 01:33:52,642 WARN [n-69122f84e5ae6.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:33:53,649 WARN [n-69122f84e5ae6.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:33:54,654 WARN [n-69122f84e5ae6.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:33:55,664 WARN [n-69122f84e5ae6.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:33:56,920 INFO [n-6911bc0be2106.a-6911c0542fcc5.ServerMetaBean] - Logging game C:\Users\sinam\IdeaProjects\aot34\logs\game_210612-013356_250071164.txt
+2021-06-12 01:33:56,924 ERROR [n-6911bc0be2106.a-6911c0542fcc5.ServerMetaBean] - Failed to log game results to file
+java.nio.file.NoSuchFileException: logs\game_210612-013356_250071164.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:478)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:224)
+	at java.base/java.nio.file.Files.write(Files.java:3556)
+	at java.base/java.nio.file.Files.write(Files.java:3607)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.logGameResults(ServerBean.java:456)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.execute(ServerBean.java:376)
+	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:34:03,346 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-6911bc0be2106StandardJMSBroker#6 and tcp:///192.168.178.21:57498@57500 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-12 01:34:03,347 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:57501 failed: java.net.SocketException: Connection reset
+2021-06-12 01:34:08,204 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7116 mb of usable space - resetting to maximum available disk space: 7116 mb
+2021-06-12 01:34:08,511 INFO [n-69126b357d206.a-69126a721b4cd.BrokerBean] - starting broker agent
+2021-06-12 01:34:08,526 INFO [n-69126b357d206.a-69126f6d362a5.WorkerBean] - Starting worker agent with id: a-69126f6d362a5
+2021-06-12 01:34:08,529 INFO [n-69126b357d206.a-69126c6313be3.WorkerBean] - Starting worker agent with id: a-69126c6313be3
+2021-06-12 01:34:08,530 INFO [n-69126b357d206.a-69126db122463.WorkerBean] - Starting worker agent with id: a-69126db122463
+2021-06-12 01:34:08,614 WARN [n-69126b357d206.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:34:09,617 WARN [n-69126b357d206.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:34:10,621 WARN [n-69126b357d206.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:34:10,972 INFO [n-6911bc0be2106.a-6911c0542fcc5.ServerMetaBean] - Logging game C:\Users\sinam\IdeaProjects\aot34\logs\game_210612-013410_902049081.txt
+2021-06-12 01:34:10,975 ERROR [n-6911bc0be2106.a-6911c0542fcc5.ServerMetaBean] - Failed to log game results to file
+java.nio.file.NoSuchFileException: logs\game_210612-013410_902049081.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:478)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:224)
+	at java.base/java.nio.file.Files.write(Files.java:3556)
+	at java.base/java.nio.file.Files.write(Files.java:3607)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.logGameResults(ServerBean.java:456)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.execute(ServerBean.java:376)
+	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:34:21,932 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-6911bc0be2106StandardJMSBroker#8 and tcp:///192.168.178.21:57505@57507 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-12 01:34:21,932 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:57508 failed: java.net.SocketException: Connection reset
+2021-06-12 01:34:25,633 WARN [n-6911bc0be2106.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-12 01:34:25,634 WARN [n-6911bc0be2106.IDirectory] - 	df@n-6911f9345cb82
+2021-06-12 01:34:26,048 INFO [n-6911bc0be2106.a-6911c0542fcc5.ServerMetaBean] - Logging game C:\Users\sinam\IdeaProjects\aot34\logs\game_210612-013426_1542118702.txt
+2021-06-12 01:34:26,050 ERROR [n-6911bc0be2106.a-6911c0542fcc5.ServerMetaBean] - Failed to log game results to file
+java.nio.file.NoSuchFileException: logs\game_210612-013426_1542118702.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:478)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:224)
+	at java.base/java.nio.file.Files.write(Files.java:3556)
+	at java.base/java.nio.file.Files.write(Files.java:3607)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.logGameResults(ServerBean.java:456)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.execute(ServerBean.java:376)
+	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:34:40,633 WARN [n-6911bc0be2106.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-12 01:34:40,633 WARN [n-6911bc0be2106.IDirectory] - 	df@n-69122f84e5ae6
+2021-06-12 01:34:55,634 WARN [n-6911bc0be2106.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-12 01:34:55,634 WARN [n-6911bc0be2106.IDirectory] - 	df@n-69126b357d206
+2021-06-12 01:35:23,005 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7116 mb of usable space - resetting to maximum available disk space: 7116 mb
+2021-06-12 01:35:23,485 INFO [n-69137e0b02e8e.a-69137e6001a24.BrokerBean] - starting broker agent
+2021-06-12 01:35:23,513 INFO [n-69137e0b02e8e.a-6913845fe55d9.WorkerBean] - Starting worker agent with id: a-6913845fe55d9
+2021-06-12 01:35:23,516 INFO [n-69137e0b02e8e.a-691380bfddd7e.WorkerBean] - Starting worker agent with id: a-691380bfddd7e
+2021-06-12 01:35:23,519 INFO [n-69137e0b02e8e.a-6913862d9b78f.WorkerBean] - Starting worker agent with id: a-6913862d9b78f
+2021-06-12 01:35:23,561 WARN [n-69137e0b02e8e.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:35:24,571 WARN [n-69137e0b02e8e.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:35:25,571 WARN [n-69137e0b02e8e.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 01:35:41,494 INFO [n-6911bc0be2106.a-6911c0542fcc5.ServerMetaBean] - Logging game C:\Users\sinam\IdeaProjects\aot34\logs\game_210612-013541_1623056841.txt
+2021-06-12 01:35:41,497 ERROR [n-6911bc0be2106.a-6911c0542fcc5.ServerMetaBean] - Failed to log game results to file
+java.nio.file.NoSuchFileException: logs\game_210612-013541_1623056841.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:478)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:224)
+	at java.base/java.nio.file.Files.write(Files.java:3556)
+	at java.base/java.nio.file.Files.write(Files.java:3607)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.logGameResults(ServerBean.java:456)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.execute(ServerBean.java:376)
+	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:35:44,897 WARN [org.apache.activemq.broker.TransportConnection] - Failed to add Connection n-6911bc0be2106StandardJMSBroker->n-69137e0b02e8eStandardJMSBroker-57487-1623454402150-15:2 due to javax.jms.InvalidClientIDException: Broker: n-69137e0b02e8eStandardJMSBroker - Client: SourceAwareDiscoveryNetworkConnector:smartmulticast://default?group=jiac-tng_n-6911bc0be2106StandardJMSBroker_outbound already connected from tcp://192.168.178.21:57514
+2021-06-12 01:35:44,900 WARN [org.apache.activemq.broker.TransportConnection.Service] - Async error occurred: javax.jms.InvalidClientIDException: Broker: n-69137e0b02e8eStandardJMSBroker - Client: SourceAwareDiscoveryNetworkConnector:smartmulticast://default?group=jiac-tng_n-6911bc0be2106StandardJMSBroker_outbound already connected from tcp://192.168.178.21:57514
+2021-06-12 01:36:06,048 WARN [org.apache.activemq.broker.TransportConnection.Service] - Async error occurred: java.lang.IllegalStateException: Cannot add a producer to a connection that had not been registered: n-6911bc0be2106StandardJMSBroker->n-69137e0b02e8eStandardJMSBroker-57487-1623454402150-15:2
+2021-06-12 01:36:06,067 WARN [org.apache.activemq.broker.TransportConnection.Service] - Async error occurred: java.lang.IllegalStateException: Cannot add a consumer to a connection that had not been registered: n-6911bc0be2106StandardJMSBroker->n-69137e0b02e8eStandardJMSBroker-57487-1623454402150-15:2
+2021-06-12 01:36:06,059 WARN [n-69137e0b02e8e.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-12 01:36:08,019 WARN [n-69137e0b02e8e.IDirectory] - 	df@n-6911bc0be2106
+2021-06-12 01:36:08,017 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:57516 failed: java.net.SocketException: Eine bestehende Verbindung wurde softwaregesteuert
+durch den Hostcomputer abgebrochen
+2021-06-12 01:36:28,509 WARN [n-69137e0b02e8e.IDirectory] - Got new information from missing node df@n-6911bc0be2106
+2021-06-12 01:36:59,457 WARN [n-69137e0b02e8e.a-69137e6001a24.SimpleExecutionCycle] - Session s-691393287d1a9 for DoAction de.dailab.jiactng.agentcore.comm.ICommunicationBean#send is timed out, returning failure.
+2021-06-12 01:37:08,256 WARN [n-69137e0b02e8e.a-69137e6001a24.SimpleExecutionCycle] - Session s-69139388f8bf5 for DoAction de.dailab.jiactng.agentcore.comm.ICommunicationBean#send is timed out, returning failure.
+2021-06-12 01:37:11,514 WARN [n-69137e0b02e8e.a-69137e6001a24.SimpleExecutionCycle] - Session s-69139649d4ec6 for DoAction de.dailab.jiactng.agentcore.comm.ICommunicationBean#send is timed out, returning failure.
+2021-06-12 01:37:17,216 WARN [n-69137e0b02e8e.a-69137e6001a24.SimpleExecutionCycle] - Session s-691397dbf6e7c for DoAction de.dailab.jiactng.agentcore.comm.ICommunicationBean#send is timed out, returning failure.
+2021-06-12 01:37:50,203 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-69137e0b02e8eStandardJMSBroker#10 and tcp:///192.168.178.21:57486@57515 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-12 01:37:50,207 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:57522 failed: java.net.SocketException: Connection reset
+2021-06-12 01:37:50,278 ERROR [org.apache.activemq.thread.TaskRunnerFactory] - Error in thread 'ActiveMQ VMTransport: vm://n-69137e0b02e8eStandardJMSBroker#1-1'
+org.apache.activemq.broker.BrokerStoppedException: Broker BrokerService[n-69137e0b02e8eStandardJMSBroker] is being stopped
+	at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:193)
+	at org.apache.activemq.transport.ResponseCorrelator.onCommand(ResponseCorrelator.java:116)
+	at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)
+	at org.apache.activemq.transport.vm.VMTransport.iterate(VMTransport.java:270)
+	at org.apache.activemq.thread.PooledTaskRunner.runTask(PooledTaskRunner.java:133)
+	at org.apache.activemq.thread.PooledTaskRunner$1.run(PooledTaskRunner.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:37:50,282 ERROR [n-69137e0b02e8e.IDirectory.jms] - Sending of Message to address 'group:df@dfgroup' through JMS failed!
+javax.jms.JMSException: peer (vm://n-69137e0b02e8eStandardJMSBroker#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1398)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1324)
+	at org.apache.activemq.ActiveMQSession.send(ActiveMQSession.java:1971)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:288)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:223)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.sendMessage(JMSSender.java:52)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.send(JMSSender.java:43)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:215)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.sendMessage(DirectoryAgentNodeBean.java:1472)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doStop(DirectoryAgentNodeBean.java:295)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doStop(SimpleAgentNode.java:978)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:819)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-69137e0b02e8eStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:37:50,286 ERROR [n-69137e0b02e8e.IDirectory] - sendMessage failed. Message:
+[Headers: {JiacTNGSenderAddress=>msgbox:df@n-69137e0b02e8e;JiacTNGProtocolID=>df:bye;JiacTNGGroupAddress=>df@dfgroup;UUID=>n-69137e0b02e8e}, Payload: null, Sender: msgbox:df@n-69137e0b02e8e]
+de.dailab.jiactng.agentcore.comm.CommunicationException: error while sending message
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:221)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.sendMessage(DirectoryAgentNodeBean.java:1472)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doStop(DirectoryAgentNodeBean.java:295)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doStop(SimpleAgentNode.java:978)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.stop(AbstractLifecycle.java:181)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:819)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: javax.jms.JMSException: peer (vm://n-69137e0b02e8eStandardJMSBroker#1) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:54)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1398)
+	at org.apache.activemq.ActiveMQConnection.syncSendPacket(ActiveMQConnection.java:1324)
+	at org.apache.activemq.ActiveMQSession.send(ActiveMQSession.java:1971)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:288)
+	at org.apache.activemq.ActiveMQMessageProducer.send(ActiveMQMessageProducer.java:223)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.sendMessage(JMSSender.java:52)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSSender.send(JMSSender.java:43)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.send(JMSMessageTransport.java:215)
+	... 7 more
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-69137e0b02e8eStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:37:50,286 WARN [n-69137e0b02e8e.a-69137e6001a24.CommunicationBean.jms] - could not close connection 
+javax.jms.JMSException: peer (vm://n-69137e0b02e8eStandardJMSBroker#3) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:72)
+	at org.apache.activemq.ActiveMQConnection.doSyncSendPacket(ActiveMQConnection.java:1450)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:687)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:110)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-69137e0b02e8eStandardJMSBroker#3) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:37:50,286 WARN [n-69137e0b02e8e.a-6913845fe55d9.CommunicationBean.jms] - could not close connection 
+javax.jms.JMSException: peer (vm://n-69137e0b02e8eStandardJMSBroker#5) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:72)
+	at org.apache.activemq.ActiveMQConnection.doSyncSendPacket(ActiveMQConnection.java:1450)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:687)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:110)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-69137e0b02e8eStandardJMSBroker#5) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:37:50,286 WARN [n-69137e0b02e8e.a-691380bfddd7e.CommunicationBean.jms] - could not close connection 
+javax.jms.JMSException: peer (vm://n-69137e0b02e8eStandardJMSBroker#7) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:72)
+	at org.apache.activemq.ActiveMQConnection.doSyncSendPacket(ActiveMQConnection.java:1450)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:687)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:110)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-69137e0b02e8eStandardJMSBroker#7) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:37:50,302 WARN [n-69137e0b02e8e.a-6913862d9b78f.CommunicationBean.jms] - could not close connection 
+javax.jms.JMSException: peer (vm://n-69137e0b02e8eStandardJMSBroker#9) stopped.
+	at org.apache.activemq.util.JMSExceptionSupport.create(JMSExceptionSupport.java:72)
+	at org.apache.activemq.ActiveMQConnection.doSyncSendPacket(ActiveMQConnection.java:1450)
+	at org.apache.activemq.ActiveMQConnection.close(ActiveMQConnection.java:687)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:110)
+	at de.dailab.jiactng.agentcore.comm.CommunicationBean.doCleanup(CommunicationBean.java:172)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.Agent.doCleanup(Agent.java:370)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:996)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-69137e0b02e8eStandardJMSBroker#9) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 01:37:50,302 WARN [n-69137e0b02e8e.IDirectory.jms] - could not stop JMS connection 
+org.apache.activemq.ConnectionFailedException: The JMS connection has failed: peer (vm://n-69137e0b02e8eStandardJMSBroker#1) stopped.
+	at org.apache.activemq.ActiveMQConnection.checkClosedOrFailed(ActiveMQConnection.java:1471)
+	at org.apache.activemq.ActiveMQConnection.doStop(ActiveMQConnection.java:575)
+	at org.apache.activemq.ActiveMQConnection.stop(ActiveMQConnection.java:564)
+	at de.dailab.jiactng.agentcore.comm.transport.jms.JMSMessageTransport.doCleanup(JMSMessageTransport.java:103)
+	at de.dailab.jiactng.agentcore.directory.DirectoryAgentNodeBean.doCleanup(DirectoryAgentNodeBean.java:311)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.doCleanup(SimpleAgentNode.java:1011)
+	at de.dailab.jiactng.agentcore.lifecycle.AbstractLifecycle.cleanup(AbstractLifecycle.java:221)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode.shutdown(SimpleAgentNode.java:820)
+	at de.dailab.jiactng.agentcore.SimpleAgentNode$1.run(SimpleAgentNode.java:144)
+Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm://n-69137e0b02e8eStandardJMSBroker#1) stopped.
+	at org.apache.activemq.transport.vm.VMTransport.stop(VMTransport.java:229)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.TransportFilter.stop(TransportFilter.java:65)
+	at org.apache.activemq.transport.ResponseCorrelator.stop(ResponseCorrelator.java:132)
+	at org.apache.activemq.broker.TransportConnection.doStop(TransportConnection.java:1164)
+	at org.apache.activemq.broker.TransportConnection$4.run(TransportConnection.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
