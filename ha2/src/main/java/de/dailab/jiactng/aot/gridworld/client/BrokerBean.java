@@ -65,6 +65,8 @@ public class BrokerBean extends AbstractAgentBean {
 	private List<String> myReservedOrders;
 	/* Orders confirmed by initiator and contracted out to worker */
 	private List<String> myContractedOrders;
+	/* Orders that timed out after checking distance, auction has to start */
+	private List<String> myTimedOutOrders;
 
 	/* Temporary solution for associating Workers with orders
 	*  Key: OrderId, Value: AgentDescription */
@@ -169,16 +171,42 @@ public class BrokerBean extends AbstractAgentBean {
 			this.countAskedWorkers.put(cd.orderId, i);
 			this.sendMessage(this.myAvailableWorkers.get(i).getMessageBoxAddress(), cd);
 		}
+
+		/* start a timer for the reserved order */
+		new java.util.Timer().schedule(
+				new java.util.TimerTask() {
+					@Override
+					public void run() {
+						TimerMessage timerMsg = new TimerMessage(cd.orderId);
+						// this.sendMessage(myAddress, timerMsg);
+						//how to find your own address?
+					}
+				},
+				500
+		);
+	}
+
+	public void handleTimerMessage (TimerMessage msg){
+	//checks if the Timeout already exist or adds it to the myTimedOutOrders && checks if the order is in MyReservedOrder
+	// nothing more needed?
+	if(!this.myTimedOutOrders.contains(msg.orderId) && this.myReservedOrders.contains(msg.orderId)) {
+			myTimedOutOrders.add(msg.orderId);
+		};
 	}
 
 	/* Worker only answers if he can reach target in time, then assign this worker */
 	public void handleCheckDistanceConfirm(CheckDistanceResponse cd, ICommunicationAddress sender){
-//TODO Vergleich, ob die Order in myTakenOrders und Contracted ist. nicht machbar, weil wir nur die OrderID zurückbekommen. Also muss man die Listen durchsuchen
-		// <3
 
 		if(this.countAskedWorkers.get(cd.orderId) != this.answeredCheckDistance.get(cd.orderId)) {
-			// wait
+			if (myTimedOutOrders.contains(cd.orderId)){
+				//start auction with orderID and answeredCheckDistance
+			}
+			//wait otherwise?
 		}
+		if(this.countAskedWorkers.get(cd.orderId) == this.answeredCheckDistance.get(cd.orderId)) {
+			//start auction
+		}
+
 		if(this.myTakenOrders.indexOf(cd.orderId) != -1) return;
 		if(this.myContractedOrders.indexOf(cd.orderId) != -1) return;
 		if(this.myAvailableWorkers.isEmpty() || this.myAvailableWorkers.size() == 0) return;
@@ -407,6 +435,9 @@ public class BrokerBean extends AbstractAgentBean {
 		}
 		else if (payload instanceof TakeOrderConfirm){
 			this.handleTakeOrderConfirm((TakeOrderConfirm) payload);
+		}
+		else if (payload instanceof TimerMessage){
+			this.handleTimerMessage((TimerMessage) payload);
 		}
 		else if (payload instanceof CheckDistanceResponse){
 			this.handleCheckDistanceConfirm((CheckDistanceResponse) payload, message.getSender());
