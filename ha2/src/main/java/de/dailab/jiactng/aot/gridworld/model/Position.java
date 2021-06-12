@@ -64,14 +64,24 @@ public class Position implements Serializable {
 		if (action == WorkerAction.SOUTH) y2++;
 		if (action == WorkerAction.WEST)  x2--;
 		if (action == WorkerAction.EAST)  x2++;
-		
+
 		if (size == null || (0 <= x2 && x2 < size.x && 0 <= y2 && y2 < size.y)) {
 			return Optional.of(new Position(x2, y2));
 		} else {
 			return Optional.empty();
 		}
 	}
-	
+
+	public Position applyMove(WorkerAction action) {
+		int x2 = this.x, y2 = this.y;
+
+		if (action == WorkerAction.NORTH) y2--;
+		if (action == WorkerAction.SOUTH) y2++;
+		if (action == WorkerAction.WEST)  x2--;
+		if (action == WorkerAction.EAST)  x2++;
+
+		return (new Position(x2, y2));
+	}
 	/**
 	 * Manhattan-distance from here to some other position
 	 */

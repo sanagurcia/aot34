@@ -43,19 +43,17 @@ public class WorkerBean extends AbstractAgentBean {
 	private Position gridSize; 							// the position of "biggest" grid field possible
 	private List<Position> obstacles;					// list of all obstacles - received at beginning of game
 	private List<Position> myMoves;						// all Moves in correct order to execute
-	private Map<Position, List<Position>> orderMoves; 	// Moves to target for each order - used before order is actually assigned from broker. key is target position, first element in list is start position
-	private Graph gridGraph;
+	private Graph gridGraph;							// Graph for distance calculation
 
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
 		this.active = false;
-		this.myTurn = 0;
+		this.myTurn = 2;
 		this.previousMoveValid = true;
 		this.atTarget = false;
 		this.currentOrderPosition = new HashMap<>();
 		this.myMoves = new ArrayList<>();
-		this.orderMoves = new HashMap<>();
 		memory.attach(new WorkerBean.MessageObserver(), new JiacMessage());
 		log.info("Starting worker agent with id: " + thisAgent.getAgentId());
 	}
@@ -63,48 +61,12 @@ public class WorkerBean extends AbstractAgentBean {
 	@Override
 	public void execute() {
 
-		/* Check inbox */
-		/*
-		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
-
-			Object payload = message.getPayload();
-
-			/* activate worker
-			if (payload instanceof ActivateWorker) {
-				ActivateWorker tmp = (ActivateWorker) payload;
-				this.activate(tmp);
-				this.gridSize = tmp.gridSize;
-				this.obstacles = tmp.obstacles;
-				this.myTurn = tmp.myTurn;
-				System.out.println("Worker Agent " + thisAgent.getAgentId() + " activated: ready to accept orders!");
-			}
-			/* if not activated return and don't do anything
-			else if (!this.active) {
-				return;
-			}
-			/* check distance to order
-			else if (payload instanceof CheckDistance){
-				this.handleCheckDistance((CheckDistance) payload);
-			}
-			/* start doing order
-			else if (payload instanceof AssignOrder ) {
-				this.handleAssignOrder((AssignOrder) payload);
-			}
-			/* check if last move got accepted
-			else if (payload instanceof WorkerConfirm) {
-				this.handleWorkerConfirm((WorkerConfirm) payload);
-			}
-			/* order is completed: fail or success
-			else if (payload instanceof OrderCompleted) {
-				this.handleOrderCompleted((OrderCompleted) payload);
-			}
-		} */
-
 		/* If there is an open task, do move */
-		if (this.myMoves.size() > 0){
+		if (this.myMoves.size() >= 0){
 			/* Make sure last move was valid */
 			if (previousMoveValid){
 				WorkerAction myMove = this.doMove();
+				if(myMove == null) return;
 				this.sendMoveToRef(myMove);
 				System.out.println("----------------------WORKER EXECUTING NEXT MOVE: " + myMove + " ---------------------------");
 				System.out.println("----------------------MY POSITION: " + this.myPosition + "----------------------------------"); // ORDER POSITION: " + this.currentOrder.position + "------------");
@@ -138,9 +100,10 @@ public class WorkerBean extends AbstractAgentBean {
 		ICommunicationAddress brokerAddress = this.getBrokerAddress();
 
 		int currentDistance = -1;
+		int turn = this.myTurn;
 
 		/* if target is too far away */
-		if(calculateDistance(this.myPosition, cd.position) >= cd.deadline - this.myTurn - 1){
+		if(calculateDistance(this.myPosition, cd.position) >= cd.deadline - turn - 3){
 			this.sendMessage(brokerAddress, msg);
 			return;
 		}
@@ -158,7 +121,7 @@ public class WorkerBean extends AbstractAgentBean {
 		Position positionTarget = new Position(-1, -1);
 		for (Map.Entry<Position, Integer> deadlines : currentOrderPosition.entrySet()) {
 			if(deadlines.getValue() - this.myTurn < spareTime)
-				spareTime = deadlines.getValue() - this.myTurn;
+				spareTime = deadlines.getValue() - this.myTurn-1;
 				positionTarget = deadlines.getKey();
 		}
 
@@ -197,16 +160,23 @@ public class WorkerBean extends AbstractAgentBean {
 
 	/* calculates the moves from one position to another (considering the obstacles)and returns this path */
 	private List<Position> calculateMoves (Position firstPosition, Position secondPosition) {
+
+		int myNode = positionToNode(firstPosition);
+		int targetNode = positionToNode(secondPosition);
 		List<Position> moves = new ArrayList<>();
 
-		// TODO: add logic here
-		moves.add(firstPosition);
-		Position newPos = new Position(firstPosition.x+1, firstPosition.y);
-		moves.add(newPos);
-		newPos = new Position(firstPosition.x+1, firstPosition.y);
-		moves.add(newPos);
-		// END TODO: add logic till here
-
+		// do bfs to all nodes
+		BreadthFirstPaths bfs = new BreadthFirstPaths(this.gridGraph, myNode);
+		if (!bfs.hasPathTo(targetNode)) {
+			System.out.println("No path to order found!");
+			return moves;
+		}
+		// get path to target node
+		for (int node: bfs.pathTo(targetNode)){
+			moves.add(nodeToPosition(node));
+		}
+		// pop current position (first element of list)
+		moves.remove(0);
 		return moves;
 	}
 
@@ -214,15 +184,16 @@ public class WorkerBean extends AbstractAgentBean {
 	public boolean handleCheckMoves (AssignOrder ao){
 
 		int currentDistance = -1;
-
+		int turn = this.myTurn;
 		/* if target is too far away */
-		if(calculateDistance(this.myPosition, ao.targetPosition) >= ao.deadline - this.myTurn - 1){
+		if(calculateDistance(this.myPosition, ao.targetPosition) >= ao.deadline - turn - 3){
 			return false;
 		}
 
 		/* check if worker has an order already, if not calculate distance and respond */
 		if(this.currentOrderPosition.size() == 0) {
-			this.myMoves = calculateMoves(this.myPosition, ao.targetPosition);
+			List<Position> move =calculateMoves(this.myPosition, ao.targetPosition);
+			this.myMoves = move;
 			return true;
 		}
 
@@ -277,8 +248,11 @@ public class WorkerBean extends AbstractAgentBean {
 		msg.orderId = ao.orderId;
 		msg.workerId = this.myId;
 		ICommunicationAddress brokerAddress = this.getBrokerAddress();
-		if(handleCheckMoves(ao))
+		if(handleCheckMoves(ao)) {
+			System.out.println(this.myMoves);
 			msg.state = Result.SUCCESS;
+			this.currentOrderPosition.put(ao.targetPosition, ao.deadline);
+		}
 		else
 			msg.state = Result.FAIL;
 
@@ -291,18 +265,26 @@ public class WorkerBean extends AbstractAgentBean {
 	 * Returns executed move/order */
 	private WorkerAction doMove() {
 
+		if(atTarget == false && this.myMoves.size() == 0){
+			return null;
+		}
+
+		if(atTarget) {
+			this.atTarget = false;
+			return WorkerAction.ORDER;
+		}
+
 		WorkerAction nextMove = this.calculateNextMove();
 
 		/* Execute move and update myPosition */
 		assert this.myPosition != null;
-		this.myPosition = this.myPosition.applyMove(null, nextMove).orElse(null);
+		this.myPosition = this.myPosition.applyMove(nextMove);
 
 		/* update atTarget */
 		this.atTarget = false;
-		for(int i = 0; i < this.currentOrderPosition.size(); i++){
-			if(this.myPosition.equals(this.currentOrderPosition.get(i))) {
+		for (Map.Entry<Position, Integer> iterate : this.currentOrderPosition.entrySet()) {
+			if(this.myPosition.equals(iterate.getKey())) {
 				this.atTarget = true;
-				nextMove = WorkerAction.ORDER;
 			}
 		}
 
@@ -336,43 +318,6 @@ public class WorkerBean extends AbstractAgentBean {
 		}
 
 		return WorkerAction.EAST;
-
-		/*
-		int myNode = positionToNode(this.myPosition);
-		int orderNode = positionToNode(this.currentOrderPosition.);
-
-		BreadthFirstPaths bfs = new BreadthFirstPaths(this.gridGraph, myNode);
-		if (!bfs.hasPathTo(orderNode)) {
-			System.out.println("No path to order found!");
-			return WorkerAction.NORTH;
-		}
-
-		int nextNode = -1;
-		int k = 0;
-		for (int node : bfs.pathTo(orderNode)) {
-			nextNode = node;
-			if (k==1){
-				break;
-			}
-			k++;
-		}
-		// East or South:
-		if (nextNode > myNode){
-			if (nextNode == myNode+1){
-				return WorkerAction.EAST;
-			} else {
-				return WorkerAction.SOUTH;
-			}
-		}
-		// North or West:
-		else {
-			if (nextNode == myNode-1){
-				return WorkerAction.WEST;
-			} else {
-				return WorkerAction.NORTH;
-			}
-		}
-		*/
 	}
 
 	/* Send executed move (N/S/E/W or Order) to Server */
@@ -429,13 +374,20 @@ public class WorkerBean extends AbstractAgentBean {
 		return position.y * this.gridSize.x + position.x;
 	}
 
+	private Position nodeToPosition(int node){
+		int posY = (int) Math.floor(node/gridSize.x);
+		int posX = node % gridSize.x;
+		return new Position(posX, posY);
+	}
+
 	private void handleWorkerConfirm(WorkerConfirm msg){
 		/* Validate previous move */
 		this.previousMoveValid = msg.state.equals(Result.SUCCESS);
 	}
 
 	private void handleOrderCompleted(OrderCompleted msg) {
-
+		this.atTarget = false;
+		this.currentOrderPosition.remove(msg.pos);
 	}
 
 	/* There are more Worker Agents available than actually used in the game.
@@ -463,9 +415,10 @@ public class WorkerBean extends AbstractAgentBean {
 		/* Default previous move to true, check if already at target */
 		this.previousMoveValid = true;
 		this.atTarget = false;
-		for(int i = 0; i < this.currentOrderPosition.size(); i++){
-			if(this.myPosition.equals(this.currentOrderPosition.get(i)))
+		for (Map.Entry<Position, Integer> iterate : this.currentOrderPosition.entrySet()) {
+			if(this.myPosition.equals(iterate.getKey())) {
 				this.atTarget = true;
+			}
 		}
 	}
 

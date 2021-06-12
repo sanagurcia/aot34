@@ -21,6 +21,14 @@
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
 				<bean parent="WorkerAgent" />
+				<bean parent="WorkerAgent" />
+				<bean parent="WorkerAgent" />
+
+				<bean parent="WorkerAgent" />
+				<bean parent="WorkerAgent" />
+				<bean parent="WorkerAgent" />
+				<bean parent="WorkerAgent" />
+				<bean parent="WorkerAgent" />
 
 		<!--		<bean parent="WorkerAgent_randomMoves" />
   				<bean parent="WorkerAgent_overestimateDistance" />

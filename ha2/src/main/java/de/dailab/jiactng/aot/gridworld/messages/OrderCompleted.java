@@ -1,5 +1,7 @@
 package de.dailab.jiactng.aot.gridworld.messages;
 
+import de.dailab.jiactng.aot.gridworld.model.Position;
+
 /**
  * Sent from Server to Broker that previously took an order if that Order is completed.
  * A completed order can either be successfully completed, or failed.
@@ -11,7 +13,9 @@ public class OrderCompleted extends GameMessage {
 	
 	/** the ID of the order */
 	public String orderId;
-	
+
+	public Position pos;
+
 	/** whether the order has been completed or failed */
 	public Result state;
 	
