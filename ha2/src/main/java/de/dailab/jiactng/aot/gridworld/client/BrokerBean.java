@@ -9,8 +9,14 @@ import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.AgentDescription;
 import de.dailab.jiactng.agentcore.ontology.IAgentDescription;
 import de.dailab.jiactng.aot.gridworld.messages.*;
+import de.dailab.jiactng.aot.gridworld.model.Broker;
 import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
+import org.sercho.masp.space.event.SpaceEvent;
+import org.sercho.masp.space.event.SpaceObserver;
+import org.sercho.masp.space.event.WriteCallEvent;
+
+import java.time.LocalDateTime;
 
 import java.io.Serializable;
 import java.util.*;
@@ -68,6 +74,7 @@ public class BrokerBean extends AbstractAgentBean {
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
+		memory.attach(new BrokerBean.MessageObserver(), new JiacMessage());
 		this.myTurn = 0;
 		this.myTakenOrders = new ArrayList<>();
 		this.myReservedOrders = new ArrayList<>();
@@ -89,15 +96,17 @@ public class BrokerBean extends AbstractAgentBean {
 	public void execute() {
 		// update all my workers
 		this.allMyWorkers = this.getMyWorkerAgents(10);
+
 		// update serverAddress
 		if (this.serverAddress == null){
 			this.serverAddress = this.getServerAddress();
 		}
 
+		/*
 		int value = 1;
 		CheckDistanceResponse tmpCD = new CheckDistanceResponse(null, 0, null);
 
-		/* Handle incoming messages without listener */
+		/* Handle incoming messages without listener
 		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
 			Object payload = message.getPayload();
 
@@ -129,7 +138,7 @@ public class BrokerBean extends AbstractAgentBean {
 				this.handleEndGameMessage((EndGameMessage) payload);
 			}
 		}
-
+		*/
 		if (this.gameId == null){
 			this.startNewGame();
 		}
@@ -373,7 +382,7 @@ public class BrokerBean extends AbstractAgentBean {
 	private void startNewGame() {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
-		startGameMsg.gridFile = "/grids/22_1.grid";
+		startGameMsg.gridFile = "/grids/aot34_1.grid";
 		if (this.serverAddress != null){
 			this.sendMessage(this.serverAddress, startGameMsg);
 		}
@@ -382,7 +391,57 @@ public class BrokerBean extends AbstractAgentBean {
 		}
 	}
 
+	private IAgentDescription chooseAvailableWorker(Order order){
+		/* Choose first agent available: Can be improved! */
+		return this.myAvailableWorkers.get(0);
+	}
+
+	private void handleMessage(JiacMessage message) {
+		Object payload = message.getPayload();
+
+		if (payload instanceof StartGameResponse) {
+			this.handleStartGameResponse((StartGameResponse) payload);
+		}
+		else if (payload instanceof OrderMessage){
+			this.handleOrderMessage((OrderMessage) payload);
+		}
+		else if (payload instanceof TakeOrderConfirm){
+			this.handleTakeOrderConfirm((TakeOrderConfirm) payload);
+		}
+		else if (payload instanceof CheckDistanceResponse){
+			this.handleCheckDistanceConfirm((CheckDistanceResponse) payload, message.getSender());
+		}
+		else if (payload instanceof AssignOrderConfirm){
+			this.handleAssignOrderConfirm((AssignOrderConfirm) payload, message.getSender());
+		}
+		else if (payload instanceof OrderCompleted){
+			this.handleOrderCompleted((OrderCompleted) payload);
+		}
+		else if (payload instanceof EndGameMessage){
+			this.handleEndGameMessage((EndGameMessage) payload);
+		}
+	}
+
 	/* INFRASTRUCTURE FUNCTIONS */
+	/* Message Observer Class */
+	private class MessageObserver implements SpaceObserver<IFact> {
+		/* new id */
+
+		@SuppressWarnings("rawtypes")
+		@Override
+		public void notify(SpaceEvent<? extends IFact> event) {
+			if (event instanceof WriteCallEvent) {
+				WriteCallEvent writeEvent = (WriteCallEvent) event;
+				if (writeEvent.getObject() instanceof JiacMessage) {
+					JiacMessage message = (JiacMessage) writeEvent.getObject();
+					if (message.getPayload() instanceof GridMessage) {
+						handleMessage(message);
+						memory.remove(message);
+					}
+				}
+			}
+		}
+	}
 
 	/* Use example function to get server address, return null if not found */
 	private ICommunicationAddress getServerAddress() {
@@ -410,6 +469,7 @@ public class BrokerBean extends AbstractAgentBean {
 		Action sendAction = retrieveAction(ICommunicationBean.ACTION_SEND);
 		JiacMessage message = new JiacMessage(payload);
 		invoke(sendAction, new Serializable[] {message, receiver});
-		System.out.println("BROKER SENDING " + payload);
+		// Sending current time to assert that message handling occurs outside of execute() cycle.
+		System.out.println("BROKER SENDING @ " + LocalDateTime.now() + "\n\tPayload: " + payload);
 	}
 }

@@ -1134,3 +1134,125 @@ Caused by: org.apache.activemq.transport.TransportDisposedIOException: peer (vm:
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
 	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 02:29:30,596 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7118 mb of usable space - resetting to maximum available disk space: 7118 mb
+2021-06-12 02:29:37,880 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7118 mb of usable space - resetting to maximum available disk space: 7118 mb
+2021-06-12 02:29:38,388 INFO [n-6942dfb8c0ed0.a-6942dc723398c.BrokerBean] - starting broker agent
+2021-06-12 02:29:38,413 INFO [n-6942dfb8c0ed0.a-6942dd5c0c3d9.WorkerBean] - Starting worker agent with id: a-6942dd5c0c3d9
+2021-06-12 02:29:38,418 INFO [n-6942dfb8c0ed0.a-6942de8adee9f.WorkerBean] - Starting worker agent with id: a-6942de8adee9f
+2021-06-12 02:29:38,419 INFO [n-6942dfb8c0ed0.a-6942df7c1b2b6.WorkerBean] - Starting worker agent with id: a-6942df7c1b2b6
+2021-06-12 02:29:38,460 WARN [n-6942dfb8c0ed0.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 02:29:39,459 WARN [n-6942dfb8c0ed0.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 02:29:40,464 WARN [n-6942dfb8c0ed0.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 02:30:17,706 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:58360 failed: java.net.SocketException: Connection reset
+2021-06-12 02:30:17,708 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-6942c6a0f8d0aStandardJMSBroker#4 and tcp:///192.168.178.21:58357@58359 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-12 02:30:33,285 INFO [n-6942c6a0f8d0a.a-6942c69121f25.ServerMetaBean] - Logging game C:\Users\sinam\IdeaProjects\aot34\logs\game_210612-023033_1811055076.txt
+2021-06-12 02:30:33,289 ERROR [n-6942c6a0f8d0a.a-6942c69121f25.ServerMetaBean] - Failed to log game results to file
+java.nio.file.NoSuchFileException: logs\game_210612-023033_1811055076.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:478)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:224)
+	at java.base/java.nio.file.Files.write(Files.java:3556)
+	at java.base/java.nio.file.Files.write(Files.java:3607)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.logGameResults(ServerBean.java:456)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.execute(ServerBean.java:376)
+	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 02:30:48,828 WARN [n-6942c6a0f8d0a.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-12 02:30:48,829 WARN [n-6942c6a0f8d0a.IDirectory] - 	df@n-6942dfb8c0ed0
+2021-06-12 02:31:31,372 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7120 mb of usable space - resetting to maximum available disk space: 7120 mb
+2021-06-12 02:31:31,693 INFO [n-6944856c58d06.a-694484b99cf35.BrokerBean] - starting broker agent
+2021-06-12 02:31:31,706 INFO [n-6944856c58d06.a-694489639de70.WorkerBean] - Starting worker agent with id: a-694489639de70
+2021-06-12 02:31:31,710 INFO [n-6944856c58d06.a-69448595f24c6.WorkerBean] - Starting worker agent with id: a-69448595f24c6
+2021-06-12 02:31:31,712 INFO [n-6944856c58d06.a-6944840758d48.WorkerBean] - Starting worker agent with id: a-6944840758d48
+2021-06-12 02:31:31,720 WARN [n-6944856c58d06.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 02:31:32,717 WARN [n-6944856c58d06.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 02:31:33,723 WARN [n-6944856c58d06.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 02:31:34,734 WARN [n-6944856c58d06.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-12 02:31:59,671 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-6942c6a0f8d0aStandardJMSBroker#6 and tcp:///192.168.178.21:58366@58368 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-12 02:31:59,671 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:58369 failed: java.net.SocketException: Connection reset
+2021-06-12 02:32:27,826 INFO [n-6942c6a0f8d0a.a-6942c69121f25.ServerMetaBean] - Logging game C:\Users\sinam\IdeaProjects\aot34\logs\game_210612-023227_1816095432.txt
+2021-06-12 02:32:27,826 ERROR [n-6942c6a0f8d0a.a-6942c69121f25.ServerMetaBean] - Failed to log game results to file
+java.nio.file.NoSuchFileException: logs\game_210612-023227_1816095432.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:478)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:224)
+	at java.base/java.nio.file.Files.write(Files.java:3556)
+	at java.base/java.nio.file.Files.write(Files.java:3607)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.logGameResults(ServerBean.java:456)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.execute(ServerBean.java:376)
+	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-12 02:32:33,843 WARN [n-6942c6a0f8d0a.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-12 02:32:33,844 WARN [n-6942c6a0f8d0a.IDirectory] - 	df@n-6944856c58d06

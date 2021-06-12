@@ -14,6 +14,10 @@ import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
 import de.dailab.jiactng.aot.gridworld.model.Worker;
 import de.dailab.jiactng.aot.gridworld.model.WorkerAction;
+import de.dailab.jiactng.aot.gridworld.server.ServerBean;
+import org.sercho.masp.space.event.SpaceEvent;
+import org.sercho.masp.space.event.SpaceObserver;
+import org.sercho.masp.space.event.WriteCallEvent;
 
 import java.io.Serializable;
 import java.sql.Array;
@@ -22,6 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.dailab.jiactng.aot.gridworld.model.Graph;
+import de.dailab.jiactng.aot.gridworld.model.BreadthFirstPaths;
 
 public class WorkerBean extends AbstractAgentBean {
 
@@ -38,6 +44,7 @@ public class WorkerBean extends AbstractAgentBean {
 	private List<Position> obstacles;					// list of all obstacles - received at beginning of game
 	private List<Position> myMoves;						// all Moves in correct order to execute
 	private Map<Position, List<Position>> orderMoves; 	// Moves to target for each order - used before order is actually assigned from broker. key is target position, first element in list is start position
+	private Graph gridGraph;
 
 	@Override
 	public void doStart() throws Exception {
@@ -49,6 +56,7 @@ public class WorkerBean extends AbstractAgentBean {
 		this.currentOrderPosition = new HashMap<>();
 		this.myMoves = new ArrayList<>();
 		this.orderMoves = new HashMap<>();
+		memory.attach(new WorkerBean.MessageObserver(), new JiacMessage());
 		log.info("Starting worker agent with id: " + thisAgent.getAgentId());
 	}
 
@@ -56,10 +64,12 @@ public class WorkerBean extends AbstractAgentBean {
 	public void execute() {
 
 		/* Check inbox */
+		/*
 		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
+
 			Object payload = message.getPayload();
 
-			/* activate worker */
+			/* activate worker
 			if (payload instanceof ActivateWorker) {
 				ActivateWorker tmp = (ActivateWorker) payload;
 				this.activate(tmp);
@@ -68,27 +78,27 @@ public class WorkerBean extends AbstractAgentBean {
 				this.myTurn = tmp.myTurn;
 				System.out.println("Worker Agent " + thisAgent.getAgentId() + " activated: ready to accept orders!");
 			}
-			/* if not activated return and don't do anything */
+			/* if not activated return and don't do anything
 			else if (!this.active) {
 				return;
 			}
-			/* check distance to order */
+			/* check distance to order
 			else if (payload instanceof CheckDistance){
 				this.handleCheckDistance((CheckDistance) payload);
 			}
-			/* start doing order */
+			/* start doing order
 			else if (payload instanceof AssignOrder ) {
 				this.handleAssignOrder((AssignOrder) payload);
 			}
-			/* check if last move got accepted */
+			/* check if last move got accepted
 			else if (payload instanceof WorkerConfirm) {
 				this.handleWorkerConfirm((WorkerConfirm) payload);
 			}
-			/* order is completed: fail or success */
+			/* order is completed: fail or success
 			else if (payload instanceof OrderCompleted) {
 				this.handleOrderCompleted((OrderCompleted) payload);
 			}
-		}
+		} */
 
 		/* If there is an open task, do move */
 		if (this.myMoves.size() > 0){
@@ -108,13 +118,16 @@ public class WorkerBean extends AbstractAgentBean {
 
 	/* calculates the distance from one position to another (considering the obstacles) and returns number of moves necessary to get there. */
 	private int calculateDistance (Position firstPosition, Position secondPosition) {
-		List<Position> moves = new ArrayList<>();
+		int myNode = positionToNode(firstPosition);
+		int orderNode = positionToNode(secondPosition);
 
-		moves.add(firstPosition);
-
-		// add logic here
-
-		return moves.size();
+		// new bfs, starting from my position
+		BreadthFirstPaths bfs = new BreadthFirstPaths(this.gridGraph, myNode);
+		int distance = -1;
+		if (bfs.hasPathTo(orderNode)){
+			distance = bfs.distTo(orderNode);
+		}
+		return distance;
 	}
 
 	/* figures out if order is possible. If yes return success and distance to target, if not return fail */
@@ -185,9 +198,14 @@ public class WorkerBean extends AbstractAgentBean {
 	/* calculates the moves from one position to another (considering the obstacles)and returns this path */
 	private List<Position> calculateMoves (Position firstPosition, Position secondPosition) {
 		List<Position> moves = new ArrayList<>();
-		moves.add(firstPosition);
 
-		// add logic here
+		// TODO: add logic here
+		moves.add(firstPosition);
+		Position newPos = new Position(firstPosition.x+1, firstPosition.y);
+		moves.add(newPos);
+		newPos = new Position(firstPosition.x+1, firstPosition.y);
+		moves.add(newPos);
+		// END TODO: add logic till here
 
 		return moves;
 	}
@@ -292,8 +310,7 @@ public class WorkerBean extends AbstractAgentBean {
 		return nextMove;
 	}
 
-	/* Executes next move in myMoves List
-	 * Returns NORTH/SOUTH/EAST/WEST */
+	/* calculates the next move */
 	private WorkerAction calculateNextMove() {
 
 		/* gets next move from list */
@@ -319,6 +336,43 @@ public class WorkerBean extends AbstractAgentBean {
 		}
 
 		return WorkerAction.EAST;
+
+		/*
+		int myNode = positionToNode(this.myPosition);
+		int orderNode = positionToNode(this.currentOrderPosition.);
+
+		BreadthFirstPaths bfs = new BreadthFirstPaths(this.gridGraph, myNode);
+		if (!bfs.hasPathTo(orderNode)) {
+			System.out.println("No path to order found!");
+			return WorkerAction.NORTH;
+		}
+
+		int nextNode = -1;
+		int k = 0;
+		for (int node : bfs.pathTo(orderNode)) {
+			nextNode = node;
+			if (k==1){
+				break;
+			}
+			k++;
+		}
+		// East or South:
+		if (nextNode > myNode){
+			if (nextNode == myNode+1){
+				return WorkerAction.EAST;
+			} else {
+				return WorkerAction.SOUTH;
+			}
+		}
+		// North or West:
+		else {
+			if (nextNode == myNode-1){
+				return WorkerAction.WEST;
+			} else {
+				return WorkerAction.NORTH;
+			}
+		}
+		*/
 	}
 
 	/* Send executed move (N/S/E/W or Order) to Server */
@@ -335,11 +389,50 @@ public class WorkerBean extends AbstractAgentBean {
 		this.sendMessage(serverAddress, workerMsg);
 	}
 
+	// Create new graph for representing grid & obstacles
+	// this.gridSize & this.obstacles need to be initialized before calling this method!
+	private void createGraph() {
+		int x = this.gridSize.x;
+		int y = this.gridSize.y;
+		Graph gridGraph = new Graph(x*y);
+
+		// map obstacles to graph vertices
+		List<Integer> obstacleNodes = new ArrayList<>();
+		for (Position obstacle : this.obstacles){
+			obstacleNodes.add(this.positionToNode(obstacle));
+		}
+
+		// add edges for grid
+		for (int j=0; j<y; j++) {
+			for (int i = 0; i < x; i++) {
+				int v = i + j*x;
+				// if at last column, don't add right edge
+				if (i < x - 1) {
+					// if edge to obstacle, don't add
+					if (!(obstacleNodes.contains(v) || obstacleNodes.contains(v+1))) {
+						gridGraph.addEdge(v, v + 1);
+					}
+				}
+				// if at last row, don't add bottom edge
+				if (j < y - 1) {
+					// if edge to obstacle, don't add
+					if (!(obstacleNodes.contains(v) || obstacleNodes.contains(v+x))) {
+						gridGraph.addEdge(v, v + x);
+					}
+				}
+			}
+		}
+		this.gridGraph = gridGraph;
+	}
+
+	private int positionToNode(Position position){
+		return position.y * this.gridSize.x + position.x;
+	}
+
 	private void handleWorkerConfirm(WorkerConfirm msg){
 		/* Validate previous move */
 		this.previousMoveValid = msg.state.equals(Result.SUCCESS);
 	}
-
 
 	private void handleOrderCompleted(OrderCompleted msg) {
 
@@ -361,6 +454,8 @@ public class WorkerBean extends AbstractAgentBean {
 		this.obstacles = msg.obstacles;
 		this.myId = this.me.id;
 		this.gameId = msg.gameId;
+		// setup graph
+		this.createGraph();
 	}
 
 	/* checks if worker is already at target when assigned */
@@ -374,7 +469,50 @@ public class WorkerBean extends AbstractAgentBean {
 		}
 	}
 
+	private void handleMessage(JiacMessage msg){
+		Object payload = msg.getPayload();
+
+		if (payload instanceof ActivateWorker) {
+			this.activate((ActivateWorker) payload);
+			System.out.println("Worker Agent " + thisAgent.getAgentId() + " activated: ready to accept orders!");
+		}
+		else if (this.active){
+			if (payload instanceof AssignOrder ) {
+				this.handleAssignOrder((AssignOrder) payload);
+			}
+			else if (payload instanceof WorkerConfirm) {
+				this.handleWorkerConfirm((WorkerConfirm) payload);
+			}
+			else if (payload instanceof CheckDistance){
+				this.handleCheckDistance((CheckDistance) payload);
+			}
+			else if (payload instanceof OrderCompleted) {
+				this.handleOrderCompleted((OrderCompleted) payload);
+			}
+		}
+	}
+
 	/* Infrastructure Functions */
+	/* Message Observer allows event based async reacting to incoming messages */
+	private class MessageObserver implements SpaceObserver<IFact> {
+		/* new id */
+
+		@SuppressWarnings("rawtypes")
+		@Override
+		public void notify(SpaceEvent<? extends IFact> event) {
+			if (event instanceof WriteCallEvent) {
+				WriteCallEvent writeEvent = (WriteCallEvent) event;
+				if (writeEvent.getObject() instanceof JiacMessage) {
+					JiacMessage message = (JiacMessage) writeEvent.getObject();
+					if (message.getPayload() instanceof GridMessage) {
+						handleMessage(message);
+						memory.remove(message);
+					}
+				}
+			}
+		}
+	}
+
 	private ICommunicationAddress getServerAddress() {
 		ICommunicationAddress server = null;
 		IAgentDescription serverAgent = thisAgent.searchAgent(new AgentDescription(null, "ServerAgent", null, null, null, null));
