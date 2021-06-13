@@ -9,7 +9,6 @@ import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.AgentDescription;
 import de.dailab.jiactng.agentcore.ontology.IAgentDescription;
 import de.dailab.jiactng.aot.gridworld.messages.*;
-import de.dailab.jiactng.aot.gridworld.model.Broker;
 import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
 import org.sercho.masp.space.event.SpaceEvent;
@@ -39,8 +38,6 @@ public class BrokerBean extends AbstractAgentBean {
 	private List<IAgentDescription> myActiveWorkers;
 	/* List for available worker agents: agents that are active, but not reserved or contracted */
 	private List<IAgentDescription> myAvailableWorkers;
-	/* List containing worker agents reserved for future assignment */
-	private List<IAgentDescription> myReservedWorkers;
 	/* List for currently contracted worker agents: agents busy with orders */
 	private List<IAgentDescription> myContractedWorkers;
 
@@ -60,8 +57,6 @@ public class BrokerBean extends AbstractAgentBean {
 
 	/* Current game related attributes */
 	private Integer gameId;
-	private Position gridSize;
-	private List<Position> obstacles;
 
 	/* Orders I've taken, but not confirmed from initiator */
 	private List<String> myTakenOrders;
@@ -69,8 +64,6 @@ public class BrokerBean extends AbstractAgentBean {
 	private List<String> myReservedOrders;
 	/* Orders confirmed by initiator and contracted out to worker */
 	private List<String> myContractedOrders;
-	/* Orders that timed out after checking distance, auction has to start */
-	private List<String> myTimedOutOrders;
 
 	/* Temporary solution for associating Workers with orders
 	*  Key: OrderId, Value: AgentDescription */
@@ -88,7 +81,6 @@ public class BrokerBean extends AbstractAgentBean {
 		this.allMyWorkers = new ArrayList<>();
 		this.myActiveWorkers = new ArrayList<>();
 		this.myAvailableWorkers = new ArrayList<>();
-		this.myReservedWorkers = new ArrayList<>();
 		this.myContractedWorkers = new ArrayList<>();
 		this.allOrders = new ArrayList<>();
 		this.workerOrderMap = new HashMap<>();
@@ -131,7 +123,7 @@ public class BrokerBean extends AbstractAgentBean {
 
 		CheckDistance cd = new CheckDistance(msg.order.id, msg.order.position,msg.order.deadline);
 
-		if(this.myAvailableWorkers.isEmpty() || this.myAvailableWorkers.size() == 0) return;
+		if(this.myAvailableWorkers.isEmpty()) return;
 		this.myReservedOrders.add(msg.order.id);
 
 		/* for each available worker: ask for distance */
@@ -154,28 +146,19 @@ public class BrokerBean extends AbstractAgentBean {
 	}
 
 	public void sendTimerMessage(String orderId){
-		//possibly not needed
-		//TimerMessage timerMsg = new TimerMessage(orderId);
-		//this.sendMessage(this.brokerAddress, timerMsg);
-		CheckDistanceResponse checkDistanceResponse = new CheckDistanceResponse(orderId,-2,Result.FAIL);
+		CheckDistanceResponse checkDistanceResponse = new CheckDistanceResponse(orderId,-2,Result.FAIL, null);
 		this.sendMessage(this.brokerAddress,checkDistanceResponse);
 	}
 
-	public void handleTimerMessage (TimerMessage msg){
-		//checks if the Timeout already exist or adds it to the myTimedOutOrders && checks if the order is in MyReservedOrder
-		//possibly not needed
-		if(!this.myTimedOutOrders.contains(msg.orderId) && this.myReservedOrders.contains(msg.orderId)) {
-			myTimedOutOrders.add(msg.orderId);
-		}
-	}
-
 	/* Worker only answers if he can reach target in time, then assign this worker */
-	public void handleCheckDistanceConfirm(CheckDistanceResponse cd, ICommunicationAddress sender){
+	public void handleCheckDistanceConfirm(CheckDistanceResponse cd){
 
 		if((this.countAskedWorkers.get(cd.orderId) != this.answeredCheckDistance.get(cd.orderId).size()) && cd.distance !=-2) return;
-		if(this.myTakenOrders.indexOf(cd.orderId) != -1) return;
-		if(this.myContractedOrders.indexOf(cd.orderId) != -1) return;
-		if(this.myAvailableWorkers.isEmpty() || this.myAvailableWorkers.size() == 0) return;
+		// if((this.countAskedWorkers.get(cd.orderId) == this.answeredCheckDistance.get(cd.orderId).size()) && cd.distance ==-2) return;
+		if(this.myTakenOrders.contains(cd.orderId)) return;
+		if(this.myContractedOrders.contains(cd.orderId)) return;
+		if(this.myAvailableWorkers.isEmpty()) return;
+		if(this.answeredCheckDistance.get(cd.orderId) == null) return;
 
 		/* construct TakeOrderMessage and send to server */
 		TakeOrderMessage takeOrderMsg = new TakeOrderMessage();
@@ -197,20 +180,49 @@ public class BrokerBean extends AbstractAgentBean {
 			j++;
 		}
 
+		/*
 		int i = 0;
 		sizeList = this.myAvailableWorkers.size();
 		IAgentDescription currAgent;
 		while(sizeList > 0) {
-			currAgent = this.myAvailableWorkers.get(i);  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// hier nur die aus der answered attribut durchgehen
+			currAgent = this.myAvailableWorkers.get(i);
 			if (currAgent.getMessageBoxAddress().equals(sender)) {
-				/* reserve worker agent for assignment */
+				/* reserve worker agent for assignment
 				this.myAvailableWorkers.remove(currAgent);
 				this.myReservedWorkers.add(currAgent);
-				this.tempWorkerOrderMap.put(cd.orderId, currAgent); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// in diese Liste nur den Worker packen, der am besten geeignet ist
+				this.tempWorkerOrderMap.put(cd.orderId, currAgent);
 				break;
 			}
 			sizeList--;
 			i++;
+		}
+		*/
+
+		/* get all answers from workers in List */
+		List<CheckDistanceResponse> tmpList = new ArrayList<>();
+		for (Map.Entry<String, List<CheckDistanceResponse>> answers : this.answeredCheckDistance.entrySet()) {
+			if (answers.getKey().equals(cd.orderId)) {
+				tmpList = answers.getValue();
+			}
+		}
+
+		/* choose worker who is closest to target */
+		int dist = 10000000;
+		ICommunicationAddress currentAgent = null;
+		for (CheckDistanceResponse checkDistanceResponse : tmpList) {
+			if (checkDistanceResponse.distance < dist) {
+				dist = checkDistanceResponse.distance;
+				currentAgent = checkDistanceResponse.sender;
+			}
+		}
+
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		/* get worker who was assigned */
+		for(IAgentDescription agent : this.myAvailableWorkers){
+			if(agent.getMessageBoxAddress().equals(currentAgent)){
+				this.tempWorkerOrderMap.put(cd.orderId, agent);
+				this.answeredCheckDistance.remove(cd.orderId, currentAgent);
+			}
 		}
 	}
 
@@ -218,12 +230,10 @@ public class BrokerBean extends AbstractAgentBean {
 	private void handleTakeOrderConfirm(TakeOrderConfirm msg){
 
 		/* Assign order to chosen available reserved-worker.*/
-		if(this.myReservedWorkers.isEmpty()) return;
 		if(!this.tempWorkerOrderMap.containsKey(msg.orderId)) return;
 
 		IAgentDescription assignedWorker = this.tempWorkerOrderMap.get(msg.orderId);
 		this.tempWorkerOrderMap.remove(msg.orderId);
-		this.myReservedWorkers.remove(assignedWorker);
 
 		if (msg.state == Result.SUCCESS && findOrder(msg.orderId) != null){
 
@@ -231,11 +241,11 @@ public class BrokerBean extends AbstractAgentBean {
 			AssignOrder assignOrderMsg = new AssignOrder();
 
 			/* Look for order in taken orders list */
-			for(int i = 0; i < this.myTakenOrders.size(); i++){
-				if(this.myTakenOrders.get(i).equals(msg.orderId)){
-					assignOrderMsg.orderId = this.myTakenOrders.get(i);
-					assignOrderMsg.targetPosition = findOrder(this.myTakenOrders.get(i)).position;
-					assignOrderMsg.deadline = findOrder(this.myTakenOrders.get(i)).deadline;
+			for (String myTakenOrder : this.myTakenOrders) {
+				if (myTakenOrder.equals(msg.orderId)) {
+					assignOrderMsg.orderId = myTakenOrder;
+					assignOrderMsg.targetPosition = findOrder(myTakenOrder).position;
+					assignOrderMsg.deadline = findOrder(myTakenOrder).deadline;
 				}
 			}
 
@@ -252,9 +262,9 @@ public class BrokerBean extends AbstractAgentBean {
 		else {
 			this.myAvailableWorkers.add(assignedWorker);
 			String deleteOrder = "";
-			for(int i = 0; i < this.myTakenOrders.size(); i++){
-				if(this.myTakenOrders.get(i).equals(msg.orderId)){
-					deleteOrder = this.myTakenOrders.get(i);
+			for (String myTakenOrder : this.myTakenOrders) {
+				if (myTakenOrder.equals(msg.orderId)) {
+					deleteOrder = myTakenOrder;
 				}
 			}
 			this.myTakenOrders.remove(deleteOrder);
@@ -262,11 +272,53 @@ public class BrokerBean extends AbstractAgentBean {
 	}
 
 	private Order findOrder(String orderId){
-		for(int i = 0; i < allOrders.size(); i++){
-			if(allOrders.get(i).id.equals(orderId))
-				return allOrders.get(i);
+		for (Order allOrder : allOrders) {
+			if (allOrder.id.equals(orderId))
+				return allOrder;
 		}
 		return null;
+	}
+
+	/* Worker only answers if he can reach target in time, then assign this worker */
+	public int handleNewWorker(CheckDistanceResponse cd){
+
+		if(!this.myTakenOrders.contains(cd.orderId)) return -1;
+		if(!this.myContractedOrders.contains(cd.orderId)) return -1;
+		if(this.myAvailableWorkers.isEmpty()) return -1;
+		if(this.answeredCheckDistance.get(cd.orderId) == null) return -1;
+
+		/* get all answers from workers in List */
+		List<CheckDistanceResponse> tmpList = new ArrayList<>();
+		for (Map.Entry<String, List<CheckDistanceResponse>> answers : this.answeredCheckDistance.entrySet()) {
+			if (answers.getKey().equals(cd.orderId)) {
+				tmpList = answers.getValue();
+			}
+		}
+
+		/* choose worker who is closest to target */
+		int dist = 10000000;
+		ICommunicationAddress currentAgent = null;
+		for (CheckDistanceResponse checkDistanceResponse : tmpList) {
+			if (checkDistanceResponse.distance < dist) {
+				dist = checkDistanceResponse.distance;
+				currentAgent = checkDistanceResponse.sender;
+			}
+		}
+
+		/* get new worker who was assigned */
+		for(IAgentDescription agent : this.myAvailableWorkers){
+			if(agent.getMessageBoxAddress().equals(currentAgent)){
+				this.tempWorkerOrderMap.put(cd.orderId, agent);
+			}
+		}
+
+		return 1;
+	}
+
+
+	private int getNewWorkerToDoTheWork(String orderId){
+		CheckDistanceResponse cd = new CheckDistanceResponse(orderId, -2, Result.FAIL, null);
+		return handleNewWorker(cd);
 	}
 
 	/* Msg from Worker to Broker, accepting assignment of order */
@@ -276,25 +328,28 @@ public class BrokerBean extends AbstractAgentBean {
 		IAgentDescription assignedWorker = null;
 
 		/* Look for AssignedWorker in reserved workers list */
-		for(int i = 0; i < this.myContractedWorkers.size(); i++){
-			if(this.myContractedWorkers.get(i).getMessageBoxAddress().equals(sender)){
-				assignedWorker = this.myContractedWorkers.get(i);
+		for (IAgentDescription myContractedWorker : this.myContractedWorkers) {
+			if (myContractedWorker.getMessageBoxAddress().equals(sender)) {
+				assignedWorker = myContractedWorker;
 			}
 		}
 
 		String theOrder = "";
 
 		/* Look for order in contracted orders list */
-		for(int i = 0; i < this.myContractedOrders.size(); i++){
-			if(this.myContractedOrders.get(i).equals(msg.orderId)){
-				theOrder = this.myContractedOrders.get(i);
+		for (String myContractedOrder : this.myContractedOrders) {
+			if (myContractedOrder.equals(msg.orderId)) {
+				theOrder = myContractedOrder;
 			}
 		}
 
 		if (msg.state == Result.FAIL) {
 			this.myAvailableWorkers.add(assignedWorker);
 			this.myContractedWorkers.remove(assignedWorker);
-			this.myContractedOrders.remove(theOrder);  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// hier einem anderen worker die aufgabe geben, aus answered attribut
+			if(getNewWorkerToDoTheWork(msg.orderId) == -1) {
+				this.myContractedOrders.remove(theOrder);
+				System.out.println("ORDER COULD NOT BE ASSIGNED TO NEW FREE WORKER");
+			}
 		}
 
 		else if (msg.state == Result.SUCCESS){
@@ -313,16 +368,16 @@ public class BrokerBean extends AbstractAgentBean {
 		}
 
 		/* Look for order in contracted orders list */
-		for(int i = 0; i < this.myContractedOrders.size(); i++){
-			if(this.myContractedOrders.get(i).equals(msg.orderId)){
-				theOrder = this.myContractedOrders.get(i);
+		for (String myContractedOrder : this.myContractedOrders) {
+			if (myContractedOrder.equals(msg.orderId)) {
+				theOrder = myContractedOrder;
 			}
 		}
 
 		this.myContractedOrders.remove(theOrder);
 
 		/* Find contracted worker: make him available again */
-		if (theOrder != ""){
+		if (!theOrder.equals("")){
 			IAgentDescription theWorker = this.workerOrderMap.remove(theOrder);
 			this.myContractedWorkers.remove(theWorker);
 			this.myAvailableWorkers.add(theWorker);
@@ -342,8 +397,8 @@ public class BrokerBean extends AbstractAgentBean {
 	private void handleStartGameResponse(StartGameResponse response) {
 		/* Set up local variables for game */
 		this.gameId = response.gameId;
-		this.gridSize = response.size;
-		this.obstacles = response.obstacles;
+		Position gridSize = response.size;
+		List<Position> obstacles = response.obstacles;
 
 		/* For each initialWorker activate worker from allMyWorkers */
 		/* Check that enough agent threads for initial workers */
@@ -358,8 +413,8 @@ public class BrokerBean extends AbstractAgentBean {
 			/* Create ActivateWorker message */
 			ActivateWorker activateWorkerMsg = new ActivateWorker();
 			activateWorkerMsg.gameId = this.gameId;
-			activateWorkerMsg.gridSize = this.gridSize;
-			activateWorkerMsg.obstacles = this.obstacles;
+			activateWorkerMsg.gridSize = gridSize;
+			activateWorkerMsg.obstacles = obstacles;
 			activateWorkerMsg.myTurn = this.myTurn;
 			activateWorkerMsg.activatedWorker = response.initialWorkers.get(i);
 
@@ -403,17 +458,15 @@ public class BrokerBean extends AbstractAgentBean {
 		else if (payload instanceof TakeOrderConfirm){
 			this.handleTakeOrderConfirm((TakeOrderConfirm) payload);
 		}
-		else if (payload instanceof TimerMessage){
-			this.handleTimerMessage((TimerMessage) payload);
-		}
 		else if (payload instanceof CheckDistanceResponse){
 			tmpCD = (CheckDistanceResponse) payload;
+			tmpCD.sender = message.getSender();
 			if(this.answeredCheckDistance.containsKey(tmpCD.orderId)) {
 				value = this.answeredCheckDistance.get(tmpCD.orderId);
 			}
 			value.add(tmpCD);
 			this.answeredCheckDistance.put(tmpCD.orderId, value);
-			this.handleCheckDistanceConfirm((CheckDistanceResponse) payload, message.getSender());
+			this.handleCheckDistanceConfirm((CheckDistanceResponse) payload);
 		}
 		else if (payload instanceof AssignOrderConfirm){
 			this.handleAssignOrderConfirm((AssignOrderConfirm) payload, message.getSender());

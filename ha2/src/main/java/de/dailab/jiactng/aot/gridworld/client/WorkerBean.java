@@ -1,33 +1,24 @@
 package de.dailab.jiactng.aot.gridworld.client;
 
+import de.dailab.jiactng.agentcore.AbstractAgentBean;
 import de.dailab.jiactng.agentcore.action.Action;
 import de.dailab.jiactng.agentcore.comm.ICommunicationAddress;
 import de.dailab.jiactng.agentcore.comm.ICommunicationBean;
+import de.dailab.jiactng.agentcore.comm.message.JiacMessage;
 import de.dailab.jiactng.agentcore.knowledge.IFact;
 import de.dailab.jiactng.agentcore.ontology.AgentDescription;
 import de.dailab.jiactng.agentcore.ontology.IAgentDescription;
 import de.dailab.jiactng.aot.gridworld.messages.*;
-
-import de.dailab.jiactng.agentcore.AbstractAgentBean;
-import de.dailab.jiactng.agentcore.comm.message.JiacMessage;
-import de.dailab.jiactng.aot.gridworld.model.Order;
-import de.dailab.jiactng.aot.gridworld.model.Position;
-import de.dailab.jiactng.aot.gridworld.model.Worker;
-import de.dailab.jiactng.aot.gridworld.model.WorkerAction;
-import de.dailab.jiactng.aot.gridworld.server.ServerBean;
+import de.dailab.jiactng.aot.gridworld.model.*;
 import org.sercho.masp.space.event.SpaceEvent;
 import org.sercho.masp.space.event.SpaceObserver;
 import org.sercho.masp.space.event.WriteCallEvent;
 
 import java.io.Serializable;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import de.dailab.jiactng.aot.gridworld.model.Graph;
-import de.dailab.jiactng.aot.gridworld.model.BreadthFirstPaths;
 
 public class WorkerBean extends AbstractAgentBean {
 
@@ -35,7 +26,6 @@ public class WorkerBean extends AbstractAgentBean {
 	private boolean previousMoveValid;					// referee (server) approved last move
 	private boolean atTarget;							// worker is at order target
 	private int myTurn;									// game turn
-	private Worker me;									// class with info about myself, contains Position attribute
 	private String myId;								// Classes inheriting from Element--e.g., Worker, Order-- have String IDs
 	private Integer gameId; 							// current game id
 	private Map<Position, Integer> currentOrderPosition;// list of all target order positions with their deadline
@@ -62,18 +52,16 @@ public class WorkerBean extends AbstractAgentBean {
 	public void execute() {
 
 		/* If there is an open task, do move */
-		if (this.myMoves.size() >= 0){
-			/* Make sure last move was valid */
-			if (previousMoveValid){
-				WorkerAction myMove = this.doMove();
-				if(myMove == null) return;
-				this.sendMoveToRef(myMove);
-				System.out.println("----------------------WORKER EXECUTING NEXT MOVE: " + myMove + " ---------------------------");
-				System.out.println("----------------------MY POSITION: " + this.myPosition + "----------------------------------"); // ORDER POSITION: " + this.currentOrder.position + "------------");
-				System.out.println("----------------------AT TARGET: " + this.atTarget + "--------------------------.-----------");
-			}
-			else { System.out.println("Previous move not approved."); }
+		/* Make sure last move was valid */
+		if (previousMoveValid){
+			WorkerAction myMove = this.doMove();
+			if(myMove == null) return;
+			this.sendMoveToRef(myMove);
+			System.out.println("----------------------WORKER EXECUTING NEXT MOVE: " + myMove + " ---------------------------");
+			System.out.println("----------------------MY POSITION: " + this.myPosition + "----------------------------------"); // ORDER POSITION: " + this.currentOrder.position + "------------");
+			System.out.println("----------------------AT TARGET: " + this.atTarget + "--------------------------.-----------");
 		}
+		else { System.out.println("Previous move not approved."); }
 
 		this.myTurn++;
 	}
@@ -96,10 +84,10 @@ public class WorkerBean extends AbstractAgentBean {
 	public void handleCheckDistance(CheckDistance cd){
 
 		/* default message if worker declines */
-		CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, -1, Result.FAIL);
+		CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, -1, Result.FAIL, null);
 		ICommunicationAddress brokerAddress = this.getBrokerAddress();
 
-		int currentDistance = -1;
+		int currentDistance;
 		int turn = this.myTurn;
 
 		/* if target is too far away */
@@ -111,7 +99,7 @@ public class WorkerBean extends AbstractAgentBean {
 		/* check if worker has an order already, if not calculate distance and respond */
 		if(this.currentOrderPosition.size() == 0) {
 			currentDistance = calculateDistance(this.myPosition, cd.position);
-			msg = new CheckDistanceResponse(cd.orderId, currentDistance, Result.SUCCESS);
+			msg = new CheckDistanceResponse(cd.orderId, currentDistance, Result.SUCCESS, null);
 			this.sendMessage(brokerAddress, msg);
 			return;
 		}
@@ -138,7 +126,7 @@ public class WorkerBean extends AbstractAgentBean {
 		while(before || after){
 			if(before){
 				if(calculateDistance(this.myPosition, cd.position) + calculateDistance(cd.position, positionTarget) <= spareTime){
-					msg = new CheckDistanceResponse(cd.orderId, calculateDistance(this.myPosition, cd.position), Result.SUCCESS);
+					msg = new CheckDistanceResponse(cd.orderId, calculateDistance(this.myPosition, cd.position), Result.SUCCESS, null);
 					this.sendMessage(brokerAddress, msg);
 					return;
 				}
@@ -146,7 +134,7 @@ public class WorkerBean extends AbstractAgentBean {
 			}
 			if(after){
 				if(calculateDistance(this.myPosition, positionTarget) + calculateDistance(positionTarget, cd.position) <= cd.deadline - this.myTurn){
-					msg = new CheckDistanceResponse(cd.orderId, calculateDistance(this.myPosition, positionTarget) + calculateDistance(positionTarget, cd.position), Result.SUCCESS);
+					msg = new CheckDistanceResponse(cd.orderId, calculateDistance(this.myPosition, positionTarget) + calculateDistance(positionTarget, cd.position), Result.SUCCESS, null);
 					this.sendMessage(brokerAddress, msg);
 					return;
 				}
@@ -155,7 +143,6 @@ public class WorkerBean extends AbstractAgentBean {
 		}
 
 		this.sendMessage(brokerAddress, msg);
-		return;
 	}
 
 	/* calculates the moves from one position to another (considering the obstacles)and returns this path */
@@ -183,7 +170,6 @@ public class WorkerBean extends AbstractAgentBean {
 	/* figures out if order is possible. If yes return true and set moves in myMoves */
 	public boolean handleCheckMoves (AssignOrder ao){
 
-		int currentDistance = -1;
 		int turn = this.myTurn;
 		/* if target is too far away */
 		if(calculateDistance(this.myPosition, ao.targetPosition) >= ao.deadline - turn - 3){
@@ -192,8 +178,7 @@ public class WorkerBean extends AbstractAgentBean {
 
 		/* check if worker has an order already, if not calculate distance and respond */
 		if(this.currentOrderPosition.size() == 0) {
-			List<Position> move =calculateMoves(this.myPosition, ao.targetPosition);
-			this.myMoves = move;
+			this.myMoves = calculateMoves(this.myPosition, ao.targetPosition);
 			return true;
 		}
 
@@ -218,7 +203,7 @@ public class WorkerBean extends AbstractAgentBean {
 		while(before || after){
 			if(before){
 				if(calculateDistance(this.myPosition, ao.targetPosition) + calculateDistance(ao.targetPosition, positionTarget) <= spareTime){
-					List<Position> newList = new ArrayList<Position>();
+					List<Position> newList = new ArrayList<>();
 					newList.addAll(calculateMoves(this.myPosition, ao.targetPosition));
 					newList.addAll(calculateMoves(ao.targetPosition, positionTarget));
 					this.myMoves = newList;
@@ -228,7 +213,7 @@ public class WorkerBean extends AbstractAgentBean {
 			}
 			if(after){
 				if(calculateDistance(this.myPosition, positionTarget) + calculateDistance(positionTarget, ao.targetPosition) <= ao.deadline - this.myTurn){
-					List<Position> newList = new ArrayList<Position>();
+					List<Position> newList = new ArrayList<>();
 					newList.addAll(calculateMoves(this.myPosition, positionTarget));
 					newList.addAll(calculateMoves(positionTarget, ao.targetPosition));
 					this.myMoves = newList;
@@ -265,7 +250,7 @@ public class WorkerBean extends AbstractAgentBean {
 	 * Returns executed move/order */
 	private WorkerAction doMove() {
 
-		if(atTarget == false && this.myMoves.size() == 0){
+		if(!atTarget && this.myMoves.size() == 0){
 			return null;
 		}
 
@@ -283,8 +268,9 @@ public class WorkerBean extends AbstractAgentBean {
 		/* update atTarget */
 		this.atTarget = false;
 		for (Map.Entry<Position, Integer> iterate : this.currentOrderPosition.entrySet()) {
-			if(this.myPosition.equals(iterate.getKey())) {
+			if (this.myPosition.equals(iterate.getKey())) {
 				this.atTarget = true;
+				break;
 			}
 		}
 
@@ -400,11 +386,12 @@ public class WorkerBean extends AbstractAgentBean {
 	* */
 	private void activate(ActivateWorker msg){
 		this.active = true;
-		this.me = msg.activatedWorker;
-		this.myPosition = this.me.position;
+		// class with info about myself, contains Position attribute
+		Worker me = msg.activatedWorker;
+		this.myPosition = me.position;
 		this.gridSize = msg.gridSize;
 		this.obstacles = msg.obstacles;
-		this.myId = this.me.id;
+		this.myId = me.id;
 		this.gameId = msg.gameId;
 		// setup graph
 		this.createGraph();
@@ -416,8 +403,9 @@ public class WorkerBean extends AbstractAgentBean {
 		this.previousMoveValid = true;
 		this.atTarget = false;
 		for (Map.Entry<Position, Integer> iterate : this.currentOrderPosition.entrySet()) {
-			if(this.myPosition.equals(iterate.getKey())) {
+			if (this.myPosition.equals(iterate.getKey())) {
 				this.atTarget = true;
+				break;
 			}
 		}
 	}
