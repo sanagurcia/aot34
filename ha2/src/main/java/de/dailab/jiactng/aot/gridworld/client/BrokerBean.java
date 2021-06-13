@@ -38,8 +38,6 @@ public class BrokerBean extends AbstractAgentBean {
 	private List<IAgentDescription> myActiveWorkers;
 	/* List for available worker agents: agents that are active, but not reserved or contracted */
 	private List<IAgentDescription> myAvailableWorkers;
-	/* List for currently contracted worker agents: agents busy with orders */
-	private List<IAgentDescription> myContractedWorkers;
 
 	private List<Order> allOrders;
 
@@ -74,14 +72,13 @@ public class BrokerBean extends AbstractAgentBean {
 	public void doStart() throws Exception {
 		super.doStart();
 		memory.attach(new BrokerBean.MessageObserver(), new JiacMessage());
-		this.myTurn = 0;
+		this.myTurn = 1;
 		this.myTakenOrders = new ArrayList<>();
 		this.myReservedOrders = new ArrayList<>();
 		this.myContractedOrders = new ArrayList<>();
 		this.allMyWorkers = new ArrayList<>();
 		this.myActiveWorkers = new ArrayList<>();
 		this.myAvailableWorkers = new ArrayList<>();
-		this.myContractedWorkers = new ArrayList<>();
 		this.allOrders = new ArrayList<>();
 		this.workerOrderMap = new HashMap<>();
 		this.tempWorkerOrderMap = new HashMap<>();
@@ -111,7 +108,10 @@ public class BrokerBean extends AbstractAgentBean {
 		// System.out.println("BROKER--Available worker agents: " + this.myAvailableWorkers.size());
 		// System.out.println("BROKER--Contracted worker agents: " + this.myContractedWorkers.size());
 
-		this.myTurn++;
+		else {
+			System.out.println("BROKER TURN: " + this.myTurn + " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+			this.myTurn++;
+		}
 	}
 
 	/* server sends broker orders: broker asks for distance from all available worker */
@@ -121,14 +121,14 @@ public class BrokerBean extends AbstractAgentBean {
 
 		this.allOrders.add(msg.order);
 
-		CheckDistance cd = new CheckDistance(msg.order.id, msg.order.position,msg.order.deadline);
+		CheckDistance cd = new CheckDistance(msg.order.id, msg.order.position,msg.order.deadline, this.myTurn);
 
 		if(this.myAvailableWorkers.isEmpty()) return;
 		this.myReservedOrders.add(msg.order.id);
 
 		/* for each available worker: ask for distance */
 		for (int i = 0; i < this.myAvailableWorkers.size(); i++){
-			this.countAskedWorkers.put(cd.orderId, i);
+			this.countAskedWorkers.put(cd.orderId, i+1);
 			this.sendMessage(this.myAvailableWorkers.get(i).getMessageBoxAddress(), cd);
 		}
 
@@ -146,25 +146,73 @@ public class BrokerBean extends AbstractAgentBean {
 	}
 
 	public void sendTimerMessage(String orderId){
-		CheckDistanceResponse checkDistanceResponse = new CheckDistanceResponse(orderId,-2,Result.FAIL, null);
+		CheckDistanceResponse checkDistanceResponse = new CheckDistanceResponse(orderId,123456789, Result.FAIL, null);
 		this.sendMessage(this.brokerAddress,checkDistanceResponse);
 	}
 
 	/* Worker only answers if he can reach target in time, then assign this worker */
 	public void handleCheckDistanceConfirm(CheckDistanceResponse cd){
 
-		if((this.countAskedWorkers.get(cd.orderId) != this.answeredCheckDistance.get(cd.orderId).size()) && cd.distance !=-2) return;
+		if((this.countAskedWorkers.get(cd.orderId) != this.answeredCheckDistance.get(cd.orderId).size()) && cd.distance != 123456789) return;
 		// if((this.countAskedWorkers.get(cd.orderId) == this.answeredCheckDistance.get(cd.orderId).size()) && cd.distance ==-2) return;
 		if(this.myTakenOrders.contains(cd.orderId)) return;
 		if(this.myContractedOrders.contains(cd.orderId)) return;
 		if(this.myAvailableWorkers.isEmpty()) return;
 		if(this.answeredCheckDistance.get(cd.orderId) == null) return;
 
+		/* get list of responses */
+		List<CheckDistanceResponse> list = new ArrayList<>();
+		for (Map.Entry<String, List<CheckDistanceResponse>> response : this.answeredCheckDistance.entrySet()) {
+			if (response.getKey().equals(cd.orderId)) {
+				list = response.getValue();
+			}
+		}
+
+		boolean isThereAnyone = false;
+		for(CheckDistanceResponse tmp : list){
+			if(tmp.result == Result.SUCCESS)
+				isThereAnyone = true;
+		}
+
+		if(!isThereAnyone) {
+			return;
+		}
+
 		/* construct TakeOrderMessage and send to server */
 		TakeOrderMessage takeOrderMsg = new TakeOrderMessage();
 		takeOrderMsg.orderId = cd.orderId;
 		takeOrderMsg.brokerId = thisAgent.getAgentId();
 		takeOrderMsg.gameId = this.gameId;
+
+		/* choose worker who is closest to target */
+		int dist = 1000000;
+		ICommunicationAddress currentAgent = null;
+		CheckDistanceResponse cdr = null;
+		for (CheckDistanceResponse checkDistanceResponse : list) {
+			if (checkDistanceResponse.distance < dist) {
+				cdr = checkDistanceResponse;
+				dist = checkDistanceResponse.distance;
+				System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" + cd.orderId);
+				currentAgent = checkDistanceResponse.sender;
+			}
+		}
+
+		/* get worker who was assigned */
+		boolean b = false;
+		for(IAgentDescription agent : this.myAvailableWorkers){
+			if(agent.getMessageBoxAddress().equals(currentAgent)){
+				b = true;
+				System.out.println("HIER PACKEN WIR ORDER IN LIST XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" + cd.orderId);
+				this.tempWorkerOrderMap.put(cd.orderId, agent);
+				list.remove(cdr);
+				this.answeredCheckDistance.put(cd.orderId, list);
+				break;
+			}
+		}
+
+		if(!b) {
+			int i = 0;
+		}
 
 		int j = 0;
 		int sizeList = this.myReservedOrders.size();
@@ -180,61 +228,20 @@ public class BrokerBean extends AbstractAgentBean {
 			j++;
 		}
 
-		/*
-		int i = 0;
-		sizeList = this.myAvailableWorkers.size();
-		IAgentDescription currAgent;
-		while(sizeList > 0) {
-			currAgent = this.myAvailableWorkers.get(i);
-			if (currAgent.getMessageBoxAddress().equals(sender)) {
-				/* reserve worker agent for assignment
-				this.myAvailableWorkers.remove(currAgent);
-				this.myReservedWorkers.add(currAgent);
-				this.tempWorkerOrderMap.put(cd.orderId, currAgent);
-				break;
-			}
-			sizeList--;
-			i++;
-		}
-		*/
-
-		/* get all answers from workers in List */
-		List<CheckDistanceResponse> tmpList = new ArrayList<>();
-		for (Map.Entry<String, List<CheckDistanceResponse>> answers : this.answeredCheckDistance.entrySet()) {
-			if (answers.getKey().equals(cd.orderId)) {
-				tmpList = answers.getValue();
-			}
-		}
-
-		/* choose worker who is closest to target */
-		int dist = 10000000;
-		ICommunicationAddress currentAgent = null;
-		for (CheckDistanceResponse checkDistanceResponse : tmpList) {
-			if (checkDistanceResponse.distance < dist) {
-				dist = checkDistanceResponse.distance;
-				currentAgent = checkDistanceResponse.sender;
-			}
-		}
-
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		/* get worker who was assigned */
-		for(IAgentDescription agent : this.myAvailableWorkers){
-			if(agent.getMessageBoxAddress().equals(currentAgent)){
-				this.tempWorkerOrderMap.put(cd.orderId, agent);
-				this.answeredCheckDistance.remove(cd.orderId, currentAgent);
-			}
-		}
 	}
 
 	/* Msg from Server to Broker, confirming the order */
 	private void handleTakeOrderConfirm(TakeOrderConfirm msg){
 
 		/* Assign order to chosen available reserved-worker.*/
-		if(!this.tempWorkerOrderMap.containsKey(msg.orderId)) return;
+		if(!this.tempWorkerOrderMap.containsKey(msg.orderId)){
+			return;
+		}
 
 		IAgentDescription assignedWorker = this.tempWorkerOrderMap.get(msg.orderId);
-		this.tempWorkerOrderMap.remove(msg.orderId);
+		// this.tempWorkerOrderMap.remove(msg.orderId);
 
+		System.out.println("result findOrder: " + findOrder(msg.orderId) + " mit " + msg.orderId);
 		if (msg.state == Result.SUCCESS && findOrder(msg.orderId) != null){
 
 			/* Construct AssignOrder message */
@@ -246,8 +253,12 @@ public class BrokerBean extends AbstractAgentBean {
 					assignOrderMsg.orderId = myTakenOrder;
 					assignOrderMsg.targetPosition = findOrder(myTakenOrder).position;
 					assignOrderMsg.deadline = findOrder(myTakenOrder).deadline;
+					assignOrderMsg.turn = this.myTurn;
+					break;
 				}
 			}
+
+			System.out.println("assignOrderMsg: " + assignOrderMsg.orderId + " turn: " + this.myTurn);
 
 			/* Send AssignOrder to assignedWorker */
 			this.sendMessage(assignedWorker.getMessageBoxAddress(), assignOrderMsg);
@@ -255,7 +266,6 @@ public class BrokerBean extends AbstractAgentBean {
 			/* Add order to contracted orders and worker to contracted workers */
 			this.myContractedOrders.add(assignOrderMsg.orderId);
 			this.myTakenOrders.remove(assignOrderMsg.orderId);
-			this.myContractedWorkers.add(assignedWorker);
 		}
 
 		/* If order confirm fail, free up one reserved worker */
@@ -298,8 +308,10 @@ public class BrokerBean extends AbstractAgentBean {
 		/* choose worker who is closest to target */
 		int dist = 10000000;
 		ICommunicationAddress currentAgent = null;
+		CheckDistanceResponse cdr = null;
 		for (CheckDistanceResponse checkDistanceResponse : tmpList) {
 			if (checkDistanceResponse.distance < dist) {
+				cdr = checkDistanceResponse;
 				dist = checkDistanceResponse.distance;
 				currentAgent = checkDistanceResponse.sender;
 			}
@@ -309,6 +321,8 @@ public class BrokerBean extends AbstractAgentBean {
 		for(IAgentDescription agent : this.myAvailableWorkers){
 			if(agent.getMessageBoxAddress().equals(currentAgent)){
 				this.tempWorkerOrderMap.put(cd.orderId, agent);
+				tmpList.remove(cdr);
+				this.answeredCheckDistance.put(cd.orderId, tmpList);
 			}
 		}
 
@@ -328,7 +342,7 @@ public class BrokerBean extends AbstractAgentBean {
 		IAgentDescription assignedWorker = null;
 
 		/* Look for AssignedWorker in reserved workers list */
-		for (IAgentDescription myContractedWorker : this.myContractedWorkers) {
+		for (IAgentDescription myContractedWorker : this.myAvailableWorkers) {
 			if (myContractedWorker.getMessageBoxAddress().equals(sender)) {
 				assignedWorker = myContractedWorker;
 			}
@@ -344,8 +358,6 @@ public class BrokerBean extends AbstractAgentBean {
 		}
 
 		if (msg.state == Result.FAIL) {
-			this.myAvailableWorkers.add(assignedWorker);
-			this.myContractedWorkers.remove(assignedWorker);
 			if(getNewWorkerToDoTheWork(msg.orderId) == -1) {
 				this.myContractedOrders.remove(theOrder);
 				System.out.println("ORDER COULD NOT BE ASSIGNED TO NEW FREE WORKER");
@@ -379,8 +391,6 @@ public class BrokerBean extends AbstractAgentBean {
 		/* Find contracted worker: make him available again */
 		if (!theOrder.equals("")){
 			IAgentDescription theWorker = this.workerOrderMap.remove(theOrder);
-			this.myContractedWorkers.remove(theWorker);
-			this.myAvailableWorkers.add(theWorker);
 			System.out.println("=================BROKER: ORDER COMPLETED. MAKING WORKER AVAILABLE.==============");
 			System.out.println("=================BROKER: NOTIFYING WORKER.======================================");
 
@@ -434,7 +444,7 @@ public class BrokerBean extends AbstractAgentBean {
 	private void startNewGame() {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
-		startGameMsg.gridFile = "/grids/grid_1.grid";
+		startGameMsg.gridFile = "/grids/22_2.grid";
 		if (this.serverAddress != null){
 			this.sendMessage(this.serverAddress, startGameMsg);
 		}

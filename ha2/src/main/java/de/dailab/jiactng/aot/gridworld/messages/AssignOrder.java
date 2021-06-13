@@ -11,5 +11,6 @@ public class AssignOrder extends GameMessage {
     public String orderId;
     public Position targetPosition;
     public int deadline;
+    public int turn;
 
 }

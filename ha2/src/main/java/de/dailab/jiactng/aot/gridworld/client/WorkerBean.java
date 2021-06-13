@@ -63,7 +63,6 @@ public class WorkerBean extends AbstractAgentBean {
 		}
 		else { System.out.println("Previous move not approved."); }
 
-		this.myTurn++;
 	}
 
 	/* calculates the distance from one position to another (considering the obstacles) and returns number of moves necessary to get there. */
@@ -84,14 +83,15 @@ public class WorkerBean extends AbstractAgentBean {
 	public void handleCheckDistance(CheckDistance cd){
 
 		/* default message if worker declines */
-		CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, -1, Result.FAIL, null);
+		CheckDistanceResponse msg = new CheckDistanceResponse(cd.orderId, 2000000000, Result.FAIL, null);
 		ICommunicationAddress brokerAddress = this.getBrokerAddress();
 
 		int currentDistance;
-		int turn = this.myTurn;
+		int turn = cd.turn + 2;
+		this.myTurn = cd.turn + 2;
 
 		/* if target is too far away */
-		if(calculateDistance(this.myPosition, cd.position) >= cd.deadline - turn - 3){
+		if(calculateDistance(this.myPosition, cd.position) >= cd.deadline - turn){
 			this.sendMessage(brokerAddress, msg);
 			return;
 		}
@@ -109,7 +109,7 @@ public class WorkerBean extends AbstractAgentBean {
 		Position positionTarget = new Position(-1, -1);
 		for (Map.Entry<Position, Integer> deadlines : currentOrderPosition.entrySet()) {
 			if(deadlines.getValue() - this.myTurn < spareTime)
-				spareTime = deadlines.getValue() - this.myTurn-1;
+				spareTime = deadlines.getValue() - this.myTurn;
 				positionTarget = deadlines.getKey();
 		}
 
@@ -170,9 +170,14 @@ public class WorkerBean extends AbstractAgentBean {
 	/* figures out if order is possible. If yes return true and set moves in myMoves */
 	public boolean handleCheckMoves (AssignOrder ao){
 
-		int turn = this.myTurn;
+		int turn = ao.turn + 2;
+		this.myTurn = ao.turn + 2;
 		/* if target is too far away */
-		if(calculateDistance(this.myPosition, ao.targetPosition) >= ao.deadline - turn - 3){
+		int d = calculateDistance(this.myPosition, ao.targetPosition);
+		if(d >= ao.deadline - turn){
+			System.out.println("worker: " + this.myId + " my pos: " + this.myPosition + " distance to tagret: " + d + " target: " + ao.targetPosition + " deadline: " + ao.deadline + " turn: " + turn);
+			if(d <= 6)
+				return false;
 			return false;
 		}
 

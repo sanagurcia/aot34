@@ -4,7 +4,7 @@ import de.dailab.jiactng.aot.gridworld.model.Order;
 import de.dailab.jiactng.aot.gridworld.model.Position;
 import de.dailab.jiactng.aot.gridworld.model.Worker;
 
-/* worker to broker. replies only if he can reach target in deadline */
+/* broker to worker */
 public class CheckDistance extends GameMessage {
 
     private static final long serialVersionUID = -4218934830297618064L;
@@ -12,11 +12,13 @@ public class CheckDistance extends GameMessage {
     public String orderId;
     public Position position;
     public int deadline;
+    public int turn;
 
 
-    public CheckDistance( String orderId, Position position, int deadline) {
+    public CheckDistance( String orderId, Position position, int deadline, int turn) {
         this.orderId = orderId;
         this.position = position;
         this.deadline = deadline;
+        this.turn = turn;
     }
 }
