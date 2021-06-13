@@ -82,6 +82,18 @@ public class Position implements Serializable {
 
 		return (new Position(x2, y2));
 	}
+
+	public Position redoMove(WorkerAction action) {
+		int x2 = this.x, y2 = this.y;
+
+		if (action == WorkerAction.NORTH) y2++;
+		if (action == WorkerAction.SOUTH) y2--;
+		if (action == WorkerAction.WEST)  x2++;
+		if (action == WorkerAction.EAST)  x2--;
+
+		return (new Position(x2, y2));
+	}
+
 	/**
 	 * Manhattan-distance from here to some other position
 	 */

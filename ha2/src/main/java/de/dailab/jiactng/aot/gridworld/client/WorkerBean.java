@@ -22,24 +22,24 @@ import java.util.Map;
 
 public class WorkerBean extends AbstractAgentBean {
 
-	private boolean active;								// worker only active if involved in game
-	private boolean previousMoveValid;					// referee (server) approved last move
-	private boolean atTarget;							// worker is at order target
-	private int myTurn;									// game turn
-	private String myId;								// Classes inheriting from Element--e.g., Worker, Order-- have String IDs
-	private Integer gameId; 							// current game id
-	private Map<Position, Integer> currentOrderPosition;// list of all target order positions with their deadline
-	private Position myPosition;						// my current position on grid
-	private Position gridSize; 							// the position of "biggest" grid field possible
-	private List<Position> obstacles;					// list of all obstacles - received at beginning of game
-	private List<Position> myMoves;						// all Moves in correct order to execute
-	private Graph gridGraph;							// Graph for distance calculation
+	private boolean active;									// worker only active if involved in game
+	private boolean previousMoveValid;						// referee (server) approved last move
+	private boolean atTarget;								// worker is at order target
+	private int myTurn;										// game turn
+	private String myId;									// Classes inheriting from Element--e.g., Worker, Order-- have String IDs
+	private Integer gameId; 								// current game id
+	private Map<Position, Integer> currentOrderPosition;	// list of all target order positions with their deadline
+	private Position myPosition;							// my current position on grid
+	private Position gridSize; 								// the position of "biggest" grid field possible
+	private List<Position> obstacles;						// list of all obstacles - received at beginning of game
+	private List<Position> myMoves;							// all Moves in correct order to execute
+	private Graph gridGraph;								// Graph for distance calculation
 
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
 		this.active = false;
-		this.myTurn = 2;
+		this.myTurn = 1;
 		this.previousMoveValid = true;
 		this.atTarget = false;
 		this.currentOrderPosition = new HashMap<>();
@@ -57,11 +57,12 @@ public class WorkerBean extends AbstractAgentBean {
 			WorkerAction myMove = this.doMove();
 			if(myMove == null) return;
 			this.sendMoveToRef(myMove);
-			System.out.println("----------------------WORKER EXECUTING NEXT MOVE: " + myMove + " ---------------------------");
-			System.out.println("----------------------MY POSITION: " + this.myPosition + "----------------------------------"); // ORDER POSITION: " + this.currentOrder.position + "------------");
-			System.out.println("----------------------AT TARGET: " + this.atTarget + "--------------------------.-----------");
+			System.out.println("----- WORKER " + this.myId + " AT POSITION " + this.myPosition + " EXECUTE NEXT MOVE: " + myMove + " IS AT TARGET? " + this.atTarget + " -----");
 		}
-		else { System.out.println("Previous move not approved."); }
+		else {
+			System.out.println("PREVIOUS MOVE NOT APPROVED.");
+			this.previousMoveValid = true;
+		}
 
 	}
 
@@ -87,10 +88,11 @@ public class WorkerBean extends AbstractAgentBean {
 		ICommunicationAddress brokerAddress = this.getBrokerAddress();
 
 		int currentDistance;
-		int turn = cd.turn + 2;
-		this.myTurn = cd.turn + 2;
+		int turn = cd.turn + 1;
+		this.myTurn = cd.turn + 1;
 
 		/* if target is too far away */
+		int d = calculateDistance(this.myPosition, cd.position);
 		if(calculateDistance(this.myPosition, cd.position) >= cd.deadline - turn){
 			this.sendMessage(brokerAddress, msg);
 			return;
@@ -170,14 +172,12 @@ public class WorkerBean extends AbstractAgentBean {
 	/* figures out if order is possible. If yes return true and set moves in myMoves */
 	public boolean handleCheckMoves (AssignOrder ao){
 
-		int turn = ao.turn + 2;
-		this.myTurn = ao.turn + 2;
+		int turn = ao.turn + 1;
+		this.myTurn = ao.turn + 1;
+
 		/* if target is too far away */
 		int d = calculateDistance(this.myPosition, ao.targetPosition);
 		if(d >= ao.deadline - turn){
-			System.out.println("worker: " + this.myId + " my pos: " + this.myPosition + " distance to tagret: " + d + " target: " + ao.targetPosition + " deadline: " + ao.deadline + " turn: " + turn);
-			if(d <= 6)
-				return false;
 			return false;
 		}
 
@@ -216,6 +216,7 @@ public class WorkerBean extends AbstractAgentBean {
 				}
 				before = false;
 			}
+
 			if(after){
 				if(calculateDistance(this.myPosition, positionTarget) + calculateDistance(positionTarget, ao.targetPosition) <= ao.deadline - this.myTurn){
 					List<Position> newList = new ArrayList<>();
@@ -239,7 +240,6 @@ public class WorkerBean extends AbstractAgentBean {
 		msg.workerId = this.myId;
 		ICommunicationAddress brokerAddress = this.getBrokerAddress();
 		if(handleCheckMoves(ao)) {
-			System.out.println(this.myMoves);
 			msg.state = Result.SUCCESS;
 			this.currentOrderPosition.put(ao.targetPosition, ao.deadline);
 		}
@@ -374,6 +374,7 @@ public class WorkerBean extends AbstractAgentBean {
 	private void handleWorkerConfirm(WorkerConfirm msg){
 		/* Validate previous move */
 		this.previousMoveValid = msg.state.equals(Result.SUCCESS);
+		if(!previousMoveValid) this.myPosition = this.myPosition.redoMove(msg.action);
 	}
 
 	private void handleOrderCompleted(OrderCompleted msg) {

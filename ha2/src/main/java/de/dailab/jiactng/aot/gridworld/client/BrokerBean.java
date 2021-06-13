@@ -14,36 +14,32 @@ import de.dailab.jiactng.aot.gridworld.model.Position;
 import org.sercho.masp.space.event.SpaceEvent;
 import org.sercho.masp.space.event.SpaceObserver;
 import org.sercho.masp.space.event.WriteCallEvent;
-
 import java.time.LocalDateTime;
-
 import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
-
-/*
-* TODO: smart data structures
-*  1) Tuple list that pairs taken/contracted order with reserved/contracted worker,
-*  2) Associate IAgentDescription with model/Worker.java class,
-*  3) Map structures for myOrders & myWorkers, with IDs as keys,
-*  4) Refactor accordingly.
-* */
-
 
 public class BrokerBean extends AbstractAgentBean {
 
 	/* List containing all worker agents, including those not activated */
 	private List<IAgentDescription> allMyWorkers;
+
 	/* List containing activated worker agents */
 	private List<IAgentDescription> myActiveWorkers;
+
 	/* List for available worker agents: agents that are active, but not reserved or contracted */
 	private List<IAgentDescription> myAvailableWorkers;
 
+	/* list of all orders in game */
 	private List<Order> allOrders;
 
+	/* number of workers we asked for their distance of orderId */
 	private Map<String, Integer> countAskedWorkers;
+
+	/* Map of all CheckDistanceResponses of orderId */
 	private Map<String, List<CheckDistanceResponse>> answeredCheckDistance;
 
+	/* current game turn, increments each execute() */
 	private int myTurn;
 
 	/* Server (referee) address */
@@ -52,20 +48,22 @@ public class BrokerBean extends AbstractAgentBean {
 	/*my own Address*/
 	private ICommunicationAddress brokerAddress;
 
-
 	/* Current game related attributes */
 	private Integer gameId;
 
 	/* Orders I've taken, but not confirmed from initiator */
 	private List<String> myTakenOrders;
+
 	/* Orders I've asked workers for distance, but not taken nor confirmed from initiator */
 	private List<String> myReservedOrders;
+
 	/* Orders confirmed by initiator and contracted out to worker */
 	private List<String> myContractedOrders;
 
-	/* Temporary solution for associating Workers with orders
-	*  Key: OrderId, Value: AgentDescription */
+	/*  Key: OrderId, Value: Worker */
 	private Map<String, IAgentDescription> workerOrderMap;
+
+	/* the worker who is assigned to the orderId which is key */
 	private Map<String, IAgentDescription> tempWorkerOrderMap;
 
 	@Override
@@ -84,13 +82,13 @@ public class BrokerBean extends AbstractAgentBean {
 		this.tempWorkerOrderMap = new HashMap<>();
 		this.countAskedWorkers = new HashMap<>();
 		this.answeredCheckDistance = new HashMap<>();
-		log.info("starting broker agent");
 		this.brokerAddress = getBrokerAddress();
+		log.info("starting broker agent");
 	}
 
 	@Override
 	public void execute() {
-		// update all my workers
+		/* update all my workers */
 		this.allMyWorkers = this.getMyWorkerAgents(10);
 
 		// update serverAddress
@@ -102,14 +100,7 @@ public class BrokerBean extends AbstractAgentBean {
 			this.startNewGame();
 		}
 
-		/* Log state of worker agents */
-		// System.out.println("BROKER--Total worker agents: " + this.allMyWorkers.size());
-		// System.out.println("BROKER--Active worker agents: " + this.myActiveWorkers.size());
-		// System.out.println("BROKER--Available worker agents: " + this.myAvailableWorkers.size());
-		// System.out.println("BROKER--Contracted worker agents: " + this.myContractedWorkers.size());
-
 		else {
-			System.out.println("BROKER TURN: " + this.myTurn + " XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			this.myTurn++;
 		}
 	}
@@ -142,7 +133,6 @@ public class BrokerBean extends AbstractAgentBean {
 				},
 				500
 		);
-
 	}
 
 	public void sendTimerMessage(String orderId){
@@ -154,7 +144,6 @@ public class BrokerBean extends AbstractAgentBean {
 	public void handleCheckDistanceConfirm(CheckDistanceResponse cd){
 
 		if((this.countAskedWorkers.get(cd.orderId) != this.answeredCheckDistance.get(cd.orderId).size()) && cd.distance != 123456789) return;
-		// if((this.countAskedWorkers.get(cd.orderId) == this.answeredCheckDistance.get(cd.orderId).size()) && cd.distance ==-2) return;
 		if(this.myTakenOrders.contains(cd.orderId)) return;
 		if(this.myContractedOrders.contains(cd.orderId)) return;
 		if(this.myAvailableWorkers.isEmpty()) return;
@@ -170,8 +159,10 @@ public class BrokerBean extends AbstractAgentBean {
 
 		boolean isThereAnyone = false;
 		for(CheckDistanceResponse tmp : list){
-			if(tmp.result == Result.SUCCESS)
+			if (tmp.result == Result.SUCCESS) {
 				isThereAnyone = true;
+				break;
+			}
 		}
 
 		if(!isThereAnyone) {
@@ -192,26 +183,18 @@ public class BrokerBean extends AbstractAgentBean {
 			if (checkDistanceResponse.distance < dist) {
 				cdr = checkDistanceResponse;
 				dist = checkDistanceResponse.distance;
-				System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" + cd.orderId);
 				currentAgent = checkDistanceResponse.sender;
 			}
 		}
 
 		/* get worker who was assigned */
-		boolean b = false;
 		for(IAgentDescription agent : this.myAvailableWorkers){
 			if(agent.getMessageBoxAddress().equals(currentAgent)){
-				b = true;
-				System.out.println("HIER PACKEN WIR ORDER IN LIST XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" + cd.orderId);
 				this.tempWorkerOrderMap.put(cd.orderId, agent);
 				list.remove(cdr);
 				this.answeredCheckDistance.put(cd.orderId, list);
 				break;
 			}
-		}
-
-		if(!b) {
-			int i = 0;
 		}
 
 		int j = 0;
@@ -239,9 +222,6 @@ public class BrokerBean extends AbstractAgentBean {
 		}
 
 		IAgentDescription assignedWorker = this.tempWorkerOrderMap.get(msg.orderId);
-		// this.tempWorkerOrderMap.remove(msg.orderId);
-
-		System.out.println("result findOrder: " + findOrder(msg.orderId) + " mit " + msg.orderId);
 		if (msg.state == Result.SUCCESS && findOrder(msg.orderId) != null){
 
 			/* Construct AssignOrder message */
@@ -257,8 +237,6 @@ public class BrokerBean extends AbstractAgentBean {
 					break;
 				}
 			}
-
-			System.out.println("assignOrderMsg: " + assignOrderMsg.orderId + " turn: " + this.myTurn);
 
 			/* Send AssignOrder to assignedWorker */
 			this.sendMessage(assignedWorker.getMessageBoxAddress(), assignOrderMsg);
@@ -391,8 +369,7 @@ public class BrokerBean extends AbstractAgentBean {
 		/* Find contracted worker: make him available again */
 		if (!theOrder.equals("")){
 			IAgentDescription theWorker = this.workerOrderMap.remove(theOrder);
-			System.out.println("=================BROKER: ORDER COMPLETED. MAKING WORKER AVAILABLE.==============");
-			System.out.println("=================BROKER: NOTIFYING WORKER.======================================");
+			System.out.println("=================BROKER: ORDER COMPLETED. NOTIFYING WORKER.=====================");
 
 			/* Forward message to worker */
 			this.sendMessage(theWorker.getMessageBoxAddress(), msg);
@@ -400,7 +377,7 @@ public class BrokerBean extends AbstractAgentBean {
 	}
 
 	private void handleEndGameMessage(EndGameMessage msg){
-		System.out.println("End game. Broker " + msg.brokerId + " reward: " + msg.totalReward);
+		System.out.println("END GAME. BROKER " + msg.brokerId + " REWARD: " + msg.totalReward);
 
 	}
 
@@ -410,8 +387,7 @@ public class BrokerBean extends AbstractAgentBean {
 		Position gridSize = response.size;
 		List<Position> obstacles = response.obstacles;
 
-		/* For each initialWorker activate worker from allMyWorkers */
-		/* Check that enough agent threads for initial workers */
+		/* For each initialWorker activate worker from allMyWorkers. Check that enough agent threads for initial workers */
 		int inactiveWorkers = this.allMyWorkers.size();
 		for (int i=0; i<response.initialWorkers.size(); i++){
 			if (inactiveWorkers == 0){
@@ -444,7 +420,7 @@ public class BrokerBean extends AbstractAgentBean {
 	private void startNewGame() {
 		StartGameMessage startGameMsg = new StartGameMessage();
 		startGameMsg.brokerId = thisAgent.getAgentId();
-		startGameMsg.gridFile = "/grids/22_2.grid";
+		startGameMsg.gridFile = "/grids/22_1.grid";
 		if (this.serverAddress != null){
 			this.sendMessage(this.serverAddress, startGameMsg);
 		}
