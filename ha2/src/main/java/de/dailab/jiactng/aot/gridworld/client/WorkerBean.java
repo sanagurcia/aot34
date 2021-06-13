@@ -77,6 +77,8 @@ public class WorkerBean extends AbstractAgentBean {
 		if (bfs.hasPathTo(orderNode)){
 			distance = bfs.distTo(orderNode);
 		}
+		if(distance == -1) distance = 10000;
+
 		return distance;
 	}
 
@@ -92,7 +94,6 @@ public class WorkerBean extends AbstractAgentBean {
 		this.myTurn = cd.turn + 1;
 
 		/* if target is too far away */
-		int d = calculateDistance(this.myPosition, cd.position);
 		if(calculateDistance(this.myPosition, cd.position) >= cd.deadline - turn){
 			this.sendMessage(brokerAddress, msg);
 			return;
