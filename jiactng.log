@@ -4485,3 +4485,265 @@ java.nio.file.NoSuchFileException: logs\game_210613-224416_733378033.txt
 	at java.base/java.lang.Thread.run(Thread.java:831)
 2021-06-13 22:55:15,910 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:51770 failed: java.net.SocketException: Connection reset
 2021-06-13 22:55:15,912 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-4ee22adff3d6StandardJMSBroker#24 and tcp:///192.168.178.21:63330@51771 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-13 23:25:55,557 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 13800 mb of usable space - resetting to maximum available disk space: 13800 mb
+2021-06-13 23:26:10,087 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 13800 mb of usable space - resetting to maximum available disk space: 13800 mb
+2021-06-13 23:26:10,630 INFO [n-5144cb61d6ee.a-51446fa505e9.BrokerBean] - starting broker agent
+2021-06-13 23:26:10,649 INFO [n-5144cb61d6ee.a-51449930c4d1.WorkerBean] - Starting worker agent with id: a-51449930c4d1
+2021-06-13 23:26:10,659 INFO [n-5144cb61d6ee.a-5144a4242a31.WorkerBean] - Starting worker agent with id: a-5144a4242a31
+2021-06-13 23:26:10,662 INFO [n-5144cb61d6ee.a-5144c5fb931c.WorkerBean] - Starting worker agent with id: a-5144c5fb931c
+2021-06-13 23:26:10,664 INFO [n-5144cb61d6ee.a-514482abf913.WorkerBean] - Starting worker agent with id: a-514482abf913
+2021-06-13 23:26:10,671 INFO [n-5144cb61d6ee.a-5144ae1fc5cb.WorkerBean] - Starting worker agent with id: a-5144ae1fc5cb
+2021-06-13 23:26:10,676 INFO [n-5144cb61d6ee.a-5144946b839f.WorkerBean] - Starting worker agent with id: a-5144946b839f
+2021-06-13 23:26:10,678 INFO [n-5144cb61d6ee.a-51446fc456fe.WorkerBean] - Starting worker agent with id: a-51446fc456fe
+2021-06-13 23:26:10,679 INFO [n-5144cb61d6ee.a-514467396c34.WorkerBean] - Starting worker agent with id: a-514467396c34
+2021-06-13 23:26:10,708 INFO [n-5144cb61d6ee.a-5144c08c6ab3.WorkerBean] - Starting worker agent with id: a-5144c08c6ab3
+2021-06-13 23:26:10,747 INFO [n-5144cb61d6ee.a-5144e45e6f9b.WorkerBean] - Starting worker agent with id: a-5144e45e6f9b
+2021-06-13 23:26:10,764 WARN [n-5144cb61d6ee.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:26:11,769 WARN [n-5144cb61d6ee.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:26:12,771 WARN [n-5144cb61d6ee.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:26:13,827 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:14,794 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:15,796 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:16,803 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:17,796 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:18,806 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:19,808 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:20,816 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:21,814 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:22,814 ERROR [n-514156d5cfda.a-5141568c21f9.ServerMetaBean] - Failure when handling message [Headers: {JiacTNGSenderAddress=>msgbox:n-5144cb61d6ee/a-51446fa505e9;JiacTNGSendToAddress=>n-514156d5cfda/a-5141568c21f9}, Payload: StarGameMessage(broker=a-51446fa505e9, grid=/grids/grid15_2.grid), Sender: msgbox:n-5144cb61d6ee/a-51446fa505e9]
+java.lang.IllegalArgumentException: Invalid grid file: /grids/grid15_2.grid
+	at de.dailab.jiactng.aot.gridworld.util.Util.loadGameFromFile(Util.java:92)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.handleMessage(ServerBean.java:166)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean$MessageObserver.notify(ServerBean.java:485)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.notify(EventedSpaceWrapper.java:183)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.fire(EventedSpaceWrapper.java:146)
+	at org.sercho.masp.space.event.EventedSpaceWrapper$EventDispatcher.run(EventedSpaceWrapper.java:117)
+2021-06-13 23:26:23,529 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:49305 failed: java.net.SocketException: Connection reset
+2021-06-13 23:26:23,532 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-5144cb61d6eeStandardJMSBroker#24 and tcp:///192.168.178.21:49297@49306 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-13 23:26:32,664 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 13800 mb of usable space - resetting to maximum available disk space: 13800 mb
+2021-06-13 23:26:39,546 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-5144cb61d6eeStandardJMSBroker#26 and tcp:///192.168.178.21:49311@49313 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-13 23:26:39,546 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:49314 failed: java.net.SocketException: Connection reset
+2021-06-13 23:26:46,910 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 13800 mb of usable space - resetting to maximum available disk space: 13800 mb
+2021-06-13 23:26:57,937 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:49320 failed: java.net.SocketException: Connection reset
+2021-06-13 23:26:57,940 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-514d4f2cddb2StandardJMSBroker#4 and tcp:///192.168.178.21:49303@49321 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-13 23:27:03,502 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 13800 mb of usable space - resetting to maximum available disk space: 13800 mb
+2021-06-13 23:27:03,929 INFO [n-5150ce65062a.a-51511276cd3a.BrokerBean] - starting broker agent
+2021-06-13 23:27:03,943 INFO [n-5150ce65062a.a-51513f84591b.WorkerBean] - Starting worker agent with id: a-51513f84591b
+2021-06-13 23:27:03,944 INFO [n-5150ce65062a.a-5151316516f8.WorkerBean] - Starting worker agent with id: a-5151316516f8
+2021-06-13 23:27:03,946 INFO [n-5150ce65062a.a-5150ee7ef427.WorkerBean] - Starting worker agent with id: a-5150ee7ef427
+2021-06-13 23:27:03,948 INFO [n-5150ce65062a.a-51511a0d05df.WorkerBean] - Starting worker agent with id: a-51511a0d05df
+2021-06-13 23:27:03,950 INFO [n-5150ce65062a.a-5151006db5cf.WorkerBean] - Starting worker agent with id: a-5151006db5cf
+2021-06-13 23:27:03,957 INFO [n-5150ce65062a.a-5150dbc327f2.WorkerBean] - Starting worker agent with id: a-5150dbc327f2
+2021-06-13 23:27:03,960 INFO [n-5150ce65062a.a-5150d33ddd00.WorkerBean] - Starting worker agent with id: a-5150d33ddd00
+2021-06-13 23:27:03,961 INFO [n-5150ce65062a.a-51512c926477.WorkerBean] - Starting worker agent with id: a-51512c926477
+2021-06-13 23:27:03,962 INFO [n-5150ce65062a.a-515150657fe3.WorkerBean] - Starting worker agent with id: a-515150657fe3
+2021-06-13 23:27:03,964 INFO [n-5150ce65062a.a-51513eee876f.WorkerBean] - Starting worker agent with id: a-51513eee876f
+2021-06-13 23:27:03,966 WARN [n-5150ce65062a.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:27:04,969 WARN [n-5150ce65062a.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:27:05,970 WARN [n-5150ce65062a.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:27:06,979 WARN [n-5150ce65062a.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:27:35,226 WARN [n-514d4f2cddb2.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-13 23:27:35,228 WARN [n-514d4f2cddb2.IDirectory] - 	df@n-5144cb61d6ee
+2021-06-13 23:28:50,029 INFO [n-514d4f2cddb2.a-514d50457721.ServerMetaBean] - Logging game C:\Users\sinam\IdeaProjects\aot34\logs\game_210613-232850_1458391527.txt
+2021-06-13 23:28:50,040 ERROR [n-514d4f2cddb2.a-514d50457721.ServerMetaBean] - Failed to log game results to file
+java.nio.file.NoSuchFileException: logs\game_210613-232850_1458391527.txt
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(FileSystemProvider.java:478)
+	at java.base/java.nio.file.Files.newOutputStream(Files.java:224)
+	at java.base/java.nio.file.Files.write(Files.java:3556)
+	at java.base/java.nio.file.Files.write(Files.java:3607)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.logGameResults(ServerBean.java:456)
+	at de.dailab.jiactng.aot.gridworld.server.ServerBean.execute(ServerBean.java:376)
+	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-06-13 23:29:03,097 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:49327 failed: java.net.SocketException: Connection reset
+2021-06-13 23:29:03,099 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-5150ce65062aStandardJMSBroker#24 and tcp:///192.168.178.21:49318@49328 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-13 23:29:10,978 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 13796 mb of usable space - resetting to maximum available disk space: 13796 mb
+2021-06-13 23:29:36,940 WARN [n-5150ce65062a.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-13 23:29:36,942 WARN [n-5150ce65062a.IDirectory] - 	df@n-514d4f2cddb2
+2021-06-13 23:30:03,086 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:54029 failed: java.net.SocketException: Connection reset
+2021-06-13 23:30:03,088 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-516ee2b475baStandardJMSBroker#4 and tcp:///192.168.178.21:49325@54030 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-13 23:30:08,826 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 13796 mb of usable space - resetting to maximum available disk space: 13796 mb
+2021-06-13 23:30:09,347 INFO [n-517be4258e96.a-517c278bc6e6.BrokerBean] - starting broker agent
+2021-06-13 23:30:09,360 INFO [n-517be4258e96.a-517c5f39281f.WorkerBean] - Starting worker agent with id: a-517c5f39281f
+2021-06-13 23:30:09,364 INFO [n-517be4258e96.a-517c52835234.WorkerBean] - Starting worker agent with id: a-517c52835234
+2021-06-13 23:30:09,366 INFO [n-517be4258e96.a-517c0f7c314b.WorkerBean] - Starting worker agent with id: a-517c0f7c314b
+2021-06-13 23:30:09,369 INFO [n-517be4258e96.a-517c3bfc2b23.WorkerBean] - Starting worker agent with id: a-517c3bfc2b23
+2021-06-13 23:30:09,372 INFO [n-517be4258e96.a-517c228468db.WorkerBean] - Starting worker agent with id: a-517c228468db
+2021-06-13 23:30:09,376 INFO [n-517be4258e96.a-517bfe1815da.WorkerBean] - Starting worker agent with id: a-517bfe1815da
+2021-06-13 23:30:09,377 INFO [n-517be4258e96.a-517bf5bb53dc.WorkerBean] - Starting worker agent with id: a-517bf5bb53dc
+2021-06-13 23:30:09,392 INFO [n-517be4258e96.a-517c4f4c19fb.WorkerBean] - Starting worker agent with id: a-517c4f4c19fb
+2021-06-13 23:30:09,395 INFO [n-517be4258e96.a-517c735545a3.WorkerBean] - Starting worker agent with id: a-517c735545a3
+2021-06-13 23:30:09,396 INFO [n-517be4258e96.a-517c62dc960f.WorkerBean] - Starting worker agent with id: a-517c62dc960f
+2021-06-13 23:30:09,404 WARN [n-517be4258e96.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:30:10,402 WARN [n-517be4258e96.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:30:11,405 WARN [n-517be4258e96.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:30:12,407 WARN [n-517be4258e96.IDirectory] - Cannot find agent:
+Agent:
+ name='ServerAgent'
+ aid=null
+ owner=null
+ state=null
+ messageBoxAddress=null
+ mobile=false
+
+2021-06-13 23:30:29,318 WARN [n-516ee2b475ba.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-13 23:30:29,319 WARN [n-516ee2b475ba.IDirectory] - 	df@n-5150ce65062a
+2021-06-13 23:31:32,928 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.21:54037 failed: java.net.SocketException: Connection reset
+2021-06-13 23:31:32,933 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-517be4258e96StandardJMSBroker#24 and tcp:///192.168.178.21:54027@54038 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-13 23:32:12,350 WARN [n-517be4258e96.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-13 23:32:12,351 WARN [n-517be4258e96.IDirectory] - 	df@n-516ee2b475ba
