@@ -1,0 +1,14 @@
+2021-06-25T11:19:03.398737672Z
+Auction in this session: 1
+
+{state={phase=IDLE, mode=FIXED, randomSeed=12345, last_started=13:18:04.065036184, participants=[]}, config={owner=htiago, startMessage=aot-test-auction, initialJKcount=5, initialBalance=10000.0, messageGroup=de.dailab.jiactng.aot.auction}}
+
+21-06-25 13:18:03 INFO [n-199aced82071.a-199a9fa07df3.AuctioneerMetaBean] Reading group tokens from file /home/htiago/aotgrouptokens.txt
+21-06-25 13:18:03 WARN [n-199aced82071.a-199a9fa07df3.AuctioneerMetaBean] File not found! Allowing any group token.
+21-06-25 13:18:05 INFO [n-199aced82071.a-199a9fa07df3.AuctioneerMetaBean] Current Phase: STARTING
+21-06-25 13:18:05 INFO [n-199aced82071.a-199a9fa07df3.AuctioneerMetaBean] Messages in Memory: 0
+21-06-25 13:18:05 INFO [n-199aced82071.a-199a9fa07df3.AuctioneerMetaBean] Sending StartAuctions(1, aot-test-auction) to group
+21-06-25 13:18:07 INFO [n-199aced82071.a-199a9fa07df3.AuctioneerMetaBean] Current Phase: REGISTRATION
+21-06-25 13:18:07 INFO [n-199aced82071.a-199a9fa07df3.AuctioneerMetaBean] Messages in Memory: 0
+21-06-25 13:18:07 INFO [n-199aced82071.a-199a9fa07df3.AuctioneerMetaBean] No one showed up for the auction. :-(
+

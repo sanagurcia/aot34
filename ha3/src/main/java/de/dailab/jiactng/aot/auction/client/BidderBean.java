@@ -6,22 +6,12 @@ import de.dailab.jiactng.agentcore.comm.ICommunicationAddress;
 import de.dailab.jiactng.agentcore.comm.ICommunicationBean;
 import de.dailab.jiactng.agentcore.comm.message.JiacMessage;
 import de.dailab.jiactng.agentcore.knowledge.IFact;
-import de.dailab.jiactng.agentcore.ontology.AgentDescription;
-import de.dailab.jiactng.agentcore.ontology.IAgentDescription;
 import de.dailab.jiactng.aot.auction.onto.*;
-import jdk.javadoc.internal.tool.Start;
 import org.sercho.masp.space.event.SpaceEvent;
 import org.sercho.masp.space.event.SpaceObserver;
 import org.sercho.masp.space.event.WriteCallEvent;
 
 import java.io.Serializable;
-import java.net.URI;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 
 /*
@@ -71,10 +61,10 @@ public class BidderBean extends AbstractAgentBean {
 	private ICommunicationAddress metaBeanAddress;
 
 	// our bidder id
-	private String myId = "thisIsOurId34";
+	private String myId;
 
 	// our unique group token
-	private String myGroupToken = "weAreGroup34";
+	private String myGroupToken;
 
 	@Override
 	public void doStart() throws Exception {
@@ -176,11 +166,21 @@ public class BidderBean extends AbstractAgentBean {
 		// receive endAuction message from meta bean
 	}
 
+	/* Setter Methods for Spring config in bidder.xml */
+	/* Bidder ID Setter */
+	public void setBidderId(String id) {
+		this.myId = id;
+	}
 
+	/* Group ID Setter */
+	public void setGroupToken(String id) {
+		this.myGroupToken = id;
+	}
 
-
-
-
+	/* Message Group Setter */
+	public void setMessageGroup(String id) {
+		this.groupAddress = id;
+	}
 
 	/* send message */
 	private void sendMessage(ICommunicationAddress receiver, IFact payload) {
