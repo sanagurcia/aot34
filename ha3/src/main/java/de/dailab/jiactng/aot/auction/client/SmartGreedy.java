@@ -25,21 +25,24 @@ public class SmartGreedy {
         List<Resource> bundle = cfb.getBundle();
         double minOffer = cfb.getMinOffer();
         double brutto = this.calculateBrutto(bundle);
-        return -1;
+        return 500;
     }
 
     // Calculate added value to wallet from bundle
     private double calculateBrutto(List<Resource> bundle) {
         double walletBefore = this.calculateWalletValue(this.myWallet);
         // Wallet dummyWallet = this.myWallet.clone();
-        double walletAfter = this.calculateWalletValue(dummyWallet);
-        return walletAfter - walletBefore;
+        // double walletAfter = this.calculateWalletValue(dummyWallet);
+        // return walletAfter - walletBefore;
+        return 150;
     }
 
     private double calculateWalletValue(Wallet wallet) {
+        return 150;
     }
 
     private double calculateProfit(List<Resource> bundle) {
+        return 150;
     }
 
     private void initBundles() {
@@ -60,6 +63,11 @@ public class SmartGreedy {
         for (int i=0; i<bundles.length; i++){
             this.bundlePrices.put(bundles[i], prices[i]);
         }
+    }
+
+    // FOR TESTING PURPOSES
+    public boolean calculateBidDummy(CallForBids cfb) {
+        return true;
     }
 
 }
