@@ -14,7 +14,7 @@ import java.util.Map;
 */
 public class SmartGreedy {
     private Wallet myWallet;
-    private Map<String, Integer> bundlePrices;
+    private Map<Resource[], Integer> bundlePrices;
 
     public SmartGreedy(Wallet wallet) {
         this.myWallet = wallet;
@@ -36,16 +36,25 @@ public class SmartGreedy {
         return walletAfter - walletBefore;
     }
 
-    private double calculateWalletValue(Wallet myWallet) {
-
+    private double calculateWalletValue(Wallet wallet) {
     }
 
     private double calculateProfit(List<Resource> bundle) {
     }
 
     private void initBundles() {
-        String[] bundles = {"AA", "AAA", "AAAA", "AAB", "AJK", "BB", "CCCDDD",
-            "CCDDAA", "CCDDBB", "EEEEEF", "EEEEF", "EEEF", "EEF", "FF", "FJK", "ABCDEFJK"};
+        Resource[][] bundles = {{Resource.A, Resource.A}, {Resource.A, Resource.A, Resource.A},
+                {Resource.A, Resource.A, Resource.A, Resource.A}, {Resource.A, Resource.A, Resource.B},
+                {Resource.A, Resource.J, Resource.K}, {Resource.B, Resource.B},
+                {Resource.C, Resource.C, Resource.C, Resource.D, Resource.D, Resource.D},
+                {Resource.C, Resource.C, Resource.D, Resource.D, Resource.A, Resource.A},
+                {Resource.C, Resource.C, Resource.D, Resource.D, Resource.B, Resource.B},
+                {Resource.E, Resource.E, Resource.E, Resource.E, Resource.E, Resource.F},
+                {Resource.E, Resource.E, Resource.E, Resource.E, Resource.F},
+                {Resource.E, Resource.E, Resource.E, Resource.F},
+                {Resource.E, Resource.E, Resource.F},
+                {Resource.F, Resource.F}, {Resource.F, Resource.J, Resource.K},
+                {Resource.A, Resource.B, Resource.C, Resource.D, Resource.E, Resource.F, Resource.J, Resource.K}};
         Integer[] prices = {200, 300, 400, 200, 200, 50, 1200, 800, 600, 1600, 800, 400, 200, 100, 300, 1400};
         this.bundlePrices = new HashMap<>();
         for (int i=0; i<bundles.length; i++){
