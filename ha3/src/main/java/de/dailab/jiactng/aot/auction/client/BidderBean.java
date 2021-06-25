@@ -13,17 +13,6 @@ import org.sercho.masp.space.event.WriteCallEvent;
 
 import java.io.Serializable;
 
-
-/*
- * TODO
- * add properties for e.g. the multicast message group, or the bidderID
- * add getter methods for those properties so they can be set in the
- * Spring configuration file
- */
-
-
-
-
 /* START */
 // receive startAuctions message from meta bean
 // => reply with register to meta bean
@@ -187,7 +176,6 @@ public class BidderBean extends AbstractAgentBean {
 		Action sendAction = retrieveAction(ICommunicationBean.ACTION_SEND);
 		JiacMessage message = new JiacMessage(payload);
 		invoke(sendAction, new Serializable[] {message, receiver});
-		// Sending current time to assert that message handling occurs outside of execute() cycle.
 		System.out.println("BIDDER SENDING: " + payload);
 	}
 
