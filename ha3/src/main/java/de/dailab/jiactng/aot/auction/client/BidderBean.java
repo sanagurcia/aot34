@@ -55,6 +55,11 @@ public class BidderBean extends AbstractAgentBean {
 	// our unique group token
 	private String myGroupToken;
 
+	// strings are set one time only
+	private int auctioneerAId;
+	private int auctioneerBId;
+	private int auctioneerCId;
+
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
@@ -92,10 +97,6 @@ public class BidderBean extends AbstractAgentBean {
 			this.handleInformSell((InformSell) payload);
 		}
 
-		/* TODO: implement Auction C here */
-		else if (payload instanceof Offer) {
-			this.dummyC((Offer) payload);
-		}
 		/* TODO: till here */
 
 		else if (payload instanceof EndAuction) {
@@ -131,25 +132,38 @@ public class BidderBean extends AbstractAgentBean {
 		// => do NOT reply
 	}
 
+	/* Choose Auction Type Handler (A/B/C) on instanceof CallForBids messsage */
 	private void handleCallForBids(CallForBids payload){
-		// receive callForBids message from auctioneer A (buy)
-		// => if interested: respond with bid message
-
-		// receive callForBids message from auctioneer B (sell)
-		// => if interested: respond with bid message
+		if (payload.getMode() == CallForBids.CfBMode.BUY){
+			buyCallForBids(payload);
+		}
+		else if (payload.getMode() == CallForBids.CfBMode.SELL){
+			sellCallForBids(payload);
+		}
+		else {
+			System.out.println("Unknown CfBMode");
+		}
 	}
 
+	/* React to CfB.SELL */
+	private void sellCallForBids(CallForBids payload) {
+	}
+
+	/* React to CfB.BUY */
+	private void buyCallForBids(CallForBids payload) {
+	}
+
+	/* Update state info based on result of Buy (Auction A/C) */
 	private void handleInformBuy(InformBuy payload){
+		// update state info
 		// receive InformBuy message from auctioneer A (success or fail)
 	}
 
+	/* Update state info based on result of Buy (Auction B/C) */
 	private void handleInformSell(InformSell payload){
+		// update state
 		// receive InformSell message from auctioneer B
 	}
-
-	/* TODO: implement Auction C here */
-	private void dummyC(Offer payload){}
-	/* TODO: till here */
 
 	private void handleEndAuction(EndAuction payload){
 		// receive endAuction message from meta bean
