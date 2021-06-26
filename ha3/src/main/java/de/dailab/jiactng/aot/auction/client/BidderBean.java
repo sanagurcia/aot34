@@ -94,14 +94,7 @@ public class BidderBean extends AbstractAgentBean {
 	}
 
 	@Override
-	public void execute() {
-
-		//System.out.println(getMessageGroup());
-		// because message observer does not seem to work..
-		//for (JiacMessage message : memory.removeAll(new JiacMessage())) {
-		//	handleMessage(message);
-		//}
-	}
+	public void execute() { }
 
 	private void handleMessage(JiacMessage message) {
 		Object payload = message.getPayload();
@@ -217,8 +210,7 @@ public class BidderBean extends AbstractAgentBean {
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), ourOffer);
 		if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
-		//else if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
-		else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
+		// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 
 		// this means something went wrong, so act like nothing was done
 		else
@@ -233,7 +225,6 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* React to CallForBids.SELL - only reply if interested */
 	private void sellCallForBids(CallForBids payload) {
-		// TODO: enter real function here
 		SmartGreedy strategy = new SmartGreedy(this.myWallet);
 		boolean weWantToSell = strategy.calculateSellBid(payload);
 
@@ -242,12 +233,11 @@ public class BidderBean extends AbstractAgentBean {
 
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), payload.getMinOffer());
-		// if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
 		if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
-		else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
+		// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 		else return;
 
-		// remove sold resources from wallet
+		// remove sold resources from dummy wallet
 		this.myWallet.remove(payload.getBundle());
 	}
 
@@ -267,7 +257,6 @@ public class BidderBean extends AbstractAgentBean {
 
 		// add bought bundle to our wallet
 		this.myWallet.add(payload.getBundle());
-
 		this.bidOnItems.remove(payload.getCallId());
 	}
 

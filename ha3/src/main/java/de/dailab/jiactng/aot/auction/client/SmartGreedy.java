@@ -108,7 +108,9 @@ public class SmartGreedy {
     // if wallet contains bundle, return true
     public boolean calculateSellBid(CallForBids cfb) {
         List<Resource> bundle = cfb.getBundle();
+        //System.out.println("Wallet: " + this.myWallet.toString() + " contains bundle: " + bundle.toString() + " , so sell!!");
         if (this.myWallet.contains(bundle)){
+            System.out.println("Wallet contains bundle, so sell!!");
             return true;
         }
         else {
