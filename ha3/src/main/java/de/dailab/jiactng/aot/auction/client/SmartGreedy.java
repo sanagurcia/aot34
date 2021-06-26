@@ -1,10 +1,8 @@
 package de.dailab.jiactng.aot.auction.client;
 import de.dailab.jiactng.aot.auction.onto.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.Map.Entry;
 
 
 /*
@@ -14,34 +12,54 @@ import java.util.Map;
 */
 public class SmartGreedy {
     private Wallet myWallet;
-    private Map<Resource[], Integer> bundlePrices;
+    private Map<Resource[], Integer> bundlesMap;
+    private List<Integer> bundlePrices;
 
     public SmartGreedy(Wallet wallet) {
         this.myWallet = wallet;
         this.initBundles();
     }
 
+    // returns minOffer price, for now
     public double calculateBid(CallForBids cfb) {
         List<Resource> bundle = cfb.getBundle();
         double minOffer = cfb.getMinOffer();
         double brutto = this.calculateBrutto(bundle);
-        return -1;
+        if (brutto > minOffer) {
+            return minOffer;
+        } else {
+            return -1;
+        }
     }
 
     // Calculate added value to wallet from bundle
     private double calculateBrutto(List<Resource> bundle) {
         double walletBefore = this.calculateWalletValue(this.myWallet);
-        // Wallet dummyWallet = this.myWallet.clone();
-        double walletAfter = this.calculateWalletValue(dummyWallet);
+        this.myWallet.add(bundle);
+        double walletAfter = this.calculateWalletValue(this.myWallet);
         return walletAfter - walletBefore;
     }
 
-    private double calculateWalletValue(Wallet wallet) {
+    // while wallet resources not empty, remove bundle and aggregate price
+    private double calculateWalletValue(Wallet wallet)  {
+        // Note: operations on wallet are pass-by-value
+        int totalValue = 0;
+
+        // iterate thru bundles in BundlesMap
+        for(Resource[] bundle: this.bundlesMap.keySet()){
+            System.out.println(Arrays.toString(bundle));    // for testing order
+
+            List<Resource> listBundle = Arrays.asList(bundle);
+            // if wallet contains bundle, add price to total value & remove bundle from wallet
+            if (wallet.contains(listBundle)) {
+                totalValue += this.bundlesMap.get(bundle);
+                wallet.remove(listBundle);
+            }
+        }
+        return (double) totalValue;
     }
 
-    private double calculateProfit(List<Resource> bundle) {
-    }
-
+    // initialize BundlesMap, sorted in descending price order
     private void initBundles() {
         Resource[][] bundles = {{Resource.A, Resource.A}, {Resource.A, Resource.A, Resource.A},
                 {Resource.A, Resource.A, Resource.A, Resource.A}, {Resource.A, Resource.A, Resource.B},
@@ -56,10 +74,31 @@ public class SmartGreedy {
                 {Resource.F, Resource.F}, {Resource.F, Resource.J, Resource.K},
                 {Resource.A, Resource.B, Resource.C, Resource.D, Resource.E, Resource.F, Resource.J, Resource.K}};
         Integer[] prices = {200, 300, 400, 200, 200, 50, 1200, 800, 600, 1600, 800, 400, 200, 100, 300, 1400};
-        this.bundlePrices = new HashMap<>();
+        this.bundlePrices = Arrays.asList(prices);
+        Map<Resource[], Integer> unsortedBundles = new HashMap<>();
+        // add <bundle,price> to map, random order
         for (int i=0; i<bundles.length; i++){
-            this.bundlePrices.put(bundles[i], prices[i]);
+            unsortedBundles.put(bundles[i], prices[i]);
         }
+        // sort bundles map by price, descending
+        this.bundlesMap = sortByValue(unsortedBundles);
     }
 
+    // sort Map by price in descending order
+    private static Map<Resource[], Integer> sortByValue(Map<Resource[], Integer> map){
+        // get entry set
+        List<Entry<Resource[], Integer>> list = new ArrayList<>(map.entrySet());
+
+        // sort entry set by value, reverse order
+        list.sort(Entry.comparingByValue(Comparator.reverseOrder()));
+
+        // LinkedHashMap preserves iteration order based on insertion order!
+        Map<Resource[], Integer> result = new LinkedHashMap<>();
+
+        // put entries in new map, in sorted list order
+        for (Entry<Resource[], Integer> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
+    }
 }
