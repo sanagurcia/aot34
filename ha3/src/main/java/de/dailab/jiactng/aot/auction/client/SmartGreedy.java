@@ -38,9 +38,10 @@ public class SmartGreedy {
 
     // Calculate added value to wallet from bundle
     private double calculateBrutto(List<Resource> bundle) {
-        double walletBefore = this.calculateWalletValue(this.myWallet);
-        this.myWallet.add(bundle);
-        double walletAfter = this.calculateWalletValue(this.myWallet);
+        Wallet copyWallet = copyWallet(this.myWallet);
+        double walletBefore = this.calculateWalletValue(copyWallet);
+        copyWallet.add(bundle);
+        double walletAfter = this.calculateWalletValue(copyWallet);
         return walletAfter - walletBefore;
     }
 
@@ -114,4 +115,16 @@ public class SmartGreedy {
             return false;
         }
     }
+
+    private Wallet copyWallet (Wallet originalWallet) {
+        Wallet copyWallet = new Wallet("copyWallet", 0.);
+        Resource[] resourcesArray = {Resource.A, Resource.B, Resource.C, Resource.D,
+            Resource.E, Resource.F, Resource.J, Resource.K};
+        for (Resource res: resourcesArray) {
+            int amount = originalWallet.get(res);
+            copyWallet.add(res, amount);
+        }
+        return copyWallet;
+    }
+
 }

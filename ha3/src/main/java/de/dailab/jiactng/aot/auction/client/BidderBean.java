@@ -186,8 +186,6 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* Choose Auction Type Handler (A/B/C) on instanceof CallForBids message */
 	private void handleCallForBids(CallForBids payload){
-		System.out.println("WHAT WE RECEIVE: " + payload.toString());
-
 		if (payload.getMode() == CallForBids.CfBMode.BUY)
 		{
 			buyCallForBids(payload);
