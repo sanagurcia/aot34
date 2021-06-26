@@ -25,10 +25,15 @@ public class SmartGreedy {
         double minOffer = cfb.getMinOffer();
         double brutto = this.calculateBrutto(bundle);
         if (brutto > minOffer) {
-            return minOffer;
+            return calculateBuyOffer(brutto, minOffer);
         } else {
             return -1;
         }
+    }
+
+    private double calculateBuyOffer(double brutto, double minOffer) {
+        double interval = brutto - minOffer;
+        return minOffer + Math.random()*interval;
     }
 
     // Calculate added value to wallet from bundle
