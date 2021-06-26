@@ -46,7 +46,6 @@ public class SmartGreedy {
 
         // iterate thru bundles in BundlesMap
         for(Resource[] bundle: this.bundlesMap.keySet()){
-            System.out.println(Arrays.toString(bundle));    // for testing order
 
             List<Resource> listBundle = Arrays.asList(bundle);
             // if wallet contains bundle, add price to total value & remove bundle from wallet

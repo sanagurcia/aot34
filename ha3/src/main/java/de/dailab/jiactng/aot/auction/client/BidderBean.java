@@ -84,11 +84,9 @@ public class BidderBean extends AbstractAgentBean {
 	public void doStart() throws Exception {
 		super.doStart();
 
-		//String messageGroup = ICommunicationBean.ACTION_JOIN_GROUP;
 		String messageGroup = getMessageGroup();
 		IGroupAddress groupAddress = CommunicationAddressFactory.createGroupAddress(messageGroup);
 		thisAgent.getCommunication().joinGroup(groupAddress);
-
 
 		this.bidOnItems = new HashMap<>();
 		memory.attach(new BidderBean.MessageObserver(), new JiacMessage());
@@ -98,13 +96,11 @@ public class BidderBean extends AbstractAgentBean {
 	@Override
 	public void execute() {
 
-		System.out.println("ICH MACHE ETWAS");
-
 		//System.out.println(getMessageGroup());
 		// because message observer does not seem to work..
-		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
-			handleMessage(message);
-		}
+		//for (JiacMessage message : memory.removeAll(new JiacMessage())) {
+		//	handleMessage(message);
+		//}
 	}
 
 	private void handleMessage(JiacMessage message) {
@@ -190,7 +186,7 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* Choose Auction Type Handler (A/B/C) on instanceof CallForBids message */
 	private void handleCallForBids(CallForBids payload){
-		System.out.println(payload.toString());
+		System.out.println("WHAT WE RECEIVE: " + payload.toString());
 
 		if (payload.getMode() == CallForBids.CfBMode.BUY)
 		{
@@ -223,7 +219,7 @@ public class BidderBean extends AbstractAgentBean {
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), ourOffer);
 		if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
-		else if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
+		//else if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
 		else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 
 		// this means something went wrong, so act like nothing was done
@@ -248,8 +244,8 @@ public class BidderBean extends AbstractAgentBean {
 
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), payload.getMinOffer());
-		if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
-		else if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
+		// if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
+		if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
 		else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 		else return;
 
@@ -331,10 +327,10 @@ public class BidderBean extends AbstractAgentBean {
 				WriteCallEvent writeEvent = (WriteCallEvent) event;
 				if (writeEvent.getObject() instanceof JiacMessage) {
 					JiacMessage message = (JiacMessage) writeEvent.getObject();
-					if (message.getPayload() instanceof JiacMessage) {
+					//if (message.getPayload() instanceof JiacMessage) {
 						handleMessage(message);
 						memory.remove(message);
-					}
+					//}
 				}
 			}
 		}
