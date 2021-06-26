@@ -20,7 +20,7 @@ public class SmartGreedy {
     }
 
     // returns minOffer price, for now
-    public double calculateBid(CallForBids cfb) {
+    public double calculateBuyBid(CallForBids cfb) {
         List<Resource> bundle = cfb.getBundle();
         double minOffer = cfb.getMinOffer();
         double brutto = this.calculateBrutto(bundle);
@@ -99,8 +99,14 @@ public class SmartGreedy {
         return result;
     }
 
-    // FOR TESTING PURPOSES
-    public boolean calculateBidDummy(CallForBids cfb) {
-        return true;
+    // if wallet contains bundle, return true
+    public boolean calculateSellBid(CallForBids cfb) {
+        List<Resource> bundle = cfb.getBundle();
+        if (this.myWallet.contains(bundle)){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

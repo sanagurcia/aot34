@@ -202,7 +202,7 @@ public class BidderBean extends AbstractAgentBean {
 	/* React to CallForBids.BUY - only reply if interested */
 	private void buyCallForBids(CallForBids payload) {
 		SmartGreedy strategy = new SmartGreedy(this.myWallet);
-		double ourOffer = strategy.calculateBid(payload);
+		double ourOffer = strategy.calculateBuyBid(payload);
 
 		// we are not interested
 		if(ourOffer == -1) return;
@@ -237,7 +237,7 @@ public class BidderBean extends AbstractAgentBean {
 	private void sellCallForBids(CallForBids payload) {
 		// TODO: enter real function here
 		SmartGreedy strategy = new SmartGreedy(this.myWallet);
-		boolean weWantToSell = strategy.calculateBidDummy(payload);
+		boolean weWantToSell = strategy.calculateSellBid(payload);
 
 		// we are not interested
 		if(!weWantToSell) return;
