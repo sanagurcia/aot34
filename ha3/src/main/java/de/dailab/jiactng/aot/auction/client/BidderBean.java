@@ -77,7 +77,10 @@ public class BidderBean extends AbstractAgentBean {
 
 
 
-
+	// FOR TESTING PURPOSES
+	public boolean calculateBidDummy(CallForBids cfb) {
+		return true;
+	}
 
 
 	@Override
@@ -85,8 +88,10 @@ public class BidderBean extends AbstractAgentBean {
 		super.doStart();
 
 		//String messageGroup = ICommunicationBean.ACTION_JOIN_GROUP;
-		//IGroupAddress groupAddress = CommunicationAddressFactory.createGroupAddress(messageGroup);
-		//thisAgent.getCommunication().joinGroup(groupAddress);
+		String messageGroup = getMessageGroup();
+		IGroupAddress groupAddress = CommunicationAddressFactory.createGroupAddress(messageGroup);
+		thisAgent.getCommunication().joinGroup(groupAddress);
+
 
 		this.bidOnItems = new HashMap<>();
 		memory.attach(new BidderBean.MessageObserver(), new JiacMessage());
@@ -98,6 +103,7 @@ public class BidderBean extends AbstractAgentBean {
 
 		System.out.println("ICH MACHE ETWAS");
 
+		//System.out.println(getMessageGroup());
 		// because message observer does not seem to work..
 		for (JiacMessage message : memory.removeAll(new JiacMessage())) {
 			handleMessage(message);
@@ -305,6 +311,11 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* Message Group Setter for Spring config in bidder.xml */
 	public void setMessageGroup(String id) { this.groupAddress = id; }
+
+	public String getMessageGroup(){
+		System.out.println("Get Message Group.");
+		return this.groupAddress;
+	}
 
 	/* send message */
 	private void sendMessage(ICommunicationAddress receiver, IFact payload) {
