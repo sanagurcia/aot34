@@ -11,13 +11,12 @@ import java.util.Map.Entry;
 * returns Double else -1
 */
 public class SmartGreedy {
-    private Wallet myWallet;
-    private Map<Resource[], Integer> bundlesMap;
-    private List<Integer> bundlePrices;
+    private final Wallet myWallet;
+    private final Map<Resource[], Integer> bundlesMap;
 
     public SmartGreedy(Wallet wallet) {
         this.myWallet = wallet;
-        this.initBundles();
+        this.bundlesMap = initBundles();
     }
 
     // returns minOffer price, for now
@@ -60,7 +59,7 @@ public class SmartGreedy {
     }
 
     // initialize BundlesMap, sorted in descending price order
-    private void initBundles() {
+    private Map<Resource[], Integer> initBundles() {
         Resource[][] bundles = {{Resource.A, Resource.A}, {Resource.A, Resource.A, Resource.A},
                 {Resource.A, Resource.A, Resource.A, Resource.A}, {Resource.A, Resource.A, Resource.B},
                 {Resource.A, Resource.J, Resource.K}, {Resource.B, Resource.B},
@@ -74,14 +73,13 @@ public class SmartGreedy {
                 {Resource.F, Resource.F}, {Resource.F, Resource.J, Resource.K},
                 {Resource.A, Resource.B, Resource.C, Resource.D, Resource.E, Resource.F, Resource.J, Resource.K}};
         Integer[] prices = {200, 300, 400, 200, 200, 50, 1200, 800, 600, 1600, 800, 400, 200, 100, 300, 1400};
-        this.bundlePrices = Arrays.asList(prices);
         Map<Resource[], Integer> unsortedBundles = new HashMap<>();
         // add <bundle,price> to map, random order
         for (int i=0; i<bundles.length; i++){
             unsortedBundles.put(bundles[i], prices[i]);
         }
         // sort bundles map by price, descending
-        this.bundlesMap = sortByValue(unsortedBundles);
+        return sortByValue(unsortedBundles);
     }
 
     // sort Map by price in descending order
