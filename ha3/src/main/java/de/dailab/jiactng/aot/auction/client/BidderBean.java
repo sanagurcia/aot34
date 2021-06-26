@@ -96,6 +96,7 @@ public class BidderBean extends AbstractAgentBean {
 	@Override
 	public void execute() {
 
+
 		//System.out.println(getMessageGroup());
 		// because message observer does not seem to work..
 		//for (JiacMessage message : memory.removeAll(new JiacMessage())) {
@@ -186,7 +187,7 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* Choose Auction Type Handler (A/B/C) on instanceof CallForBids message */
 	private void handleCallForBids(CallForBids payload){
-		System.out.println("WHAT WE RECEIVE: " + payload.toString());
+		//System.out.println("WHAT WE RECEIVE: " + payload.toString());
 
 		if (payload.getMode() == CallForBids.CfBMode.BUY)
 		{
@@ -246,9 +247,12 @@ public class BidderBean extends AbstractAgentBean {
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), payload.getMinOffer());
 		// if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
 		if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
-		else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
+		// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 		else return;
 
+		System.out.println(this.myWallet.toString());
+
+		// System.out.println("XXXXX my Wallet: " + this.myWallet.toString());
 		// remove sold resources from wallet
 		this.myWallet.remove(payload.getBundle());
 	}
