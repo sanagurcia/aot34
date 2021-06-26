@@ -34,9 +34,10 @@ public class SmartGreedy {
     // Calculate added value to wallet from bundle
     private double calculateBrutto(List<Resource> bundle) {
         double walletBefore = this.calculateWalletValue(this.myWallet);
-        this.myWallet.add(bundle);
+        //this.myWallet.add(bundle);
         double walletAfter = this.calculateWalletValue(this.myWallet);
-        return walletAfter - walletBefore;
+        //return walletAfter - walletBefore;
+        return 100;
     }
 
     // while wallet resources not empty, remove bundle and aggregate price
