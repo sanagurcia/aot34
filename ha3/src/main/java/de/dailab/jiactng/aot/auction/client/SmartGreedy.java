@@ -99,4 +99,9 @@ public class SmartGreedy {
         }
         return result;
     }
+
+    // FOR TESTING PURPOSES
+    public boolean calculateBidDummy(CallForBids cfb) {
+        return true;
+    }
 }

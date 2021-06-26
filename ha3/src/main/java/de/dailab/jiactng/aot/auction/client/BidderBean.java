@@ -77,10 +77,7 @@ public class BidderBean extends AbstractAgentBean {
 
 
 
-	// FOR TESTING PURPOSES
-	public boolean calculateBidDummy(CallForBids cfb) {
-		return true;
-	}
+
 
 
 	@Override
