@@ -24320,3 +24320,227 @@
 2021-06-26 14:10:26,726 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
 2021-06-26 14:10:32,636 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.32:58193 failed: java.net.SocketException: Connection reset
 2021-06-26 14:10:32,638 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-3045d265de9a2StandardJMSBroker#6 and tcp:///192.168.178.32:58184@58194 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-06-26 14:11:15,016 WARN [n-3045d265de9a2.IDirectory] - Forget nodes due to missing alive message:
+
+2021-06-26 14:11:15,016 WARN [n-3045d265de9a2.IDirectory] - 	df@n-3045c72e49802
+2021-06-26 14:11:26,706 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:11:26,707 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:12:26,720 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:12:26,720 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:13:26,742 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:13:26,743 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:14:26,735 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:14:26,735 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:15:26,735 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:15:26,736 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:16:26,735 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:16:26,735 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:17:26,742 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:17:26,742 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:18:26,726 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:18:26,727 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:19:26,757 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:19:26,759 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:20:26,763 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:20:26,765 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:21:26,753 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:21:26,753 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:22:26,869 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:22:26,870 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:23:26,869 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:23:26,870 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:24:26,778 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:24:26,778 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:25:26,769 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:25:26,770 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:26:26,815 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:26:26,816 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:27:26,810 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:27:26,812 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:28:26,904 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:28:26,905 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:29:26,819 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:29:26,820 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:30:26,827 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:30:26,828 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:31:26,812 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:31:26,814 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:32:26,831 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:32:26,832 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:33:26,840 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:33:26,842 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:34:26,847 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:34:26,847 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:35:26,826 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:35:26,826 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:36:26,864 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:36:26,865 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:37:26,860 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:37:26,861 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:38:26,872 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:38:26,874 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:39:26,867 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:39:26,867 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:40:26,865 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:40:26,866 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:41:26,873 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:41:26,874 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:42:26,895 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:42:26,895 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:43:26,879 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:43:26,881 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:44:26,873 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:44:26,874 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:45:26,922 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:45:26,924 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:46:26,901 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:46:26,901 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:47:26,908 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:47:26,909 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:48:26,935 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:48:26,936 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:49:26,916 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:49:26,917 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:50:26,915 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:50:26,916 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:51:26,911 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:51:26,912 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:52:26,916 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:52:26,917 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:53:26,924 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:53:26,925 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:54:26,933 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:54:26,933 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:55:26,920 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:55:26,921 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:56:26,932 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:56:26,934 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:57:26,947 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:57:26,949 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:58:26,950 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:58:26,951 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 14:59:26,958 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 14:59:26,960 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:00:26,970 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:00:26,971 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:01:26,951 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:01:26,953 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:02:26,964 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:02:26,965 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:03:26,972 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:03:26,972 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:04:26,976 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:04:26,977 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:05:26,996 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:05:26,997 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:06:27,005 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:06:27,005 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:07:26,988 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:07:26,989 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:08:26,992 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:08:26,992 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:09:26,991 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:09:26,992 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:10:27,011 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:10:27,012 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:11:27,017 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:11:27,017 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:12:27,024 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:12:27,026 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:13:27,025 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:13:27,026 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:14:27,034 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:14:27,035 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:15:27,020 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:15:27,020 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:16:27,049 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:16:27,049 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:17:27,037 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:17:27,038 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:18:27,048 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:18:27,049 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:19:27,056 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:19:27,057 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:20:27,058 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:20:27,058 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:21:27,076 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:21:27,078 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:22:27,077 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:22:27,077 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:23:27,100 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:23:27,101 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:24:27,087 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:24:27,087 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:25:27,078 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:25:27,088 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:26:27,092 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:26:27,092 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:27:27,088 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:27:27,088 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:28:27,121 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:28:27,122 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:29:27,105 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:29:27,106 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:30:27,113 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:30:27,114 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:31:27,142 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:31:27,143 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:32:27,128 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:32:27,129 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:33:27,149 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:33:27,150 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:34:27,154 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:34:27,155 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:35:27,183 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:35:27,183 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:36:27,192 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:36:27,193 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:37:27,158 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:37:27,159 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:38:27,177 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:38:27,178 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:39:27,193 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:39:27,196 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:40:27,185 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:40:27,186 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:41:27,200 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:41:27,201 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:42:27,215 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:42:27,216 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:43:27,252 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:43:27,253 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:44:27,236 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:44:27,236 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:45:27,210 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:45:27,211 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:46:27,243 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:46:27,244 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:47:27,217 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:47:27,218 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:48:27,219 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:48:27,225 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:49:27,239 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:49:27,240 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:50:27,231 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:50:27,232 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:51:27,234 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:51:27,235 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:52:27,263 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:52:27,264 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:53:27,253 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:53:27,254 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:54:27,253 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:54:27,253 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-26 15:56:09,203 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-26 15:56:09,204 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-27 14:02:59,120 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-27 14:02:59,121 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-27 14:03:06,475 WARN [n-3045d265de9a2.IDirectory] - Measured interval of sending alive message: 79671077ms instead of 15000ms
+2021-06-27 14:03:59,027 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-27 14:03:59,028 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-27 14:04:59,165 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-27 14:04:59,165 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-27 14:05:59,046 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-27 14:05:59,048 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-27 14:06:59,046 INFO [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - Writing result to C:\Users\hsams\IdeaProjects\aot34branch\logs\auction_0.txt
+2021-06-27 14:06:59,047 ERROR [n-3045d265de9a2.a-3045cfebd6390.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
