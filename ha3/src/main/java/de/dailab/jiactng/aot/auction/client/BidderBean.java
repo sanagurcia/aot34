@@ -84,6 +84,10 @@ public class BidderBean extends AbstractAgentBean {
 	public void doStart() throws Exception {
 		super.doStart();
 
+		this.setBidderId("thisIsOurId34");
+		this.setGroupToken("weAreGroup34");
+		this.setMessageGroup("de.dailab.jiactng.aot.auction");
+
 		String messageGroup = getMessageGroup();
 		IGroupAddress groupAddress = CommunicationAddressFactory.createGroupAddress(messageGroup);
 		thisAgent.getCommunication().joinGroup(groupAddress);
