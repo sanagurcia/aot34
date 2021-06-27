@@ -1,7 +1,7 @@
 2021-06-27 20:07:36,814 INFO [n-2c3fcf313892.a-2c3fd05446f5.BidderBean] - Starting BidderBean.
-2021-06-27 20:07:47,418 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 5272 mb of usable space - resetting to maximum available disk space: 5272 mb
-2021-06-27 20:07:47,740 INFO [n-2c42195439aa.a-2c4211a3d3d5.AuctioneerMetaBean] - Reading group tokens from file C:\Users\sinam\aotgrouptokens.txt
-2021-06-27 20:07:47,741 WARN [n-2c42195439aa.a-2c4211a3d3d5.AuctioneerMetaBean] - File not found! Allowing any group token.
+2021-06-27 20:15:07,044 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://172.20.10.2:57113 failed: java.net.SocketException: Connection reset
+2021-06-27 20:15:07,046 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-2c3fcf313892StandardJMSBroker#4 and tcp:///172.20.10.2:57110@57112 shutdown due to a remote error: java.net.SocketException: Connection reset
+20:07:47,741 WARN [n-2c42195439aa.a-2c4211a3d3d5.AuctioneerMetaBean] - File not found! Allowing any group token.
 2021-06-27 20:07:48,575 INFO [n-2c42195439aa.a-2c4211a3d3d5.AuctioneerMetaBean] - Current Phase: STARTING
 2021-06-27 20:07:48,576 INFO [n-2c42195439aa.a-2c4211a3d3d5.AuctioneerMetaBean] - Messages in Memory: 0
 2021-06-27 20:07:48,580 INFO [n-2c42195439aa.a-2c4211a3d3d5.AuctioneerMetaBean] - Sending StartAuctions(1, aot-test-auction) to group
@@ -3691,3 +3691,7 @@
 2021-06-27 20:12:39,604 INFO [n-2c42195439aa.a-2c4211a3d3d5.AuctioneerMetaBean] - Sending EndAuction(thisIsOurId34, Wallet(bidderId=thisIsOurId34, credits=28330,00, resources={C=0, A=1, B=0, K=5, D=1, E=1, F=0, G=7}, value=28030,00)) to registered bidders
 2021-06-27 20:12:47,001 INFO [n-2c42195439aa.a-2c4206bebb48.AuctionRunnerBean] - Writing result to C:\Users\sinam\IdeaProjects\aot34\logs\auction_0.txt
 2021-06-27 20:12:47,004 ERROR [n-2c42195439aa.a-2c4206bebb48.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-27 20:13:46,994 INFO [n-2c42195439aa.a-2c4206bebb48.AuctionRunnerBean] - Writing result to C:\Users\sinam\IdeaProjects\aot34\logs\auction_0.txt
+2021-06-27 20:13:46,996 ERROR [n-2c42195439aa.a-2c4206bebb48.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
+2021-06-27 20:14:46,979 INFO [n-2c42195439aa.a-2c4206bebb48.AuctionRunnerBean] - Writing result to C:\Users\sinam\IdeaProjects\aot34\logs\auction_0.txt
+2021-06-27 20:14:46,980 ERROR [n-2c42195439aa.a-2c4206bebb48.AuctionRunnerBean] - java.nio.file.NoSuchFileException: logs\auction_0.txt
