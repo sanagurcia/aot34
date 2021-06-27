@@ -25,19 +25,24 @@ public class SmartGreedy {
         double minOffer = cfb.getMinOffer();
         double brutto = this.calculateBrutto(bundle);
         if (brutto > minOffer) {
-            return minOffer + 150; /////////////////////////////////////////////// changed here
+            return calculateBuyOffer(brutto, minOffer);
         } else {
             return -1;
         }
     }
 
+    private double calculateBuyOffer(double brutto, double minOffer) {
+        double interval = brutto - minOffer;
+        return minOffer + Math.random()*interval;
+    }
+
     // Calculate added value to wallet from bundle
     private double calculateBrutto(List<Resource> bundle) {
-        double walletBefore = this.calculateWalletValue(this.myWallet);
-        //this.myWallet.add(bundle);
-        double walletAfter = this.calculateWalletValue(this.myWallet);
-        //return walletAfter - walletBefore;
-        return 100;
+        Wallet copyWallet = copyWallet(this.myWallet);
+        double walletBefore = this.calculateWalletValue(copyWallet);
+        copyWallet.add(bundle);
+        double walletAfter = this.calculateWalletValue(copyWallet);
+        return walletAfter - walletBefore;
     }
 
     // while wallet resources not empty, remove bundle and aggregate price
@@ -103,13 +108,23 @@ public class SmartGreedy {
     // if wallet contains bundle, return true
     public boolean calculateSellBid(CallForBids cfb) {
         List<Resource> bundle = cfb.getBundle();
-        //System.out.println("Wallet: " + this.myWallet.toString() + " contains bundle: " + bundle.toString() + " , so sell!!");
         if (this.myWallet.contains(bundle)){
-            System.out.println("Wallet contains bundle, so sell!!");
             return true;
         }
         else {
             return false;
         }
     }
+
+    private Wallet copyWallet (Wallet originalWallet) {
+        Wallet copyWallet = new Wallet("copyWallet", 0.);
+        Resource[] resourcesArray = {Resource.A, Resource.B, Resource.C, Resource.D,
+            Resource.E, Resource.F, Resource.J, Resource.K};
+        for (Resource res: resourcesArray) {
+            int amount = originalWallet.get(res);
+            copyWallet.add(res, amount);
+        }
+        return copyWallet;
+    }
+
 }
