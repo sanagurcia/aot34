@@ -19,13 +19,16 @@ public class SmartGreedy {
         this.bundlesMap = initBundles();
     }
 
-    // returns minOffer price, for now
+
     public double calculateBuyBid(CallForBids cfb) {
         List<Resource> bundle = cfb.getBundle();
         double minOffer = cfb.getMinOffer();
         double brutto = this.calculateBrutto(bundle);
         if (brutto > minOffer) {
-            return calculateBuyOffer(brutto, minOffer);
+            double buyOffer = calculateBuyOffer(brutto, minOffer);
+            // for testing offered buy price
+            System.out.println("-------------------Max profit: " + brutto + "\tBuy offer: " + (int)buyOffer + "--------");
+            return buyOffer;
         } else {
             return -1;
         }
@@ -40,11 +43,12 @@ public class SmartGreedy {
 
     // Calculate added value to wallet from bundle
     private double calculateBrutto(List<Resource> bundle) {
-        Wallet copyWallet = copyWallet(this.myWallet);
-        double walletBefore = this.calculateWalletValue(copyWallet);
-        copyWallet.add(bundle);
-        double walletAfter = this.calculateWalletValue(copyWallet);
-        return walletAfter - walletBefore;
+        Wallet walletBefore = copyWallet(this.myWallet);
+        double valueBefore = this.calculateWalletValue(walletBefore);
+        Wallet walletAfter = copyWallet(this.myWallet);
+        walletAfter.add(bundle);
+        double valueAfter = this.calculateWalletValue(walletAfter);
+        return valueAfter - valueBefore;
     }
 
     // while wallet resources not empty, remove bundle and aggregate price
