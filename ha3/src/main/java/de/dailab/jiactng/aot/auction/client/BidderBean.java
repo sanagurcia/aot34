@@ -84,8 +84,8 @@ public class BidderBean extends AbstractAgentBean {
 	public void doStart() throws Exception {
 		super.doStart();
 
-		this.setBidderId("thisIsOurId34");
-		this.setGroupToken("weAreGroup34");
+		this.setBidderId("AuctionMaster3000");
+		this.setGroupToken("Group34_83151");
 		this.setMessageGroup("de.dailab.jiactng.aot.auction");
 
 		String messageGroup = getMessageGroup();
@@ -200,7 +200,10 @@ public class BidderBean extends AbstractAgentBean {
 		double ourOffer = strategy.calculateBuyBid(payload);
 
 		// we are not interested
-		if(ourOffer == -1) return;
+		if(ourOffer == -1){
+			//ourOffer = 1000;
+			return;
+		}
 
 		this.calculatedMoney -= ourOffer;
 
@@ -269,7 +272,11 @@ public class BidderBean extends AbstractAgentBean {
 		System.out.println(payload.toString());
 
 		// if we did not sell anything
-		if(payload.getType() == InformSell.SellType.INVALID || payload.getType() == InformSell.SellType.NOT_SOLD) {
+		if(payload.getType() == InformSell.SellType.INVALID){
+			// TODO: here we lose some items in our wallet :(
+			return;
+		}
+		if(payload.getType() == InformSell.SellType.NOT_SOLD) {
 			this.myWallet.add(payload.getBundle());
 			return;
 		}
@@ -280,6 +287,7 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* receive EndAuction message from AuctioneerMetaBean */
 	private void handleEndAuction(EndAuction payload){
+		System.out.println("Unser Wallet" + this.myWallet.toString());
 		System.out.println(payload.toString());
 	}
 

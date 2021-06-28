@@ -33,6 +33,8 @@ public class SmartGreedy {
 
     private double calculateBuyOffer(double brutto, double minOffer) {
         double interval = brutto - minOffer;
+        //if(brutto > minOffer && brutto > 0)
+        //    return brutto + 1000;
         return minOffer + Math.random()*interval;
     }
 
