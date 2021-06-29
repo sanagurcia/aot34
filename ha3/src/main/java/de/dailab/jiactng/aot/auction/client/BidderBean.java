@@ -84,7 +84,7 @@ public class BidderBean extends AbstractAgentBean {
 	public void doStart() throws Exception {
 		super.doStart();
 
-		this.setBidderId("AuctionMaster3000");
+		this.setBidderId("AuctionMaster34");
 		this.setGroupToken("Group34_83151");
 		this.setMessageGroup("de.dailab.jiactng.aot.auction");
 
@@ -196,7 +196,7 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* React to CallForBids.BUY - only reply if interested */
 	private void buyCallForBids(CallForBids payload) {
-		SmartGreedy strategy = new SmartGreedy(this.myWallet);
+		SmartAgent strategy = new SmartAgent(this.myWallet);
 		double ourOffer = strategy.calculateBuyBid(payload);
 
 		// we are not interested
@@ -232,7 +232,7 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* React to CallForBids.SELL - only reply if interested */
 	private void sellCallForBids(CallForBids payload) {
-		SmartGreedy strategy = new SmartGreedy(this.myWallet);
+		SmartAgent strategy = new SmartAgent(this.myWallet);
 		boolean weWantToSell = strategy.calculateSellBid(payload);
 
 		// we are not interested
