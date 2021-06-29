@@ -208,11 +208,12 @@ public class BidderBean extends AbstractAgentBean {
 		this.calculatedMoney -= ourOffer;
 
 		// if we would not have any money after buying we are not interested
-		if(this.calculatedMoney < 0)
+		/*if(this.calculatedMoney < 0)
 		{
 			this.calculatedMoney += ourOffer;
+			System.out.println("--------------Calculated money: " + this.calculatedMoney + "-------------------");
 			return;
-		}
+		}*/
 
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), ourOffer);
@@ -220,11 +221,12 @@ public class BidderBean extends AbstractAgentBean {
 		// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 
 		// this means something went wrong, so act like nothing was done
-		else
+		/*else
 		{
 			this.calculatedMoney += ourOffer;
+			System.out.println("--------------Calculated money: " + this.calculatedMoney + "-------------------");
 			return;
-		}
+		}*/
 
 		// add this callId to our bid on items, because InformBuy does not tell you how much money you bid
 		this.bidOnItems.put(payload.getCallId(), ourOffer);
