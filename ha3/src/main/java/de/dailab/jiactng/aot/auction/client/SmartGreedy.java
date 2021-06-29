@@ -113,13 +113,7 @@ public class SmartGreedy {
 
     // if wallet contains bundle, return true
     public boolean calculateSellBid(CallForBids cfb) {
-        List<Resource> bundle = cfb.getBundle();
-        if (this.myWallet.contains(bundle)){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return true;
     }
 
     private Wallet copyWallet (Wallet originalWallet) {

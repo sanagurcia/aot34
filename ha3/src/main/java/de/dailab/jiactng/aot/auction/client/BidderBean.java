@@ -73,9 +73,9 @@ public class BidderBean extends AbstractAgentBean {
 	// this is the money we would have, if we would buy everything we want
 	private double calculatedMoney;
 
-
-
-
+	// solution to roughly calculate current round
+	// used for estimating CFB.SELL towards end of game
+	private int roundCounter;
 
 
 
@@ -92,6 +92,7 @@ public class BidderBean extends AbstractAgentBean {
 		IGroupAddress groupAddress = CommunicationAddressFactory.createGroupAddress(messageGroup);
 		thisAgent.getCommunication().joinGroup(groupAddress);
 
+		this.roundCounter = 0;
 		this.bidOnItems = new HashMap<>();
 		memory.attach(new BidderBean.MessageObserver(), new JiacMessage());
 		log.info("Starting BidderBean.");
@@ -186,6 +187,11 @@ public class BidderBean extends AbstractAgentBean {
 		if (payload.getMode() == CallForBids.CfBMode.BUY)
 		{
 			buyCallForBids(payload);
+
+			// for each CFB.BUY from Auction A, increase round counter
+			if (payload.getAuctioneerId() == this.auctioneerAId){
+				this.roundCounter += 1;
+			}
 		}
 		else if (payload.getMode() == CallForBids.CfBMode.SELL)
 		{
@@ -208,7 +214,7 @@ public class BidderBean extends AbstractAgentBean {
 		this.calculatedMoney -= ourOffer;
 
 		// if we would not have any money after buying we are not interested
-		/*if(this.calculatedMoney < 0)
+/*		if(this.calculatedMoney < 0)
 		{
 			this.calculatedMoney += ourOffer;
 			System.out.println("--------------Calculated money: " + this.calculatedMoney + "-------------------");
@@ -221,7 +227,7 @@ public class BidderBean extends AbstractAgentBean {
 		// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 
 		// this means something went wrong, so act like nothing was done
-		/*else
+/*		else
 		{
 			this.calculatedMoney += ourOffer;
 			System.out.println("--------------Calculated money: " + this.calculatedMoney + "-------------------");
@@ -235,7 +241,7 @@ public class BidderBean extends AbstractAgentBean {
 	/* React to CallForBids.SELL - only reply if interested */
 	private void sellCallForBids(CallForBids payload) {
 		SmartAgent strategy = new SmartAgent(this.myWallet);
-		boolean weWantToSell = strategy.calculateSellBid(payload);
+		boolean weWantToSell = strategy.calculateSellBid(payload, this.roundCounter);
 
 		// we are not interested
 		if(!weWantToSell) return;

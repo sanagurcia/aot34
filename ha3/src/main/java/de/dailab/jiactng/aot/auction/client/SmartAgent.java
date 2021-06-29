@@ -18,7 +18,10 @@ public class SmartAgent {
     private final Map<Resource[], Integer> bundlesMap;
     private final List<Resource> resourceList;
     private final Map<Resource,Double> resourceValues;
-    private final Integer ROUNDS = 100;
+    private final Integer ROUNDS = 50;
+    private final Double PROFIT_PERCENT = 0.2;
+    private final Integer SELL_ALL = 20;
+
 
     public SmartAgent(Wallet wallet) {
         this.myWallet = wallet;
@@ -50,6 +53,7 @@ public class SmartAgent {
         };
         return bundlesMap;
     }
+
     //calculates the maximum value of a single resource
     private double calculateMaxResourceValue(Resource res){
         double estimatedValue = 0;
@@ -101,13 +105,30 @@ public class SmartAgent {
         // sort bundles map by price, descending
         return unsortedBundles;
     }
+
     // if wallet contains bundle, return true
-    public boolean calculateSellBid(CallForBids cfb) {
+    public boolean calculateSellBid(CallForBids cfb, int round) {
+        System.out.println("----round: " + round);
         List<Resource> bundle = cfb.getBundle();
-        if (this.myWallet.contains(bundle)) {
-            return true;
-        } else {
-            return false;
+        double minExpectedPrice = 0.0;
+        for (Resource res: bundle){
+            minExpectedPrice += calculateMaxResourceValue(res);
         }
+        if (!this.myWallet.contains(bundle)){ return false;}
+
+        // before ROUNDS, sell only if within min. profit margen
+        if (round < ROUNDS){
+            if (cfb.getMinOffer() >= minExpectedPrice * PROFIT_PERCENT + minExpectedPrice){
+                return true;
+            } else { return false; }
+        }
+        // if after ROUNDS, but less than extra buffer, sell without min. profit margin
+        else if (round < ROUNDS + SELL_ALL){
+            if (cfb.getMinOffer() >= minExpectedPrice){
+                return true;
+            } else { return false; }
+        }
+        // if after ROUNDS + SELL_ALL, sell everything.
+        else return true;
     }
 }
