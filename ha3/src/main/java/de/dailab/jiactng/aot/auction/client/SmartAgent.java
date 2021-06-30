@@ -19,7 +19,7 @@ public class SmartAgent {
     private final List<Resource> resourceList;
     private final Map<Resource,Double> resourceValues;
     private final Integer ROUNDS = 100;
-    private final Double PROFIT_PERCENT = 0.2;
+    private final Double PROFIT_PERCENT = 0.1;
     private final Integer SELL_ALL = 20;
 
 

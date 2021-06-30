@@ -57,6 +57,8 @@ public class BidderBean extends AbstractAgentBean {
 	private ICommunicationAddress auctioneerBAddress;
 	private ICommunicationAddress auctioneerCAddress;
 
+	private boolean isInitialized;
+
 	// our bidder id
 	private String myId;
 
@@ -95,13 +97,16 @@ public class BidderBean extends AbstractAgentBean {
 		thisAgent.getCommunication().joinGroup(groupAddress);
 
 		this.roundCounter = 0;
+		this.isInitialized = false;
 		this.bidOnItems = new HashMap<>();
 		memory.attach(new BidderBean.MessageObserver(), new JiacMessage());
 		log.info("Starting BidderBean.");
 	}
 
 	@Override
-	public void execute() { }
+	public void execute() {
+		if(this.isInitialized) this.sellCallForBidsC();
+	}
 
 	private void handleMessage(JiacMessage message) {
 		Object payload = message.getPayload();
@@ -156,6 +161,7 @@ public class BidderBean extends AbstractAgentBean {
 		// make sure this message is for us
 		if(!payload.getBidderId().equals(this.myId)) return;
 
+		this.isInitialized = true;
 		this.myWallet = payload.getWallet();
 		this.calculatedMoney = this.myWallet.getCredits();
 	}
@@ -214,17 +220,19 @@ public class BidderBean extends AbstractAgentBean {
 		this.calculatedMoney -= ourOffer;
 
 		// if we would not have any money after buying we are not interested
-/*		if(this.calculatedMoney < 0)
+		if(this.calculatedMoney < 0)
 		{
 			this.calculatedMoney += ourOffer;
-			System.out.println("--------------Calculated money: " + this.calculatedMoney + "-------------------");
 			return;
-		}*/
+		}
 
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), ourOffer);
 		if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
-		else return;
+		else {
+			this.calculatedMoney += ourOffer;
+			return;
+		}
 
 		// add this callId to our bid on items, because InformBuy does not tell you how much money you bid
 		this.bidOnItems.put(payload.getCallId(), ourOffer);
@@ -233,7 +241,7 @@ public class BidderBean extends AbstractAgentBean {
 	/* React to CallForBids.SELL - only reply if interested */
 	private void sellCallForBids(CallForBids payload) {
 
-		if(payload.getAuctioneerId() == this.auctioneerCId) sellCallForBidsC(payload);
+		if(payload.getAuctioneerId() == this.auctioneerCId) sellCallForBidsC();
 
 		SmartAgent strategy = new SmartAgent(this.myWallet);
 		boolean weWantToSell = strategy.calculateSellBid(payload, this.roundCounter);
@@ -251,12 +259,16 @@ public class BidderBean extends AbstractAgentBean {
 	}
 
 	// HERE
-	private void sellCallForBidsC(CallForBids payload) {
+	private void sellCallForBidsC() {
 		SmartAgent strategy = new SmartAgent(this.myWallet);
 		List<Resource> whatWeWantToSell = strategy.calculateSellResource(this.myWallet, this.roundCounter);
 
+		if(whatWeWantToSell == null) System.out.println("DAS WUERDEN WIR GERNE VERKAUFEN: null");
+		else System.out.println("DAS WUERDEN WIR GERNE VERKAUFEN: " + whatWeWantToSell.toString());
+		System.out.println("WEIL DAS IST UNSER WALLET: " + this.myWallet.toString());
+
 		// we are not interested
-		if(whatWeWantToSell == null) return;
+		if(whatWeWantToSell == null || whatWeWantToSell.get(0) == null) return;
 
 		double atWhatPrice = strategy.getResourceValue(whatWeWantToSell.get(0));
 
@@ -264,11 +276,11 @@ public class BidderBean extends AbstractAgentBean {
 		sellThisItem.add(whatWeWantToSell.get(0));
 
 		// we send the bid to the auctioneer
-		Offer ourOffer = new Offer(payload.getAuctioneerId(), this.myId, sellThisItem, atWhatPrice);
+		Offer ourOffer = new Offer(this.auctioneerCId, this.myId, sellThisItem, atWhatPrice);
 		sendMessage(this.auctioneerBAddress, ourOffer);
 
 		// remove sold resources from dummy wallet
-		this.myWallet.remove(payload.getBundle());
+		this.myWallet.remove(sellThisItem);
 	}
 
 	/* Update state info based on result of Buy (Auction A/C) */
@@ -281,6 +293,9 @@ public class BidderBean extends AbstractAgentBean {
 			this.bidOnItems.remove(payload.getCallId());
 			return;
 		}
+
+		this.calculatedMoney += this.bidOnItems.get(payload.getCallId());
+		if(payload.getPrice() != null) this.calculatedMoney -= payload.getPrice();
 
 		// update the amount of money we have in our wallet
 		this.myWallet.updateCredits(payload.getPrice() * -1);
