@@ -134,20 +134,42 @@ public class SmartAgent {
 
     public List<Resource> calculateSellResource(Wallet wallet, int round) {
         if(round > ROUNDS){
+            Wallet walletRest = copyWallet(wallet);
             for(Resource[] bundle: this.bundlesMap.keySet()){
-                if(wallet.contains(Arrays.asList(bundle))){
-
+                while(walletRest.contains(Arrays.asList(bundle))){
+                    walletRest.remove(Arrays.asList(bundle));
                 }
-
             }
 
+            List<Resource> ret = new ArrayList<>();
 
-            return null; // TODO
+            if(walletRest.contains((Arrays.asList(Resource.A)))) ret.add(Resource.A);
+            if(walletRest.contains((Arrays.asList(Resource.B)))) ret.add(Resource.B);
+            if(walletRest.contains((Arrays.asList(Resource.C)))) ret.add(Resource.C);
+            if(walletRest.contains((Arrays.asList(Resource.D)))) ret.add(Resource.D);
+            if(walletRest.contains((Arrays.asList(Resource.E)))) ret.add(Resource.E);
+            if(walletRest.contains((Arrays.asList(Resource.F)))) ret.add(Resource.F);
+            if(walletRest.contains((Arrays.asList(Resource.G)))) ret.add(Resource.G);
+            if(walletRest.contains((Arrays.asList(Resource.J)))) ret.add(Resource.J);
+            if(walletRest.contains((Arrays.asList(Resource.K)))) ret.add(Resource.K);
+
+            return ret;
         }
         else return null;
     }
 
     public double getResourceValue(Resource res){
         return this.resourceValues.get(res);
+    }
+
+    private Wallet copyWallet (Wallet originalWallet) {
+        Wallet copyWallet = new Wallet("copyWallet", 0.);
+        Resource[] resourcesArray = {Resource.A, Resource.B, Resource.C, Resource.D,
+                Resource.E, Resource.F, Resource.J, Resource.K};
+        for (Resource res: resourcesArray) {
+            int amount = originalWallet.get(res);
+            copyWallet.add(res, amount);
+        }
+        return copyWallet;
     }
 }
