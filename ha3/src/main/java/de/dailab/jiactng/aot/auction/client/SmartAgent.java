@@ -159,7 +159,7 @@ public class SmartAgent {
     }
 
     public double getResourceValue(Resource res){
-        return this.resourceValues.get(res);
+        return this.resourceValues.get(res) - 30;
     }
 
     private Wallet copyWallet (Wallet originalWallet) {

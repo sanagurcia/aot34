@@ -268,7 +268,7 @@ public class BidderBean extends AbstractAgentBean {
 		System.out.println("WEIL DAS IST UNSER WALLET: " + this.myWallet.toString());
 
 		// we are not interested
-		if(whatWeWantToSell == null || whatWeWantToSell.get(0) == null) return;
+		if(whatWeWantToSell == null || whatWeWantToSell.isEmpty()) return;
 
 		double atWhatPrice = strategy.getResourceValue(whatWeWantToSell.get(0));
 
