@@ -22,3 +22,49 @@ java.net.SocketException: Network is unreachable: no further information
 	at de.dailab.jiactng.agentcore.management.jmx.JmxConnectorManager.run(JmxConnectorManager.java:152)
 	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
 	at java.base/java.util.TimerThread.run(Timer.java:506)
+2021-06-30 17:11:43,052 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to send multicast message on interface lo
+java.net.SocketException: Network is unreachable: no further information
+	at java.base/sun.nio.ch.DatagramChannelImpl.send0(Native Method)
+	at java.base/sun.nio.ch.DatagramChannelImpl.sendFromNativeBuffer(DatagramChannelImpl.java:897)
+	at java.base/sun.nio.ch.DatagramChannelImpl.send(DatagramChannelImpl.java:859)
+	at java.base/sun.nio.ch.DatagramChannelImpl.send(DatagramChannelImpl.java:817)
+	at java.base/sun.nio.ch.DatagramChannelImpl.blockingSend(DatagramChannelImpl.java:849)
+	at java.base/sun.nio.ch.DatagramSocketAdaptor.send(DatagramSocketAdaptor.java:217)
+	at java.base/java.net.DatagramSocket.send(DatagramSocket.java:531)
+	at de.dailab.jiactng.agentcore.management.jmx.JmxConnectorManager.run(JmxConnectorManager.java:152)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+2021-06-30 17:11:43,179 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7663 mb of usable space - resetting to maximum available disk space: 7663 mb
+2021-06-30 17:11:43,530 INFO [n-10e65f415f78e.a-10e6594abde9b.BidderBean] - Starting BidderBean.
+2021-06-30 17:11:43,687 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to leave multicast group 226.6.6.7
+2021-06-30 17:11:49,955 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:11:57,468 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:12:04,957 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:12:12,466 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:12:19,962 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:12:27,452 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:12:34,968 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:12:42,454 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:12:49,963 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:12:57,470 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:13:04,966 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:13:12,454 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:13:19,958 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:13:27,456 ERROR [n-10e65f415f78e.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:15:03,749 ERROR [n-10e94d8a96966.JmxConnectorManager] - Unable to send multicast message on interface lo
+java.net.SocketException: Network is unreachable: no further information
+	at java.base/sun.nio.ch.DatagramChannelImpl.send0(Native Method)
+	at java.base/sun.nio.ch.DatagramChannelImpl.sendFromNativeBuffer(DatagramChannelImpl.java:897)
+	at java.base/sun.nio.ch.DatagramChannelImpl.send(DatagramChannelImpl.java:859)
+	at java.base/sun.nio.ch.DatagramChannelImpl.send(DatagramChannelImpl.java:817)
+	at java.base/sun.nio.ch.DatagramChannelImpl.blockingSend(DatagramChannelImpl.java:849)
+	at java.base/sun.nio.ch.DatagramSocketAdaptor.send(DatagramSocketAdaptor.java:217)
+	at java.base/java.net.DatagramSocket.send(DatagramSocket.java:531)
+	at de.dailab.jiactng.agentcore.management.jmx.JmxConnectorManager.run(JmxConnectorManager.java:152)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+2021-06-30 17:15:04,006 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7667 mb of usable space - resetting to maximum available disk space: 7667 mb
+2021-06-30 17:15:04,297 INFO [n-10e94d8a96966.a-10e94738e6b37.BidderBean] - Starting BidderBean.
+2021-06-30 17:15:04,491 ERROR [n-10e94d8a96966.JmxConnectorManager] - Unable to leave multicast group 226.6.6.7
+2021-06-30 17:15:10,989 ERROR [n-10e94d8a96966.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-06-30 17:15:18,492 ERROR [n-10e94d8a96966.JmxConnectorManager] - Unable to join multicast group 226.6.6.7

@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -259,8 +260,11 @@ public class BidderBean extends AbstractAgentBean {
 
 		double atWhatPrice = strategy.getResourceValue(whatWeWantToSell.get(0));
 
+		List<Resource> sellThisItem = new ArrayList<>();
+		sellThisItem.add(whatWeWantToSell.get(0));
+
 		// we send the bid to the auctioneer
-		Offer ourOffer = new Offer(payload.getAuctioneerId(), this.myId, whatWeWantToSell, atWhatPrice);
+		Offer ourOffer = new Offer(payload.getAuctioneerId(), this.myId, sellThisItem, atWhatPrice);
 		sendMessage(this.auctioneerBAddress, ourOffer);
 
 		// remove sold resources from dummy wallet
