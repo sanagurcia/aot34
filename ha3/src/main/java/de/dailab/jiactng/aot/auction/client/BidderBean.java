@@ -15,6 +15,7 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /* START */
@@ -186,12 +187,13 @@ public class BidderBean extends AbstractAgentBean {
 	private void handleCallForBids(CallForBids payload){
 		if (payload.getMode() == CallForBids.CfBMode.BUY)
 		{
-			buyCallForBids(payload);
-
 			// for each CFB.BUY from Auction A, increase round counter
-			if (payload.getAuctioneerId() == this.auctioneerAId){
+			if (payload.getAuctioneerId() == this.auctioneerAId)
+			{
 				this.roundCounter += 1;
 			}
+
+			buyCallForBids(payload);
 		}
 		else if (payload.getMode() == CallForBids.CfBMode.SELL)
 		{
@@ -206,10 +208,7 @@ public class BidderBean extends AbstractAgentBean {
 		double ourOffer = strategy.calculateBuyBid(payload);
 
 		// we are not interested
-		if(ourOffer == -1){
-			//ourOffer = 1000;
-			return;
-		}
+		if(ourOffer == -1) return;
 
 		this.calculatedMoney -= ourOffer;
 
@@ -224,15 +223,7 @@ public class BidderBean extends AbstractAgentBean {
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), ourOffer);
 		if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
-		// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
-
-		// this means something went wrong, so act like nothing was done
-/*		else
-		{
-			this.calculatedMoney += ourOffer;
-			System.out.println("--------------Calculated money: " + this.calculatedMoney + "-------------------");
-			return;
-		}*/
+		else return;
 
 		// add this callId to our bid on items, because InformBuy does not tell you how much money you bid
 		this.bidOnItems.put(payload.getCallId(), ourOffer);
@@ -240,6 +231,9 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* React to CallForBids.SELL - only reply if interested */
 	private void sellCallForBids(CallForBids payload) {
+
+		if(payload.getAuctioneerId() == this.auctioneerCId) sellCallForBidsC(payload);
+
 		SmartAgent strategy = new SmartAgent(this.myWallet);
 		boolean weWantToSell = strategy.calculateSellBid(payload, this.roundCounter);
 
@@ -249,8 +243,25 @@ public class BidderBean extends AbstractAgentBean {
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), payload.getMinOffer());
 		if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
-		// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 		else return;
+
+		// remove sold resources from dummy wallet
+		this.myWallet.remove(payload.getBundle());
+	}
+
+	// HERE
+	private void sellCallForBidsC(CallForBids payload) {
+		SmartAgent strategy = new SmartAgent(this.myWallet);
+		List<Resource> whatWeWantToSell = strategy.calculateSellResource(this.myWallet, this.roundCounter);
+
+		// we are not interested
+		if(whatWeWantToSell == null) return;
+
+		double atWhatPrice = strategy.getResourceValue(whatWeWantToSell.get(0));
+
+		// we send the bid to the auctioneer
+		Offer ourOffer = new Offer(payload.getAuctioneerId(), this.myId, whatWeWantToSell, atWhatPrice);
+		sendMessage(this.auctioneerBAddress, ourOffer);
 
 		// remove sold resources from dummy wallet
 		this.myWallet.remove(payload.getBundle());
@@ -295,7 +306,7 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* receive EndAuction message from AuctioneerMetaBean */
 	private void handleEndAuction(EndAuction payload){
-		System.out.println("Unser Wallet" + this.myWallet.toString());
+		System.out.println("Our Wallet: " + this.myWallet.toString());
 		System.out.println(payload.toString());
 	}
 

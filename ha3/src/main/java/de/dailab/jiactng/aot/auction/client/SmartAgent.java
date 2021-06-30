@@ -18,7 +18,7 @@ public class SmartAgent {
     private final Map<Resource[], Integer> bundlesMap;
     private final List<Resource> resourceList;
     private final Map<Resource,Double> resourceValues;
-    private final Integer ROUNDS = 50;
+    private final Integer ROUNDS = 100;
     private final Double PROFIT_PERCENT = 0.2;
     private final Integer SELL_ALL = 20;
 
@@ -108,7 +108,7 @@ public class SmartAgent {
 
     // if wallet contains bundle, return true
     public boolean calculateSellBid(CallForBids cfb, int round) {
-        System.out.println("----round: " + round);
+        //System.out.println("----round: " + round);
         List<Resource> bundle = cfb.getBundle();
         double minExpectedPrice = 0.0;
         for (Resource res: bundle){
@@ -130,5 +130,24 @@ public class SmartAgent {
         }
         // if after ROUNDS + SELL_ALL, sell everything.
         else return true;
+    }
+
+    public List<Resource> calculateSellResource(Wallet wallet, int round) {
+        if(round > ROUNDS){
+            for(Resource[] bundle: this.bundlesMap.keySet()){
+                if(wallet.contains(Arrays.asList(bundle))){
+
+                }
+
+            }
+
+
+            return null; // TODO
+        }
+        else return null;
+    }
+
+    public double getResourceValue(Resource res){
+        return this.resourceValues.get(res);
     }
 }
