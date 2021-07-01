@@ -4367,3 +4367,36 @@ org.apache.activemq.broker.BrokerStoppedException: Broker has been stopped: org.
 2021-07-01 18:35:49,793 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
 2021-07-01 18:35:57,293 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
 2021-07-01 18:36:04,793 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:36:12,293 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:36:19,793 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:36:27,294 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:36:34,794 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:36:42,293 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:36:45,631 WARN [n-3edbfadfaa45.IDirectory] - Forget nodes due to missing alive message:
+
+2021-07-01 18:36:45,632 WARN [n-3edbfadfaa45.IDirectory] - 	df@n-600d8bdf4cc6
+2021-07-01 18:36:49,794 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:36:57,294 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:37:00,631 WARN [n-3edbfadfaa45.IDirectory] - Forget nodes due to missing alive message:
+
+2021-07-01 18:37:00,632 WARN [n-3edbfadfaa45.IDirectory] - 	df@n-6f00da52ab7b
+2021-07-01 18:37:04,795 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:37:12,295 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:37:19,796 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:37:27,295 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:37:34,795 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:37:42,296 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:37:49,796 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:37:57,296 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:38:04,795 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:38:12,296 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:38:19,796 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:38:27,297 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:38:34,797 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:38:42,297 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:38:49,796 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:38:57,296 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 18:39:00,633 WARN [n-3edbfadfaa45.IDirectory] - Forget nodes due to missing alive message:
+
+2021-07-01 18:39:00,634 WARN [n-3edbfadfaa45.IDirectory] - 	df@n-1bbe5da517182
+2021-07-01 18:39:04,796 ERROR [n-3edbfadfaa45.JmxConnectorManager] - Unable to join multicast group 226.6.6.7

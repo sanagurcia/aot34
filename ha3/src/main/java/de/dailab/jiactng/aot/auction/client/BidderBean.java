@@ -288,9 +288,11 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* Update state info based on result of Buy (Auction A/C) */
 	private void handleInformBuy(InformBuy payload){
-		System.out.println("ROUND ESTIMATE: " + this.roundCounter + " --- "+ payload.toString());
-		System.out.println("BOUGHT BUNDLE: " + payload.getBundle().toString() + " @ " + payload.getPrice().toString());
-		System.out.println("CURRENT WALLET: " + this.myWallet.toString());
+		if (payload.getBundle() != null){
+			System.out.println("ROUND ESTIMATE: " + this.roundCounter + " --- "+ payload.toString());
+			System.out.println("BOUGHT BUNDLE: " + payload.getBundle().toString() + " @ " + payload.getPrice().toString());
+			System.out.println("CURRENT WALLET: " + this.myWallet.toString());
+		}
 
 		// if we did not buy anything
 		if(payload.getType() == InformBuy.BuyType.INVALID || payload.getType() == InformBuy.BuyType.LOST) {
@@ -312,9 +314,11 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* Update state info based on result of Buy (Auction B/C) */
 	private void handleInformSell(InformSell payload){
-		System.out.println("ROUND ESTIMATE: " + this.roundCounter + " --- "+ payload.toString());
-		System.out.println("SOLD BUNDLE: " + payload.getBundle().toString() + " @ " + payload.getPrice().toString());
-		System.out.println("CURRENT WALLET: " + this.myWallet.toString());
+		if (payload.getBundle() != null){
+			System.out.println("ROUND ESTIMATE: " + this.roundCounter + " --- "+ payload.toString());
+			System.out.println("SOLD BUNDLE: " + payload.getBundle().toString() + " @ " + payload.getPrice().toString());
+			System.out.println("CURRENT WALLET: " + this.myWallet.toString());
+		}
 
 		// if we did not sell anything
 		if(payload.getType() == InformSell.SellType.INVALID){
