@@ -1,712 +1,436 @@
-2021-06-30 19:14:42,994 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:14:44,994 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:14:46,803 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:14:47,003 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:14:49,004 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:14:51,011 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:14:53,018 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:14:54,293 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:14:55,026 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:14:57,037 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:14:59,044 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:01,054 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:01,810 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:15:03,062 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:05,072 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:07,079 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:09,080 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:09,308 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:15:11,088 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:13,092 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:15,098 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:16,783 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:15:17,102 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:19,107 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:21,112 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:23,113 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:24,303 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:15:25,120 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:27,126 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:29,130 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:31,130 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:31,803 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:15:33,134 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:35,135 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:37,143 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:39,143 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:39,317 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:15:41,150 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:43,154 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:45,158 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:46,804 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:15:47,167 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:49,177 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:51,180 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:53,186 ERROR [n-11335faf67b76.a-11335a8c44cef.SimpleExecutionCycle] - Error when executing bean 'BidderBean'
-java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.sellCallForBidsC(BidderBean.java:271)
-	at de.dailab.jiactng.aot.auction.client.BidderBean.execute(BidderBean.java:108)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle$1.run(BasicExecutionCycle.java:79)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.performExecutionCycleProcess(SimpleExecutionCycle.java:31)
-	at de.dailab.jiactng.agentcore.execution.BasicExecutionCycle.processBeanExecution(BasicExecutionCycle.java:76)
-	at de.dailab.jiactng.agentcore.execution.SimpleExecutionCycle.run(SimpleExecutionCycle.java:51)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:831)
-2021-06-30 19:15:54,303 ERROR [n-11335faf67b76.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:16:02,460 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to send multicast message on interface lo
-java.net.SocketException: Network is unreachable: no further information
-	at java.base/sun.nio.ch.DatagramChannelImpl.send0(Native Method)
-	at java.base/sun.nio.ch.DatagramChannelImpl.sendFromNativeBuffer(DatagramChannelImpl.java:897)
-	at java.base/sun.nio.ch.DatagramChannelImpl.send(DatagramChannelImpl.java:859)
-	at java.base/sun.nio.ch.DatagramChannelImpl.send(DatagramChannelImpl.java:817)
-	at java.base/sun.nio.ch.DatagramChannelImpl.blockingSend(DatagramChannelImpl.java:849)
-	at java.base/sun.nio.ch.DatagramSocketAdaptor.send(DatagramSocketAdaptor.java:217)
-	at java.base/java.net.DatagramSocket.send(DatagramSocket.java:531)
-	at de.dailab.jiactng.agentcore.management.jmx.JmxConnectorManager.run(JmxConnectorManager.java:152)
-	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
-	at java.base/java.util.TimerThread.run(Timer.java:506)
-2021-06-30 19:16:02,639 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7712 mb of usable space - resetting to maximum available disk space: 7712 mb
-2021-06-30 19:16:02,958 INFO [n-1152ee783e33a.a-1152e89254cb3.BidderBean] - Starting BidderBean.
-2021-06-30 19:16:03,199 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to leave multicast group 226.6.6.7
-2021-06-30 19:16:09,750 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:16:17,253 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:16:24,736 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:16:32,240 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:16:39,764 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:16:47,219 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:16:50,957 WARN [n-1152ee783e33a.IDirectory] - Forget nodes due to missing alive message:
-
-2021-06-30 19:16:50,957 WARN [n-1152ee783e33a.IDirectory] - 	df@n-a2105ec9bdb2
-2021-06-30 19:16:54,727 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:17:02,254 ERROR [n-1152ee783e33a.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:17:12,178 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to send multicast message on interface lo
-java.net.SocketException: Network is unreachable: no further information
-	at java.base/sun.nio.ch.DatagramChannelImpl.send0(Native Method)
-	at java.base/sun.nio.ch.DatagramChannelImpl.sendFromNativeBuffer(DatagramChannelImpl.java:897)
-	at java.base/sun.nio.ch.DatagramChannelImpl.send(DatagramChannelImpl.java:859)
-	at java.base/sun.nio.ch.DatagramChannelImpl.send(DatagramChannelImpl.java:817)
-	at java.base/sun.nio.ch.DatagramChannelImpl.blockingSend(DatagramChannelImpl.java:849)
-	at java.base/sun.nio.ch.DatagramSocketAdaptor.send(DatagramSocketAdaptor.java:217)
-	at java.base/java.net.DatagramSocket.send(DatagramSocket.java:531)
-	at de.dailab.jiactng.agentcore.management.jmx.JmxConnectorManager.run(JmxConnectorManager.java:152)
-	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
-	at java.base/java.util.TimerThread.run(Timer.java:506)
-2021-06-30 19:17:12,372 WARN [org.apache.activemq.broker.BrokerService] - Temporary Store limit is 51200 mb (current temporary store usage is 0 mb). The temporary data directory: C:\Users\sinam\IdeaProjects\aot34 only has 7712 mb of usable space - resetting to maximum available disk space: 7712 mb
-2021-06-30 19:17:12,676 INFO [n-1153f25386042.a-1153ec784bdcb.BidderBean] - Starting BidderBean.
-2021-06-30 19:17:12,817 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to leave multicast group 226.6.6.7
-2021-06-30 19:17:19,450 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:17:26,945 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:17:34,461 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:17:41,947 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:17:49,445 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:17:56,956 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:18:04,448 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:18:11,944 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:18:19,460 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:18:26,990 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:18:34,456 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:18:41,947 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
-2021-06-30 19:18:49,436 ERROR [n-1153f25386042.JmxConnectorManager] - Unable to join multicast group 226.6.6.7
+2021-07-01 23:30:30,708 INFO [n-fe7f3a41aef2.a-fe7f33817ec5.BidderBean_SmartGreedy] - Starting BidderBean im mad.
+2021-07-01 23:34:13,899 INFO [n-feb32d2410fa.a-feb3273324f5.BidderBean] - Starting BidderBean.
+2021-07-01 23:34:23,885 INFO [n-feb58226f1e2.a-feb57ca6be1d.BidderBean_SmartGreedy] - Starting BidderBean im mad.
+2021-07-01 23:34:42,102 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Reading group tokens from file C:\Users\hsams\aotgrouptokens.txt
+2021-07-01 23:34:42,105 WARN [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - File not found! Allowing any group token.
+2021-07-01 23:34:43,380 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: STARTING
+2021-07-01 23:34:43,383 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:34:43,393 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Sending StartAuctions(1, aot-test-auction) to group
+2021-07-01 23:34:45,381 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: REGISTRATION
+2021-07-01 23:34:45,383 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 1
+2021-07-01 23:34:45,402 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Sending InitializeBidder(SmartGreedy, Wallet(bidderId=SmartGreedy, credits=10000,00, resources={K=5}, value=9900,00)) to SmartGreedy
+2021-07-01 23:34:47,391 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: STARTING_ABC
+2021-07-01 23:34:47,392 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:34:47,393 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Starting new Round of Auctions, mode FIXED
+2021-07-01 23:34:47,438 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: STARTING
+2021-07-01 23:34:47,447 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending StartAuction(B, 2, 16, [Item(200003, [A, A, A, A], null, 400,00), Item(200002, [A, A, A], null, 300,00), Item(200001, [A, A], null, 200,00), Item(200007, [C, C, C, D, D, D], null, 1200,00), Item(200006, [B, B], null, 50,00), Item(200005, [A, J, K], null, 200,00), Item(200004, [A, A, B], null, 200,00), Item(200011, [E, E, E, E, F], null, 800,00), Item(200010, [E, E, E, E, E, F], null, 1600,00), Item(200009, [C, C, D, D, B, B], null, 600,00), Item(200008, [C, C, D, D, A, A], null, 800,00), Item(200015, [F, J, K], null, 300,00), Item(200014, [F, F], null, 100,00), Item(200013, [E, E, F], null, 200,00), Item(200012, [E, E, E, F], null, 400,00), Item(200016, [A, B, C, D, E, F, J, K], null, 1400,00)]) to registered bidders
+2021-07-01 23:34:47,449 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: STARTING
+2021-07-01 23:34:47,450 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Sending StartAuction(C, 3, 0, null) to registered bidders
+2021-07-01 23:34:48,428 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: STARTING
+2021-07-01 23:34:48,440 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:34:48,447 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200032, [A, B, C, D, E, F, J, K], 1405,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,448 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200019, [A, A], 205,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,449 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200018, [A, A, A], 305,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,450 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:34:48,451 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200017, [A, A, A, A], 405,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,451 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200023, [A, A, B], 205,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,453 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200022, [A, J, K], 205,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,454 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200021, [B, B], 55,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,455 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200020, [C, C, C, D, D, D], 1205,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,456 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200027, [C, C, D, D, A, A], 805,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,457 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200026, [C, C, D, D, B, B], 605,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,458 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200025, [E, E, E, E, E, F], 1605,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,460 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200024, [E, E, E, E, F], 805,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,461 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200031, [E, E, E, F], 405,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,462 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200030, [E, E, F], 205,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,463 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200029, [F, F], 105,00, SELL, null) to registered bidders
+2021-07-01 23:34:48,464 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending StartAuction(A, 1, 100, [Item(100001, [G, F], null, 0,00), Item(100002, [C, B, B, A], null, 0,00), Item(100003, [F, B, C, C], null, 0,00), Item(100004, [B, A], null, 0,00), Item(100005, [F, B, A], null, 0,00), Item(100006, [D, C], null, 0,00), Item(100007, [C, A, G, A], null, 0,00), Item(100008, [A, C, D, G], null, 0,00), Item(100009, [B, D, A], null, 0,00), Item(100010, [C, G, C], null, 0,00), Item(100011, [C, F], null, 0,00), Item(100012, [B, D], null, 0,00), Item(100013, [D, A, B], null, 0,00), Item(100014, [E, A, G, B], null, 0,00), Item(100015, [A, B, A, D], null, 0,00), Item(100016, [B, A, C, B], null, 0,00), Item(100017, [C, D, A, B], null, 0,00), Item(100018, [A, G], null, 0,00), Item(100019, [D, A, A, C], null, 0,00), Item(100020, [D, C], null, 0,00), Item(100021, [B, D, D, A], null, 0,00), Item(100022, [A, G, G, A], null, 0,00), Item(100023, [C, D, G], null, 0,00), Item(100024, [A, F], null, 0,00), Item(100025, [A, C, B], null, 0,00), Item(100026, [A, D, F], null, 0,00), Item(100027, [C, C, B], null, 0,00), Item(100028, [D, B, B, D], null, 0,00), Item(100029, [A, A, G, B], null, 0,00), Item(100030, [A, A], null, 0,00), Item(100031, [A, G], null, 0,00), Item(100032, [B, B, F, A], null, 0,00), Item(100033, [A, A], null, 0,00), Item(100034, [A, G], null, 0,00), Item(100035, [B, E, E], null, 0,00), Item(100036, [D, A], null, 0,00), Item(100037, [G, A, B], null, 0,00), Item(100038, [A, D, B, B], null, 0,00), Item(100039, [C, D, C, A], null, 0,00), Item(100040, [F, A, C, C], null, 0,00), Item(100041, [B, D, B], null, 0,00), Item(100042, [B, F, B], null, 0,00), Item(100043, [B, B], null, 0,00), Item(100044, [D, D, D], null, 0,00), Item(100045, [B, B, C], null, 0,00), Item(100046, [B, G, D, A], null, 0,00), Item(100047, [A, C, D, B], null, 0,00), Item(100048, [C, C, A], null, 0,00), Item(100049, [C, G], null, 0,00), Item(100050, [G, A, B, D], null, 0,00), Item(100051, [A, E], null, 0,00), Item(100052, [A, D, A, F], null, 0,00), Item(100053, [A, A, F], null, 0,00), Item(100054, [G, G, A, A], null, 0,00), Item(100055, [A, C], null, 0,00), Item(100056, [D, C, F, G], null, 0,00), Item(100057, [B, A, B], null, 0,00), Item(100058, [B, D, B], null, 0,00), Item(100059, [D, B], null, 0,00), Item(100060, [E, E, C, A], null, 0,00), Item(100061, [A, D, A, C], null, 0,00), Item(100062, [G, C, B], null, 0,00), Item(100063, [B, F], null, 0,00), Item(100064, [B, D], null, 0,00), Item(100065, [C, B], null, 0,00), Item(100066, [B, C, B, D], null, 0,00), Item(100067, [F, D, D], null, 0,00), Item(100068, [B, B], null, 0,00), Item(100069, [A, A, G], null, 0,00), Item(100070, [C, E], null, 0,00), Item(100071, [C, B], null, 0,00), Item(100072, [A, A], null, 0,00), Item(100073, [D, B, A, B], null, 0,00), Item(100074, [G, B, F], null, 0,00), Item(100075, [B, B, D], null, 0,00), Item(100076, [C, A], null, 0,00), Item(100077, [D, F, B], null, 0,00), Item(100078, [D, E], null, 0,00), Item(100079, [A, G, A], null, 0,00), Item(100080, [D, B, A, D], null, 0,00), Item(100081, [A, B, C, B], null, 0,00), Item(100082, [B, B, B], null, 0,00), Item(100083, [D, A, A, A], null, 0,00), Item(100084, [C, B, B], null, 0,00), Item(100085, [D, E, B], null, 0,00), Item(100086, [C, B, G, G], null, 0,00), Item(100087, [B, B], null, 0,00), Item(100088, [E, A, B], null, 0,00), Item(100089, [B, B, C, C], null, 0,00), Item(100090, [B, A], null, 0,00), Item(100091, [A, B], null, 0,00), Item(100092, [A, B], null, 0,00), Item(100093, [A, B, D], null, 0,00), Item(100094, [F, B, D], null, 0,00), Item(100095, [C, D, A], null, 0,00), Item(100096, [B, C, C, B], null, 0,00), Item(100097, [B, B, A], null, 0,00), Item(100098, [E, B, A, A], null, 0,00), Item(100099, [B, B, F], null, 0,00), Item(100100, [A, A, D, A], null, 0,00)]) to registered bidders
+2021-07-01 23:34:48,465 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200028, [F, J, K], 305,00, SELL, null) to registered bidders
+2021-07-01 23:34:49,393 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:34:49,394 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:34:49,395 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:34:49,436 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:34:49,437 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[G, F], [C, B, B, A], [F, B, C, C], [B, A], [F, B, A], [D, C], [C, A, G, A], [A, C, D, G], [B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:34:49,437 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100001, [G, F], 0,00, BUY, null) to registered bidders
+2021-07-01 23:34:49,447 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:34:49,457 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:34:50,443 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:34:50,454 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:34:50,454 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200035, [A, A, A], 310,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,455 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200034, [A, A], 210,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,455 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200033, [A, B, C, D, E, F, J, K], 1410,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,455 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200039, [B, B], 60,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,455 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200038, [A, J, K], 210,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,456 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200037, [A, A, B], 210,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,456 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200036, [A, A, A, A], 410,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,456 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200043, [E, E, E, E, E, F], 1610,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,457 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200042, [C, C, D, D, B, B], 610,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,457 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200041, [C, C, D, D, A, A], 810,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,457 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200040, [C, C, C, D, D, D], 1210,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,458 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200047, [F, F], 110,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,459 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200046, [E, E, F], 210,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,459 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200045, [E, E, E, F], 410,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,459 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200044, [E, E, E, E, F], 810,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,460 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200048, [F, J, K], 310,00, SELL, null) to registered bidders
+2021-07-01 23:34:50,465 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:34:51,402 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:34:51,402 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:34:51,403 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:34:51,448 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:34:51,449 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[C, B, B, A], [F, B, C, C], [B, A], [F, B, A], [D, C], [C, A, G, A], [A, C, D, G], [B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:34:51,451 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100002, [C, B, B, A], 0,00, BUY, null) to registered bidders
+2021-07-01 23:34:51,459 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:34:51,472 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:34:52,451 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:34:52,452 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending InformBuy(WON, 100002, [C, B, B, A], 0,00) to SmartGreedy
+2021-07-01 23:34:52,462 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:34:52,462 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200064, [F, J, K], 315,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,463 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200051, [A, B, C, D, E, F, J, K], 1415,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,464 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200050, [A, A], 215,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,465 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200049, [A, A, A], 315,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,466 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200055, [A, A, A, A], 415,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,466 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200054, [A, A, B], 215,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,467 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200053, [A, J, K], 215,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,467 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200052, [B, B], 65,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,468 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200059, [C, C, C, D, D, D], 1215,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,468 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200058, [C, C, D, D, A, A], 815,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,469 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200057, [C, C, D, D, B, B], 615,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,470 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200056, [E, E, E, E, E, F], 1615,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,471 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200063, [E, E, E, E, F], 815,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,471 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200062, [E, E, E, F], 415,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,472 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200061, [E, E, F], 215,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,472 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200060, [F, F], 115,00, SELL, null) to registered bidders
+2021-07-01 23:34:52,473 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:34:53,404 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:34:53,406 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 1
+2021-07-01 23:34:53,406 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:34:53,451 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:34:53,452 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[F, B, C, C], [B, A], [F, B, A], [D, C], [C, A, G, A], [A, C, D, G], [B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:34:53,452 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100003, [F, B, C, C], 0,00, BUY, null) to registered bidders
+2021-07-01 23:34:53,463 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:34:53,473 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending InformSell(SOLD, 200052, [B, B], 65,00) to SmartGreedy
+2021-07-01 23:34:53,474 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:34:54,460 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:34:54,471 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:34:54,471 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200067, [A, A], 220,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,471 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200066, [A, B, C, D, E, F, J, K], 1420,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,472 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200065, [F, J, K], 320,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,472 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200071, [A, J, K], 220,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,472 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200070, [A, A, B], 220,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,472 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200069, [A, A, A, A], 420,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,472 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200068, [A, A, A], 320,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,473 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200075, [C, C, D, D, B, B], 620,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,473 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200074, [C, C, D, D, A, A], 820,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,473 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200073, [C, C, C, D, D, D], 1220,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,473 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200072, [B, B], 65,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,474 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200079, [E, E, F], 220,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,474 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200078, [E, E, E, F], 420,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,474 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200077, [E, E, E, E, F], 820,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,474 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200076, [E, E, E, E, E, F], 1620,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,475 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200080, [F, F], 120,00, SELL, null) to registered bidders
+2021-07-01 23:34:54,482 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:34:55,405 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:34:55,405 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:34:55,406 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:34:55,468 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:34:55,469 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[B, A], [F, B, A], [D, C], [C, A, G, A], [A, C, D, G], [B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:34:55,471 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100004, [B, A], 0,00, BUY, null) to registered bidders
+2021-07-01 23:34:55,479 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:34:55,490 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:34:56,474 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:34:56,474 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending InformBuy(WON, 100004, [B, A], 0,00) to SmartGreedy
+2021-07-01 23:34:56,486 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:34:56,486 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200096, [F, F], 125,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,487 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200083, [F, J, K], 325,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,487 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200082, [A, B, C, D, E, F, J, K], 1425,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,487 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200081, [A, A], 225,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,488 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200087, [A, A, A], 325,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,489 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200086, [A, A, A, A], 425,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,489 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200085, [A, A, B], 225,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,489 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200084, [A, J, K], 225,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,490 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200091, [B, B], 70,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,490 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200090, [C, C, C, D, D, D], 1225,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,490 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200089, [C, C, D, D, A, A], 825,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,491 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200088, [C, C, D, D, B, B], 625,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,491 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200095, [E, E, E, E, E, F], 1625,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,491 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200094, [E, E, E, E, F], 825,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,492 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200093, [E, E, E, F], 425,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,492 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200092, [E, E, F], 225,00, SELL, null) to registered bidders
+2021-07-01 23:34:56,497 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:34:57,412 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:34:57,414 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 1
+2021-07-01 23:34:57,414 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:34:57,480 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:34:57,481 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[F, B, A], [D, C], [C, A, G, A], [A, C, D, G], [B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:34:57,482 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100005, [F, B, A], 0,00, BUY, null) to registered bidders
+2021-07-01 23:34:57,491 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:34:57,493 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending InformSell(SOLD, 200081, [A, A], 225,00) to SmartGreedy
+2021-07-01 23:34:57,502 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:34:58,482 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:34:58,483 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending InformBuy(WON, 100005, [F, B, A], 0,00) to SmartGreedy
+2021-07-01 23:34:58,493 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:34:58,494 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200099, [A, B, C, D, E, F, J, K], 1430,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,495 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200098, [F, J, K], 330,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,496 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200097, [F, F], 130,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,497 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200103, [A, A, B], 230,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,498 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200102, [A, A, A, A], 430,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,499 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200101, [A, A, A], 330,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,501 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200100, [A, A], 225,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,502 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200107, [C, C, D, D, A, A], 830,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,503 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200106, [C, C, C, D, D, D], 1230,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,504 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:34:58,504 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200105, [B, B], 75,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,506 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200104, [A, J, K], 230,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,507 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200111, [E, E, E, F], 430,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,508 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200110, [E, E, E, E, F], 830,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,510 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200109, [E, E, E, E, E, F], 1630,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,511 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200108, [C, C, D, D, B, B], 630,00, SELL, null) to registered bidders
+2021-07-01 23:34:58,511 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200112, [E, E, F], 230,00, SELL, null) to registered bidders
+2021-07-01 23:34:59,423 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:34:59,424 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 1
+2021-07-01 23:34:59,424 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:34:59,487 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:34:59,488 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[D, C], [C, A, G, A], [A, C, D, G], [B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:34:59,488 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100006, [D, C], 0,00, BUY, null) to registered bidders
+2021-07-01 23:34:59,497 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:34:59,499 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending InformSell(SOLD, 200105, [B, B], 75,00) to SmartGreedy
+2021-07-01 23:34:59,508 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:00,493 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:00,503 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:00,503 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200128, [E, E, F], 235,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,504 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200115, [F, F], 135,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,505 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200114, [F, J, K], 335,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,505 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200113, [A, B, C, D, E, F, J, K], 1435,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,506 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200119, [A, A], 230,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,506 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200118, [A, A, A], 335,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,506 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200117, [A, A, A, A], 435,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,507 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200116, [A, A, B], 235,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,507 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200123, [A, J, K], 235,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,508 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200122, [B, B], 75,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,508 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200121, [C, C, C, D, D, D], 1235,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,509 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200120, [C, C, D, D, A, A], 835,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,510 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200127, [C, C, D, D, B, B], 635,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,511 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200126, [E, E, E, E, E, F], 1635,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,512 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200125, [E, E, E, E, F], 835,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,513 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200124, [E, E, E, F], 435,00, SELL, null) to registered bidders
+2021-07-01 23:35:00,516 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:35:01,423 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:35:01,423 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:35:01,423 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:35:01,498 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:35:01,498 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[C, A, G, A], [A, C, D, G], [B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:35:01,498 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100007, [C, A, G, A], 0,00, BUY, null) to registered bidders
+2021-07-01 23:35:01,508 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:35:01,519 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:02,503 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:02,505 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending InformBuy(WON, 100007, [C, A, G, A], 0,00) to SmartGreedy
+2021-07-01 23:35:02,514 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:02,514 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200131, [F, J, K], 340,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,514 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200130, [F, F], 140,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,515 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200129, [E, E, F], 240,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,515 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200135, [A, A, A, A], 440,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,515 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200134, [A, A, A], 340,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,516 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200133, [A, A], 235,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,516 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200132, [A, B, C, D, E, F, J, K], 1440,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,516 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200139, [C, C, C, D, D, D], 1240,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,516 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200138, [B, B], 80,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,517 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200137, [A, J, K], 240,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,517 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200136, [A, A, B], 240,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,517 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200143, [E, E, E, E, F], 840,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,517 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200142, [E, E, E, E, E, F], 1640,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,517 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200141, [C, C, D, D, B, B], 640,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,518 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200140, [C, C, D, D, A, A], 840,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,518 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200144, [E, E, E, F], 440,00, SELL, null) to registered bidders
+2021-07-01 23:35:02,525 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:35:03,428 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:35:03,429 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 1
+2021-07-01 23:35:03,429 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:35:03,505 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:35:03,506 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[A, C, D, G], [B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:35:03,507 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100008, [A, C, D, G], 0,00, BUY, null) to registered bidders
+2021-07-01 23:35:03,516 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:35:03,518 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending InformSell(SOLD, 200133, [A, A], 235,00) to SmartGreedy
+2021-07-01 23:35:03,527 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:04,508 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:04,509 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending InformBuy(WON, 100008, [A, C, D, G], 0,00) to SmartGreedy
+2021-07-01 23:35:04,519 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:04,520 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200160, [E, E, E, F], 445,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,520 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200147, [E, E, F], 245,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,521 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200146, [F, F], 145,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,521 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200145, [F, J, K], 345,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,522 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200151, [A, B, C, D, E, F, J, K], 1445,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,522 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200150, [A, A], 235,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,523 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200149, [A, A, A], 345,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,523 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200148, [A, A, A, A], 445,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,524 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200155, [A, A, B], 245,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,525 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200154, [A, J, K], 245,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,525 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200153, [B, B], 85,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,525 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200152, [C, C, C, D, D, D], 1245,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,526 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200159, [C, C, D, D, A, A], 845,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,526 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200158, [C, C, D, D, B, B], 645,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,527 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200157, [E, E, E, E, E, F], 1645,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,527 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200156, [E, E, E, E, F], 845,00, SELL, null) to registered bidders
+2021-07-01 23:35:04,530 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:35:05,429 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:35:05,429 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 1
+2021-07-01 23:35:05,429 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:35:05,514 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:35:05,514 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[B, D, A], [C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:35:05,514 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100009, [B, D, A], 0,00, BUY, null) to registered bidders
+2021-07-01 23:35:05,525 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:35:05,525 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending InformSell(SOLD, 200150, [A, A], 235,00) to SmartGreedy
+2021-07-01 23:35:05,536 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:06,518 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:06,529 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:06,530 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200163, [F, F], 150,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,531 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200162, [E, E, F], 250,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,531 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200161, [E, E, E, F], 450,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,532 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200167, [A, A, A], 350,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,533 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200166, [A, A], 235,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,534 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200165, [A, B, C, D, E, F, J, K], 1450,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,535 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200164, [F, J, K], 350,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,535 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200171, [B, B], 90,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,535 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200170, [A, J, K], 250,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,535 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200169, [A, A, B], 250,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,535 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200168, [A, A, A, A], 450,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,535 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200175, [E, E, E, E, E, F], 1650,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,536 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200174, [C, C, D, D, B, B], 650,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,536 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200173, [C, C, D, D, A, A], 850,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,537 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200172, [C, C, C, D, D, D], 1250,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,537 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200176, [E, E, E, E, F], 850,00, SELL, null) to registered bidders
+2021-07-01 23:35:06,540 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:35:07,437 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:35:07,438 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:35:07,438 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:35:07,524 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:35:07,525 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[C, G, C], [C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:35:07,526 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100010, [C, G, C], 0,00, BUY, null) to registered bidders
+2021-07-01 23:35:07,535 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:35:07,546 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:08,530 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:08,542 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:08,542 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200192, [E, E, E, E, F], 855,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,543 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200179, [E, E, E, F], 455,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,544 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200178, [E, E, F], 255,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,545 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200177, [F, F], 155,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,546 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200183, [F, J, K], 355,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,546 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200182, [A, B, C, D, E, F, J, K], 1455,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,548 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200181, [A, A], 240,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,548 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200180, [A, A, A], 355,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,549 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200187, [A, A, A, A], 455,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,549 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200186, [A, A, B], 255,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,550 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200185, [A, J, K], 255,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,551 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200184, [B, B], 95,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,552 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200191, [C, C, C, D, D, D], 1255,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,552 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:35:08,553 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200190, [C, C, D, D, A, A], 855,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,553 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200189, [C, C, D, D, B, B], 655,00, SELL, null) to registered bidders
+2021-07-01 23:35:08,554 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200188, [E, E, E, E, E, F], 1655,00, SELL, null) to registered bidders
+2021-07-01 23:35:09,440 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:35:09,440 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:35:09,440 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:35:09,538 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:35:09,538 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[C, F], [B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:35:09,538 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100011, [C, F], 0,00, BUY, null) to registered bidders
+2021-07-01 23:35:09,549 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:35:09,560 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:10,547 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:10,547 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending InformBuy(WON, 100011, [C, F], 0,00) to SmartGreedy
+2021-07-01 23:35:10,557 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:10,557 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200195, [E, E, F], 260,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,558 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200194, [E, E, E, F], 460,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,558 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200193, [E, E, E, E, F], 860,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,559 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200199, [A, A], 245,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,559 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200198, [A, B, C, D, E, F, J, K], 1460,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,559 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200197, [F, J, K], 360,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,559 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200196, [F, F], 160,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,560 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200203, [A, J, K], 260,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,560 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200202, [A, A, B], 260,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,560 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200201, [A, A, A, A], 460,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,561 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200200, [A, A, A], 360,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,561 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200207, [C, C, D, D, B, B], 660,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,561 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200206, [C, C, D, D, A, A], 860,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,561 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200205, [C, C, C, D, D, D], 1260,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,562 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200204, [B, B], 100,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,562 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200208, [E, E, E, E, E, F], 1660,00, SELL, null) to registered bidders
+2021-07-01 23:35:10,568 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:35:11,149 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.32:58021 failed: java.net.SocketException: Connection reset
+2021-07-01 23:35:11,149 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.32:58014 failed: java.net.SocketException: Connection reset
+2021-07-01 23:35:11,151 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-feb9806ecd72StandardJMSBroker#6 and tcp:///192.168.178.32:58005@58023 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-07-01 23:35:11,152 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-feb58226f1e2StandardJMSBroker#4 and tcp:///192.168.178.32:58005@58015 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-07-01 23:35:11,444 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:35:11,444 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 1
+2021-07-01 23:35:11,444 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:35:11,557 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:35:11,557 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[B, D], [D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:35:11,557 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100012, [B, D], 0,00, BUY, null) to registered bidders
+2021-07-01 23:35:11,568 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:35:11,568 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending InformSell(SOLD, 200196, [F, F], 160,00) to SmartGreedy
+2021-07-01 23:35:11,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:12,566 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:12,577 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:12,577 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200224, [E, E, E, E, E, F], 1665,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200211, [E, E, E, E, F], 865,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200210, [E, E, E, F], 465,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200209, [E, E, F], 265,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200215, [F, F], 160,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,579 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200214, [F, J, K], 365,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,579 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200213, [A, B, C, D, E, F, J, K], 1465,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,579 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200212, [A, A], 250,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,579 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200219, [A, A, A], 365,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,580 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200218, [A, A, A, A], 465,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,580 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200217, [A, A, B], 265,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,580 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200216, [A, J, K], 265,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,580 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200223, [B, B], 105,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,581 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200222, [C, C, C, D, D, D], 1265,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,581 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200221, [C, C, D, D, A, A], 865,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,581 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200220, [C, C, D, D, B, B], 665,00, SELL, null) to registered bidders
+2021-07-01 23:35:12,588 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:35:13,448 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:35:13,448 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:35:13,448 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:35:13,566 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:35:13,567 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[D, A, B], [E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:35:13,567 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100013, [D, A, B], 0,00, BUY, null) to registered bidders
+2021-07-01 23:35:13,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:35:13,589 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:14,352 WARN [org.apache.activemq.network.DemandForwardingBridgeSupport] - Network connection between vm://n-feb9806ecd72StandardJMSBroker#8 and tcp:///192.168.178.32:58012@58024 shutdown due to a remote error: java.net.SocketException: Connection reset
+2021-07-01 23:35:14,352 WARN [org.apache.activemq.broker.TransportConnection.Transport] - Transport Connection to: tcp://192.168.178.32:58022 failed: java.net.SocketException: Connection reset
+2021-07-01 23:35:14,571 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:14,581 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:14,581 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200227, [E, E, E, F], 470,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,581 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200226, [E, E, E, E, F], 870,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,582 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200225, [E, E, E, E, E, F], 1670,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,582 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200231, [A, B, C, D, E, F, J, K], 1470,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,582 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200230, [F, J, K], 370,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,583 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200229, [F, F], 165,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,583 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200228, [E, E, F], 270,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,583 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200235, [A, A, B], 270,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,583 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200234, [A, A, A, A], 470,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,583 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200233, [A, A, A], 370,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,583 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200232, [A, A], 255,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,584 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200239, [C, C, D, D, A, A], 870,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,584 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200238, [C, C, C, D, D, D], 1270,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,584 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200237, [B, B], 110,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,584 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200236, [A, J, K], 270,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,584 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200240, [C, C, D, D, B, B], 670,00, SELL, null) to registered bidders
+2021-07-01 23:35:14,592 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:35:15,456 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Current Phase: WAITING
+2021-07-01 23:35:15,456 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Messages in Memory: 0
+2021-07-01 23:35:15,456 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerMetaBean] - Waiting for auction A to end
+2021-07-01 23:35:15,577 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: BIDDING
+2021-07-01 23:35:15,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Items: [[E, A, G, B], [A, B, A, D], [B, A, C, B], [C, D, A, B], [A, G], [D, A, A, C], [D, C], [B, D, D, A], [A, G, G, A], [C, D, G], [A, F], [A, C, B], [A, D, F], [C, C, B], [D, B, B, D], [A, A, G, B], [A, A], [A, G], [B, B, F, A], [A, A], [A, G], [B, E, E], [D, A], [G, A, B], [A, D, B, B], [C, D, C, A], [F, A, C, C], [B, D, B], [B, F, B], [B, B], [D, D, D], [B, B, C], [B, G, D, A], [A, C, D, B], [C, C, A], [C, G], [G, A, B, D], [A, E], [A, D, A, F], [A, A, F], [G, G, A, A], [A, C], [D, C, F, G], [B, A, B], [B, D, B], [D, B], [E, E, C, A], [A, D, A, C], [G, C, B], [B, F], [B, D], [C, B], [B, C, B, D], [F, D, D], [B, B], [A, A, G], [C, E], [C, B], [A, A], [D, B, A, B], [G, B, F], [B, B, D], [C, A], [D, F, B], [D, E], [A, G, A], [D, B, A, D], [A, B, C, B], [B, B, B], [D, A, A, A], [C, B, B], [D, E, B], [C, B, G, G], [B, B], [E, A, B], [B, B, C, C], [B, A], [A, B], [A, B], [A, B, D], [F, B, D], [C, D, A], [B, C, C, B], [B, B, A], [E, B, A, A], [B, B, F], [A, A, D, A]]
+2021-07-01 23:35:15,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Sending CallForBids(1, 100014, [E, A, G, B], 0,00, BUY, null) to registered bidders
+2021-07-01 23:35:15,589 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: EVALUATION
+2021-07-01 23:35:15,600 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: EVALUATION
+2021-07-01 23:35:16,578 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerABean] - Current Phase: EVALUATION
+2021-07-01 23:35:16,589 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Current Phase: BIDDING
+2021-07-01 23:35:16,590 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200256, [C, C, D, D, B, B], 675,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,590 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200243, [E, E, E, E, E, F], 1675,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,591 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200242, [E, E, E, E, F], 875,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,591 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200241, [E, E, E, F], 475,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,592 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200247, [E, E, F], 275,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,592 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200246, [F, F], 170,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,593 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200245, [F, J, K], 375,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,593 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200244, [A, B, C, D, E, F, J, K], 1475,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,594 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200251, [A, A], 260,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,594 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200250, [A, A, A], 375,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,594 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200249, [A, A, A, A], 475,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,594 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200248, [A, A, B], 275,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,595 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200255, [A, J, K], 275,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,595 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200254, [B, B], 115,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,595 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200253, [C, C, C, D, D, D], 1275,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,595 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerBBean] - Sending CallForBids(2, 200252, [C, C, D, D, A, A], 875,00, SELL, null) to registered bidders
+2021-07-01 23:35:16,610 INFO [n-feb9806ecd72.a-feb974cbff8d.AuctioneerCBean] - Current Phase: BIDDING
+2021-07-01 23:37:17,755 INFO [n-feddfd7cd816.a-feddf70c88bd.BidderBean] - Starting BidderBean.
+2021-07-01 23:37:17,755 INFO [n-feddfd7cd816.a-feddf70c88bd.BidderBean_SmartGreedy] - Starting BidderBean im mad.

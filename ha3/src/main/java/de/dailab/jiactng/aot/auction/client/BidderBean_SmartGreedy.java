@@ -14,9 +14,7 @@ import java.io.Serializable;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /* START */
@@ -44,7 +42,7 @@ import java.util.Map;
 // receive endAuction message from meta bean
 
 
-public class BidderBean extends AbstractAgentBean {
+public class BidderBean_SmartGreedy extends AbstractAgentBean {
 
 	// multicast message group
 	private String groupAddress;
@@ -56,8 +54,6 @@ public class BidderBean extends AbstractAgentBean {
 	private ICommunicationAddress auctioneerAAddress;
 	private ICommunicationAddress auctioneerBAddress;
 	private ICommunicationAddress auctioneerCAddress;
-
-	private boolean isInitialized;
 
 	// our bidder id
 	private String myId;
@@ -77,76 +73,54 @@ public class BidderBean extends AbstractAgentBean {
 	// this is the money we would have, if we would buy everything we want
 	private double calculatedMoney;
 
-	// solution to roughly calculate current round
-	// used for estimating CFB.SELL towards end of game
-	private int roundCounter;
-
-
-
 
 	@Override
 	public void doStart() throws Exception {
 		super.doStart();
 
-		this.setBidderId("SmartAgent");
-		this.setGroupToken("Group34_83151");
+		this.setBidderId("SmartGreedy");
+		this.setGroupToken("Group34_83151A");
 		this.setMessageGroup("de.dailab.jiactng.aot.auction");
 
 		String messageGroup = getMessageGroup();
 		IGroupAddress groupAddress = CommunicationAddressFactory.createGroupAddress(messageGroup);
 		thisAgent.getCommunication().joinGroup(groupAddress);
 
-		this.roundCounter = 0;
-		this.isInitialized = false;
 		this.bidOnItems = new HashMap<>();
-		memory.attach(new BidderBean.MessageObserver(), new JiacMessage());
-		log.info("Starting BidderBean.");
+		memory.attach(new BidderBean_SmartGreedy.MessageObserver(), new JiacMessage());
+		log.info("Starting BidderBean im mad.");
 	}
 
 	@Override
 	public void execute() {
-		if(this.isInitialized) this.sellCallForBidsC();
 	}
 
 	private void handleMessage(JiacMessage message) {
 		Object payload = message.getPayload();
 
-		if (payload instanceof StartAuctions)
-		{
+		if (payload instanceof StartAuctions) {
 			this.handleStartAuctions((StartAuctions) payload, message.getSender());
-		}
-		else if (payload instanceof InitializeBidder)
-		{
+		} else if (payload instanceof InitializeBidder) {
 			this.handleInitializeBidder((InitializeBidder) payload);
-		}
-		else if (payload instanceof StartAuction)
-		{
+		} else if (payload instanceof StartAuction) {
 			this.handleStartAuction((StartAuction) payload, message.getSender());
-		}
-		else if (payload instanceof CallForBids)
-		{
+		} else if (payload instanceof CallForBids) {
 			this.handleCallForBids((CallForBids) payload);
-		}
-		else if (payload instanceof InformBuy)
-		{
+		} else if (payload instanceof InformBuy) {
 			this.handleInformBuy((InformBuy) payload);
-		}
-		else if (payload instanceof InformSell)
-		{
+		} else if (payload instanceof InformSell) {
 			this.handleInformSell((InformSell) payload);
-		}
-		else if (payload instanceof EndAuction)
-		{
+		} else if (payload instanceof EndAuction) {
 			this.handleEndAuction((EndAuction) payload);
 		}
 	}
 
 	/* receive StartAuctions message from AuctioneerMetaBean => reply with Register message to AuctioneerMetaBean */
-	private void handleStartAuctions(StartAuctions payload, ICommunicationAddress sender){
+	private void handleStartAuctions(StartAuctions payload, ICommunicationAddress sender) {
 		System.out.println(payload.toString());
 
 		// to fix their bug and don't send multiple Register messages for same auction
-		if(this.auctionsId == payload.getAuctionsId()) return;
+		if (this.auctionsId == payload.getAuctionsId()) return;
 
 		this.auctionsId = payload.getAuctionsId();
 
@@ -155,80 +129,68 @@ public class BidderBean extends AbstractAgentBean {
 	}
 
 	/* receive InitializeBidder message from AuctioneerMetaBean with wallet */
-	private void handleInitializeBidder(InitializeBidder payload){
+	private void handleInitializeBidder(InitializeBidder payload) {
 		System.out.println(payload.toString());
 
 		// make sure this message is for us
-		if(!payload.getBidderId().equals(this.myId)) return;
+		if (!payload.getBidderId().equals(this.myId)) return;
 
-		this.isInitialized = true;
 		this.myWallet = payload.getWallet();
 		this.calculatedMoney = this.myWallet.getCredits();
 	}
 
 	/* receive StartAuction message from each AuctioneerBean (A/B/C) */
-	private void handleStartAuction(StartAuction payload, ICommunicationAddress sender){
+	private void handleStartAuction(StartAuction payload, ICommunicationAddress sender) {
 		System.out.println(payload.toString());
 
-		if(payload.getMode() == StartAuction.Mode.A)
-		{
+		if (payload.getMode() == StartAuction.Mode.A) {
 			this.auctioneerAId = payload.getAuctioneerId();
 			this.auctioneerAAddress = sender;
-		}
-		else if(payload.getMode() == StartAuction.Mode.B)
-		{
+		} else if (payload.getMode() == StartAuction.Mode.B) {
 			this.auctioneerBId = payload.getAuctioneerId();
 			this.auctioneerBAddress = sender;
-		}
-		else if(payload.getMode() == StartAuction.Mode.C)
-		{
+		} else if (payload.getMode() == StartAuction.Mode.C) {
 			this.auctioneerCId = payload.getAuctioneerId();
 			this.auctioneerCAddress = sender;
-		}
-		else System.out.println("Unknown StartAuction Mode.");
+		} else System.out.println("Unknown StartAuction Mode.");
 
 		// TODO: this message may contain number of items and items to be sold...
 	}
 
 	/* Choose Auction Type Handler (A/B/C) on instanceof CallForBids message */
-	private void handleCallForBids(CallForBids payload){
-		if (payload.getMode() == CallForBids.CfBMode.BUY)
-		{
-			// for each CFB.BUY from Auction A, increase round counter
-			if (payload.getAuctioneerId() == this.auctioneerAId)
-			{
-				this.roundCounter += 1;
-			}
-
+	private void handleCallForBids(CallForBids payload) {
+		if (payload.getMode() == CallForBids.CfBMode.BUY) {
 			buyCallForBids(payload);
-		}
-		else if (payload.getMode() == CallForBids.CfBMode.SELL)
-		{
+		} else if (payload.getMode() == CallForBids.CfBMode.SELL) {
 			sellCallForBids(payload);
-		}
-		else System.out.println("Unknown CallForBids Mode.");
+		} else System.out.println("Unknown CallForBids Mode.");
 	}
 
 	/* React to CallForBids.BUY - only reply if interested */
 	private void buyCallForBids(CallForBids payload) {
-		SmartAgent strategy = new SmartAgent(this.myWallet);
+		SmartGreedy strategy = new SmartGreedy(this.myWallet);
 		double ourOffer = strategy.calculateBuyBid(payload);
 
 		// we are not interested
-		if(ourOffer == -1) return;
+		if (ourOffer == -1) {
+			//ourOffer = 1000;
+			return;
+		}
 
 		this.calculatedMoney -= ourOffer;
 
 		// if we would not have any money after buying we are not interested
-		if(this.calculatedMoney < 0)
-		{
+		if (this.calculatedMoney < 0) {
 			this.calculatedMoney += ourOffer;
 			return;
 		}
 
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), ourOffer);
-		if(payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
+		if (payload.getAuctioneerId() == this.auctioneerAId) sendMessage(this.auctioneerAAddress, ourBid);
+			// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
+
+			// this means something went wrong, so act like nothing was done
 		else {
 			this.calculatedMoney += ourOffer;
 			return;
@@ -236,74 +198,36 @@ public class BidderBean extends AbstractAgentBean {
 
 		// add this callId to our bid on items, because InformBuy does not tell you how much money you bid
 		this.bidOnItems.put(payload.getCallId(), ourOffer);
-		System.out.println("hilfe" + this.bidOnItems.toString());
 	}
 
 	/* React to CallForBids.SELL - only reply if interested */
 	private void sellCallForBids(CallForBids payload) {
-
-		if(payload.getAuctioneerId() == this.auctioneerCId) sellCallForBidsC();
-
-		SmartAgent strategy = new SmartAgent(this.myWallet);
-		boolean weWantToSell = strategy.calculateSellBid(payload, this.roundCounter);
+		SmartGreedy strategy = new SmartGreedy(this.myWallet);
+		boolean weWantToSell = strategy.calculateSellBid(payload);
 
 		// we are not interested
-		if(!weWantToSell) return;
+		if (!weWantToSell) return;
 
 		// we send the bid to the auctioneer
 		Bid ourBid = new Bid(payload.getAuctioneerId(), this.myId, payload.getCallId(), payload.getMinOffer());
-		if(payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
+		if (payload.getAuctioneerId() == this.auctioneerBId) sendMessage(this.auctioneerBAddress, ourBid);
+			// else if(payload.getAuctioneerId() == this.auctioneerCId) sendMessage(this.auctioneerCAddress, ourBid);
 		else return;
 
 		// remove sold resources from dummy wallet
 		this.myWallet.remove(payload.getBundle());
 	}
 
-	// HERE
-	private void sellCallForBidsC() {
-		SmartAgent strategy = new SmartAgent(this.myWallet);
-		List<Resource> whatWeWantToSell = strategy.calculateSellResource(this.myWallet, this.roundCounter);
-
-		if ( whatWeWantToSell == null || whatWeWantToSell.isEmpty() ){
-			// System.out.println("DAS WUERDEN WIR GERNE VERKAUFEN: null");
-		}
-		else {
-			System.out.println("AUCTION_C SELL OFFER: " + whatWeWantToSell.toString() + "CURRENT WALLET: " + this.myWallet.toString());
-		}
-
-		// we are not interested
-		if(whatWeWantToSell == null || whatWeWantToSell.isEmpty()) return;
-
-		double atWhatPrice = strategy.getResourceValue(whatWeWantToSell.get(0));
-
-		List<Resource> sellThisItem = new ArrayList<>();
-		sellThisItem.add(whatWeWantToSell.get(0));
-
-		// we send the bid to the auctioneer
-		Offer ourOffer = new Offer(this.auctioneerCId, this.myId, sellThisItem, atWhatPrice);
-		sendMessage(this.auctioneerBAddress, ourOffer);
-
-		// remove sold resources from dummy wallet
-		this.myWallet.remove(sellThisItem);
-	}
-
 	/* Update state info based on result of Buy (Auction A/C) */
-	private void handleInformBuy(InformBuy payload){
-		if (payload.getBundle() != null){
-			System.out.println("ROUND ESTIMATE: " + this.roundCounter + " --- "+ payload.toString());
-			System.out.println("BOUGHT BUNDLE: " + payload.getBundle().toString() + " @ " + payload.getPrice().toString());
-			System.out.println("CURRENT WALLET: " + this.myWallet.toString());
-		}
+	private void handleInformBuy(InformBuy payload) {
+		System.out.println(payload.toString());
 
 		// if we did not buy anything
-		if(payload.getType() == InformBuy.BuyType.INVALID || payload.getType() == InformBuy.BuyType.LOST) {
+		if (payload.getType() == InformBuy.BuyType.INVALID || payload.getType() == InformBuy.BuyType.LOST) {
 			this.calculatedMoney += this.bidOnItems.get(payload.getCallId());
 			this.bidOnItems.remove(payload.getCallId());
 			return;
 		}
-
-		this.calculatedMoney += this.bidOnItems.get(payload.getCallId());
-		if(payload.getPrice() != null) this.calculatedMoney -= payload.getPrice();
 
 		// update the amount of money we have in our wallet
 		this.myWallet.updateCredits(payload.getPrice() * -1);
@@ -314,19 +238,15 @@ public class BidderBean extends AbstractAgentBean {
 	}
 
 	/* Update state info based on result of Buy (Auction B/C) */
-	private void handleInformSell(InformSell payload){
-		if (payload.getBundle() != null){
-			System.out.println("ROUND ESTIMATE: " + this.roundCounter + " --- "+ payload.toString());
-			System.out.println("SOLD BUNDLE: " + payload.getBundle().toString() + " @ " + payload.getPrice().toString());
-			System.out.println("CURRENT WALLET: " + this.myWallet.toString());
-		}
+	private void handleInformSell(InformSell payload) {
+		System.out.println(payload.toString());
 
 		// if we did not sell anything
-		if(payload.getType() == InformSell.SellType.INVALID){
+		if (payload.getType() == InformSell.SellType.INVALID) {
 			// TODO: here we lose some items in our wallet :(
 			return;
 		}
-		if(payload.getType() == InformSell.SellType.NOT_SOLD) {
+		if (payload.getType() == InformSell.SellType.NOT_SOLD) {
 			this.myWallet.add(payload.getBundle());
 			return;
 		}
@@ -336,8 +256,8 @@ public class BidderBean extends AbstractAgentBean {
 	}
 
 	/* receive EndAuction message from AuctioneerMetaBean */
-	private void handleEndAuction(EndAuction payload){
-		System.out.println("--------END AUCTION------- Our Wallet: " + this.myWallet.toString());
+	private void handleEndAuction(EndAuction payload) {
+		System.out.println("Unser Wallet" + this.myWallet.toString());
 		System.out.println(payload.toString());
 	}
 
@@ -346,15 +266,21 @@ public class BidderBean extends AbstractAgentBean {
 	/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 	/* Bidder ID Setter for Spring config in bidder.xml */
-	public void setBidderId(String id) { this.myId = id; }
+	public void setBidderId(String id) {
+		this.myId = id;
+	}
 
 	/* Group ID Setter for Spring config in bidder.xml */
-	public void setGroupToken(String id) { this.myGroupToken = id; }
+	public void setGroupToken(String id) {
+		this.myGroupToken = id;
+	}
 
 	/* Message Group Setter for Spring config in bidder.xml */
-	public void setMessageGroup(String id) { this.groupAddress = id; }
+	public void setMessageGroup(String id) {
+		this.groupAddress = id;
+	}
 
-	public String getMessageGroup(){
+	public String getMessageGroup() {
 		System.out.println("Get Message Group.");
 		return this.groupAddress;
 	}
@@ -363,8 +289,8 @@ public class BidderBean extends AbstractAgentBean {
 	private void sendMessage(ICommunicationAddress receiver, IFact payload) {
 		Action sendAction = retrieveAction(ICommunicationBean.ACTION_SEND);
 		JiacMessage message = new JiacMessage(payload);
-		invoke(sendAction, new Serializable[] {message, receiver});
-		// System.out.println("BIDDER SENDING: " + payload);
+		invoke(sendAction, new Serializable[]{message, receiver});
+		System.out.println("BIDDER SENDING: " + payload);
 	}
 
 	/* Message Observer Class */
@@ -376,10 +302,10 @@ public class BidderBean extends AbstractAgentBean {
 				WriteCallEvent writeEvent = (WriteCallEvent) event;
 				if (writeEvent.getObject() instanceof JiacMessage) {
 					JiacMessage message = (JiacMessage) writeEvent.getObject();
-					if (message.getPayload() instanceof JiacMessage) {
-						handleMessage(message);
-						memory.remove(message);
-					}
+					//if (message.getPayload() instanceof JiacMessage) {
+					handleMessage(message);
+					memory.remove(message);
+					//}
 				}
 			}
 		}

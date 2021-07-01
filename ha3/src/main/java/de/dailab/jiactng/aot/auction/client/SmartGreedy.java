@@ -6,10 +6,10 @@ import java.util.Map.Entry;
 
 
 /*
-* params: Wallet
-* calculateBid(CallForBids)
-* returns Double else -1
-*/
+ * params: Wallet
+ * calculateBid(CallForBids)
+ * returns Double else -1
+ */
 public class SmartGreedy {
     private final Wallet myWallet;
     private final Map<Resource[], Integer> bundlesMap;
@@ -113,13 +113,19 @@ public class SmartGreedy {
 
     // if wallet contains bundle, return true
     public boolean calculateSellBid(CallForBids cfb) {
-        return true;
+        List<Resource> bundle = cfb.getBundle();
+        if (this.myWallet.contains(bundle)){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     private Wallet copyWallet (Wallet originalWallet) {
         Wallet copyWallet = new Wallet("copyWallet", 0.);
         Resource[] resourcesArray = {Resource.A, Resource.B, Resource.C, Resource.D,
-            Resource.E, Resource.F, Resource.J, Resource.K};
+                Resource.E, Resource.F, Resource.J, Resource.K};
         for (Resource res: resourcesArray) {
             int amount = originalWallet.get(res);
             copyWallet.add(res, amount);
