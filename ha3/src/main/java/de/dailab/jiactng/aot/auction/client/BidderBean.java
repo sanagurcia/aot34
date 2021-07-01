@@ -263,9 +263,12 @@ public class BidderBean extends AbstractAgentBean {
 		SmartAgent strategy = new SmartAgent(this.myWallet);
 		List<Resource> whatWeWantToSell = strategy.calculateSellResource(this.myWallet, this.roundCounter);
 
-		if(whatWeWantToSell == null) System.out.println("DAS WUERDEN WIR GERNE VERKAUFEN: null");
-		else System.out.println("DAS WUERDEN WIR GERNE VERKAUFEN: " + whatWeWantToSell.toString());
-		System.out.println("WEIL DAS IST UNSER WALLET: " + this.myWallet.toString());
+		if ( whatWeWantToSell == null || whatWeWantToSell.isEmpty() ){
+			// System.out.println("DAS WUERDEN WIR GERNE VERKAUFEN: null");
+		}
+		else {
+			System.out.println("AUCTION_C SELL OFFER: " + whatWeWantToSell.toString() + "CURRENT WALLET: " + this.myWallet.toString());
+		}
 
 		// we are not interested
 		if(whatWeWantToSell == null || whatWeWantToSell.isEmpty()) return;
@@ -285,7 +288,9 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* Update state info based on result of Buy (Auction A/C) */
 	private void handleInformBuy(InformBuy payload){
-		System.out.println(payload.toString());
+		System.out.println("ROUND ESTIMATE: " + this.roundCounter + " --- "+ payload.toString());
+		System.out.println("BOUGHT BUNDLE: " + payload.getBundle().toString() + " @ " + payload.getPrice().toString());
+		System.out.println("CURRENT WALLET: " + this.myWallet.toString());
 
 		// if we did not buy anything
 		if(payload.getType() == InformBuy.BuyType.INVALID || payload.getType() == InformBuy.BuyType.LOST) {
@@ -307,7 +312,9 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* Update state info based on result of Buy (Auction B/C) */
 	private void handleInformSell(InformSell payload){
-		System.out.println(payload.toString());
+		System.out.println("ROUND ESTIMATE: " + this.roundCounter + " --- "+ payload.toString());
+		System.out.println("SOLD BUNDLE: " + payload.getBundle().toString() + " @ " + payload.getPrice().toString());
+		System.out.println("CURRENT WALLET: " + this.myWallet.toString());
 
 		// if we did not sell anything
 		if(payload.getType() == InformSell.SellType.INVALID){
@@ -325,7 +332,7 @@ public class BidderBean extends AbstractAgentBean {
 
 	/* receive EndAuction message from AuctioneerMetaBean */
 	private void handleEndAuction(EndAuction payload){
-		System.out.println("Our Wallet: " + this.myWallet.toString());
+		System.out.println("--------END AUCTION------- Our Wallet: " + this.myWallet.toString());
 		System.out.println(payload.toString());
 	}
 
@@ -352,7 +359,7 @@ public class BidderBean extends AbstractAgentBean {
 		Action sendAction = retrieveAction(ICommunicationBean.ACTION_SEND);
 		JiacMessage message = new JiacMessage(payload);
 		invoke(sendAction, new Serializable[] {message, receiver});
-		System.out.println("BIDDER SENDING: " + payload);
+		// System.out.println("BIDDER SENDING: " + payload);
 	}
 
 	/* Message Observer Class */
