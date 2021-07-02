@@ -363,7 +363,7 @@ public class BidderBean extends AbstractAgentBean {
 		Action sendAction = retrieveAction(ICommunicationBean.ACTION_SEND);
 		JiacMessage message = new JiacMessage(payload);
 		invoke(sendAction, new Serializable[] {message, receiver});
-		// System.out.println("BIDDER SENDING: " + payload);
+		System.out.println("BIDDER SENDING: " + payload);
 	}
 
 	/* Message Observer Class */
@@ -375,10 +375,8 @@ public class BidderBean extends AbstractAgentBean {
 				WriteCallEvent writeEvent = (WriteCallEvent) event;
 				if (writeEvent.getObject() instanceof JiacMessage) {
 					JiacMessage message = (JiacMessage) writeEvent.getObject();
-					//if (message.getPayload() instanceof JiacMessage) {
 						handleMessage(message);
 						memory.remove(message);
-					//}
 				}
 			}
 		}
