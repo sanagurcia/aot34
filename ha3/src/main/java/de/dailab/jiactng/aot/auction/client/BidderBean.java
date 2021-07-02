@@ -230,8 +230,6 @@ public class BidderBean extends AbstractAgentBean {
 	/* React to CallForBids.SELL - only reply if interested */
 	private void sellCallForBids(CallForBids payload) {
 
-		if(payload.getAuctioneerId() == this.auctioneerCId) sellCallForBidsC();
-
 		SmartAgent strategy = new SmartAgent(this.myWallet);
 		boolean weWantToSell = strategy.calculateSellBid(payload, this.roundCounter);
 
