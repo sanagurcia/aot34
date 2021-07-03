@@ -5,8 +5,6 @@ import de.dailab.jiactng.aot.auction.onto.Resource;
 import de.dailab.jiactng.aot.auction.onto.Wallet;
 
 import java.util.*;
-import java.util.Map.Entry;
-
 
 /*
 * params: Wallet
@@ -49,7 +47,7 @@ public class SmartAgent {
             int valueBefore = bundlesMap.get(key);
             valueBefore += calculatedBonus;
             bundlesMap.put(key,valueBefore);
-        };
+        }
         return bundlesMap;
     }
 
