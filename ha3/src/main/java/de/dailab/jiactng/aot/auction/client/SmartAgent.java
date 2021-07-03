@@ -39,7 +39,6 @@ public class SmartAgent {
         for (Resource res: bundle) {
             buyOffer += this.resourceValues.get(res);
         }
-        System.out.println("----------------------BUYOFFER:"+buyOffer +"------------------------");
         if (buyOffer<minOffer) return -1;
         return buyOffer;
     }
@@ -108,7 +107,6 @@ public class SmartAgent {
 
     // if wallet contains bundle, return true
     public boolean calculateSellBid(CallForBids cfb, int round) {
-        //System.out.println("----round: " + round);
         List<Resource> bundle = cfb.getBundle();
         double minExpectedPrice = 0.0;
         for (Resource res: bundle){
