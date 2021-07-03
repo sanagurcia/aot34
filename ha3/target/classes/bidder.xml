@@ -13,33 +13,90 @@
 		<property name="logLevel" value="WARN" />
 		<property name="agents">
 			<list>
-				<ref bean="BidderAgent" />
+				<ref bean="GreedyAgent1" />
+				<ref bean="GreedyAgent2" />
+				<ref bean="GreedyAgent3" />
+				<ref bean="GreedyAgent4" />
+
+				<!--<ref bean="BidderBean_SmartGreedy" />-->
 			</list>
 		</property>
 	</bean>
 
-	<bean name="BidderAgent" parent="SimpleAgent" scope="prototype">
+	<bean name="GreedyAgent1" parent="SimpleAgent" scope="prototype">
 		<property name="agentBeans">
 			<list>
-				<bean name="BidderBean" class="de.dailab.jiactng.aot.auction.client.BidderBean" scope="prototype">
+				<bean name="GreedyAgent1" class="de.dailab.jiactng.aot.auction.client.BidderBean_SmartGreedy" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					<property name="executionInterval" value="2000" />
-					
-					<property name="bidderId" value="DummyBidder_1" />
-					<property name="groupToken" value="Group34_83151" />
+
+					<property name="bidderId" value="GreedyAgent1" />
+					<property name="groupToken" value="Group34_8315141" />
 					<property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
 					<!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
 				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean name="GreedyAgent2" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<bean name="GreedyAgent2" class="de.dailab.jiactng.aot.auction.client.BidderBean_SmartGreedy" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="2000" />
+
+					<property name="bidderId" value="GreedyAgent2" />
+					<property name="groupToken" value="Group34_8315142" />
+					<property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
+					<!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean name="GreedyAgent3" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<bean name="GreedyAgent3" class="de.dailab.jiactng.aot.auction.client.BidderBean_SmartGreedy" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="2000" />
+
+					<property name="bidderId" value="GreedyAgent3" />
+					<property name="groupToken" value="Group34_8315143" />
+					<property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
+					<!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean name="GreedyAgent4" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
+				<bean name="GreedyAgent4" class="de.dailab.jiactng.aot.auction.client.BidderBean_SmartGreedy" scope="prototype">
+					<property name="logLevel" value="INFO" />
+					<property name="executionInterval" value="2000" />
+
+					<property name="bidderId" value="GreedyAgent4" />
+					<property name="groupToken" value="Group34_8315144" />
+					<property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
+					<!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<!--<bean name="BidderBean_SmartGreedy" parent="SimpleAgent" scope="prototype">
+		<property name="agentBeans">
+			<list>
 				<bean name="BidderBean_SmartGreedy" class="de.dailab.jiactng.aot.auction.client.BidderBean_SmartGreedy" scope="prototype">
 					<property name="logLevel" value="INFO" />
 					<property name="executionInterval" value="2000" />
 
 					<property name="bidderId" value="DummyBidder_2" />
-					<property name="groupToken" value="Group34_831515A" />
+					<property name="groupToken" value="Group34_83151A" />
 					<property name="messageGroup" value="de.dailab.jiactng.aot.auction" />
-					<!-- XXX add more properties if needed, e.g. for fine-tuning strategies -->
+					 XXX add more properties if needed, e.g. for fine-tuning strategies
 				</bean>
+
 			</list>
 		</property>
-	</bean>
+	</bean>-->
 </beans>
